@@ -6,11 +6,16 @@ class User < ActiveRecord::Base
 
 
   def self.from_omniauth(auth)
-      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
+      where(email: auth.info.email).first_or_create do |user|
+      user.uid = auth.uid
+      user.provider = auth.provider
+      #use the github username to link to learn.co profiles
+      user.username = auth.info.nickname
+      #add image to show the github/learn avatar
+      #user.image_link = auth.info.image
+      user.password = SecureRandom.hex
     end      
   end
 
-  
+
 end

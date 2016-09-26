@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   
-
+  #get '/auth/github/callback' => 'sessions#create'
 
   
   #resource :users, only: [:show]
