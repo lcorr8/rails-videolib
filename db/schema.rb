@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160926024256) do
+ActiveRecord::Schema.define(version: 20160926175114) do
+
+  create_table "sections", force: :cascade do |t|
+    t.string   "name"
+    t.string   "user_id"
+    t.string   "video_ids"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
@@ -28,11 +36,25 @@ ActiveRecord::Schema.define(version: 20160926024256) do
     t.string   "last_sign_in_ip"
     t.string   "provider"
     t.string   "uid"
+    t.string   "section_ids"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["provider"], name: "index_users_on_provider"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["uid"], name: "index_users_on_uid"
+
+  create_table "videos", force: :cascade do |t|
+    t.string   "name"
+    t.string   "link"
+    t.string   "year"
+    t.string   "watched"
+    t.string   "embed_link"
+    t.string   "section_id"
+    t.string   "note_ids"
+    t.string   "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end

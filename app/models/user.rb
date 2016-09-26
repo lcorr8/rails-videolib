@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  has_many :sections
+  has_many :videos, through: :sections
+  has_many :notes, through: :videos
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable
   devise :database_authenticatable, :registerable,
