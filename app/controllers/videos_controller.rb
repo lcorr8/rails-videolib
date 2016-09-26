@@ -1,2 +1,49 @@
 class VideosController < ApplicationController
+
+  def index
+    #scope to the user's section
+    @videos = Video.all 
+  end
+
+  def show
+    @video = Video.find(params[:id])
+  end
+
+  def new
+    @video = Video.new
+  end
+
+  def create
+    @video = Video.new(video_params)
+    if @video.save
+      redirect_to video_path(@video)
+    else
+      render :new
+    end
+  end
+
+  def edit
+    @video = Video.find(params[:id])
+  end
+
+  def update
+    @video = Video.find(params[:id])
+    if @video.update(video_params)
+      redirect_to video_path(@video)
+    else
+      render :edit
+    end
+  end
+
+  def destroy 
+    #ensure user can delete this video
+    @video = Video.find(params[:id])
+  end
+
+  private
+
+  def video_params
+    params.require(:video).permit(:name, :link, :year, :watched, :embed_link, :section_id, :note_ids, :user_id)
+  end
+
 end
