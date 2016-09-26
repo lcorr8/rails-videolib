@@ -48,13 +48,13 @@ ActiveRecord::Schema.define(version: 20160926175114) do
     t.string   "name"
     t.string   "link"
     t.string   "year"
-    t.string   "watched"
+    t.string   "watched",    default: "no"
     t.string   "embed_link"
     t.string   "section_id"
     t.string   "note_ids"
     t.string   "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
 end

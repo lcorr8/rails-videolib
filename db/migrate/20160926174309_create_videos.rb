@@ -4,7 +4,7 @@ class CreateVideos < ActiveRecord::Migration
       t.string :name
       t.string :link
       t.string :year
-      t.string :watched
+      t.string :watched, default: "no"
       t.string :embed_link
       t.string :section_id
       t.string :note_ids
