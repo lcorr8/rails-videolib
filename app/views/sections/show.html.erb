@@ -1,3 +1,12 @@
-<%= @section.name %>
-
+<%= @section.name %><br>
 <%= link_to "Delete", @section, method: :delete, data: { confirm: "Are you sure?" } %>
+
+<br><br>
+
+Section videos:
+<br>
+
+<% @section.videos.each do |video| %>
+  <li><%= link_to video.name, video_path(video) %></li>
+<% end %>  
+

@@ -1,13 +1,14 @@
 class SectionsController < ApplicationController
-#make a before action to ensure user is logged in as well
+  before_action :authenticate_user!
+  before_action :set_section, only: [:edit, :update, :show, :destroy]
+
   def new
     @section = Section.new
   end
 
   def create
-    #raise "create action".inspect
     @section = Section.new(section_params)
-    #assign user that created it? or do it via nested resources?
+    @section.user = current_user
     if @section.save
       redirect_to section_path(@section)
     else
@@ -16,12 +17,9 @@ class SectionsController < ApplicationController
   end
 
   def edit
-    @section = Section.find(params[:id])
   end
 
   def update
-    @section = Section.find(params[:id])
-
     if @section.update(section_params)
       redirect_to section_path(@section)
     else
@@ -30,16 +28,13 @@ class SectionsController < ApplicationController
   end
 
   def index
-    @sections = Section.all 
+    @sections = current_user.sections.all 
   end
 
   def show
-    @section = Section.find(params[:id])
   end
 
   def destroy
-    @section = Section.find(params[:id])
-
     if @section.videos.count <1
       @section.destroy
       redirect_to sections_path
@@ -52,6 +47,10 @@ class SectionsController < ApplicationController
 
   def section_params
     params.require(:section).permit(:name)
+  end
+
+  def set_section
+    @section = current_user.sections.find(params[:id])
   end
 
 
