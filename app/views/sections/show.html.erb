@@ -1,4 +1,6 @@
 <%= @section.name %><br>
+<%= link_to "Edit", edit_section_path(@section) %>
+
 <%= link_to "Delete", @section, method: :delete, data: { confirm: "Are you sure?" } %>
 
 <br><br>
@@ -9,4 +11,9 @@ Section videos:
 <% @section.videos.each do |video| %>
   <li><%= link_to video.name, video_path(video) %></li>
 <% end %>  
+<br>
+This should be a nested resource action -->
+<%= link_to "Add a video", new_video_path %>
+
+
 
