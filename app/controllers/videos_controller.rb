@@ -1,8 +1,10 @@
 class VideosController < ApplicationController
+  before_action :set_user, only: [:index, :show, :create, :edit, :update, :destroy]
+
 
   def index
     #scope to the user's section
-    @videos = Video.all 
+    @videos = @user.videos.all
   end
 
   def show
@@ -15,6 +17,7 @@ class VideosController < ApplicationController
 
   def create
     @video = Video.new(video_params)
+    @video.user = @user
     if @video.save
       redirect_to video_path(@video)
     else
@@ -44,6 +47,10 @@ class VideosController < ApplicationController
 
   def video_params
     params.require(:video).permit(:name, :link, :year, :watched, :embed_link, :section_id, :note_ids, :user_id)
+  end
+
+  def set_user
+    @user = current_user
   end
 
 end
