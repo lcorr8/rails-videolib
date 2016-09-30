@@ -26,7 +26,12 @@ class VideosController < ApplicationController
   end
 
   def edit
-    @video = Video.find(params[:id])
+    if @video = @user.videos.find(params[:id])
+      render :edit
+    else
+      flash[:error] = "Not your video to edit!"
+      redirect_to sections_path
+    end
   end
 
   def update

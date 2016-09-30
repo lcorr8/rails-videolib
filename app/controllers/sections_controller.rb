@@ -1,5 +1,5 @@
 class SectionsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :set_user 
   before_action :set_section, only: [:edit, :update, :show, :destroy]
 
   def new
@@ -17,30 +17,46 @@ class SectionsController < ApplicationController
   end
 
   def edit
+    if @section = @user.sections.find(params[:id])
+      render :edit
+    else
+      flash[:error] = "Not your section to edit!"
+      redirect_to sections_path
+    end
   end
 
   def update
-    if @section.update(section_params)
-      redirect_to section_path(@section)
+    if @section = @user.sections.find(params[:id])
+      if @section.update(section_params)
+        redirect_to section_path(@section)
+      else
+        render :edit
+      end
     else
-      render :edit
+      flash[:error] = "Not your section to edit!"
+      redirect_to sections_path
     end
   end
 
   def index
-    @sections = current_user.sections.all 
+    @sections = @user.sections.all 
   end
 
   def show
   end
 
   def destroy
-    if @section.videos.count <1
-      @section.destroy
-      redirect_to sections_path
+    if @section.user_id == @user.id
+      if @section.videos.count <1
+        @section.destroy
+        redirect_to sections_path
+      else
+        flash[:error] = "There are still videos in this section, so it cant be deleted"
+        render :show
+      end
     else
-      flash[:error] = "There are still videos in this section, so it cant be deleted"
-      render :show
+      flash[:error] = "Not your section to delete!"
+      redirect_to sections_path
     end
   end
 
@@ -54,5 +70,8 @@ class SectionsController < ApplicationController
     @section = current_user.sections.find(params[:id])
   end
 
+  def set_user
+    @user = current_user
+  end
 
 end
