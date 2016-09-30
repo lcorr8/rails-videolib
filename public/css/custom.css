@@ -47,7 +47,6 @@ p {
   background-color: #E7E7E7;
 }
 
-
 .field_with_errors input {
   border: 2px solid red; 
 }
@@ -56,6 +55,8 @@ p {
   border-left: 2px solid red;
   border-top: 2px solid red;
 }
+
+
 
 
 
