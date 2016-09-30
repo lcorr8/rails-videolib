@@ -1,24 +1,3 @@
-<%= form_for @video do |f| %>
+<h2>Edit A Video</h2>
 
- <%= f.label :name %>
- <%= f.text_field :name %><br>
-
- <%= f.label :link %>
- <%= f.text_field :link %><br>
-
- <%= f.label :year%>
- <%= f.text_field :year %><br>
-
- <%= f.label :embed_link%>
- <%= f.text_field :embed_link%><br>
-
- <%= f.label :watched %>
- <%= f.text_field :watched %><br>
-
-<%= f.label :section %>
-<%= f.collection_select(:section_id, Section.all, :id, :name) %><br>
-
-
- <%= f.submit %>
-
- <% end %>
+<%= render 'form' %>
