@@ -1,5 +1,5 @@
 class VideosController < ApplicationController
-  before_action :set_user, only: [:index, :show, :create, :edit, :update, :destroy]
+  before_action :set_user, only: [:index, :show, :create, :edit, :update, :destroy, :watched]
 
 
   def index
@@ -41,6 +41,18 @@ class VideosController < ApplicationController
   def destroy 
     #ensure user can delete this video
     @video = Video.find(params[:id])
+  end
+
+  def watched
+    if @video = @user.videos.find(params[:id])
+      @video.watched = "yes"
+      @video.save
+      redirect_to video_path(@video)
+    else
+      flash[:error] = "Not your video to edit!"
+      redirect_to sections_path
+    end
+    
   end
 
   private

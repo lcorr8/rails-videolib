@@ -6,7 +6,8 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
-  
+  get 'videos/:id/watched' => 'videos#watched', as: :watched
+
   #get '/auth/github/callback' => 'sessions#create'
 
   
