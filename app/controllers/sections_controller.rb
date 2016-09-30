@@ -40,6 +40,7 @@ class SectionsController < ApplicationController
       redirect_to sections_path
     else
       flash[:error] = "There are still videos in this section, so it cant be deleted"
+      render :show
     end
   end
 
