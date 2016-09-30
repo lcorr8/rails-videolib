@@ -30,19 +30,27 @@ class VideosController < ApplicationController
   end
 
   def update
-    @video = Video.find(params[:id])
-    if @video.update(video_params)
-      redirect_to video_path(@video)
+    if @video = @user.videos.find(params[:id])
+      if @video.update(video_params)
+        redirect_to video_path(@video)
+      else
+        render :edit
+      end
     else
-      render :edit
+      flash[:error] = "Not your video to edit!"
+      redirect_to sections_path
     end
   end
 
   def destroy 
     #ensure user can delete this video
-    @video = @user.videos.find(params[:id])
-    @video.destroy
-    redirect_to videos_path
+    if @video = @user.videos.find(params[:id])
+      @video.destroy
+      redirect_to videos_path
+    else
+      flash[:error] = "Not your video to delete!"
+      redirect_to sections_path
+    end
   end
 
   def watched
@@ -54,7 +62,6 @@ class VideosController < ApplicationController
       flash[:error] = "Not your video to edit!"
       redirect_to sections_path
     end
-    
   end
 
   private
