@@ -2,10 +2,11 @@
 <br>
 
 <% @videos.each do |video| %>
-  <% if video.watched == "yes" %>
+  <p><% if video.watched == "yes" %>
     <%= "✓" %>
   <% end %>  
-  <p><%= link_to video.name, video_path(video) %></p>
+  <%= link_to video.name, video_path(video) %></p>
 
 <% end %>
 
+<%= link_to "add video", new_video_path %>

@@ -16,6 +16,7 @@ class VideosController < ApplicationController
   end
 
   def create
+    raise @video.errors.inspect
     @video = Video.new(video_params)
     @video.user = @user
     if @video.save
