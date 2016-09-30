@@ -1,26 +1,20 @@
 <%= form_for @video do |f| %>
 
- <%= f.label :name %>
- <%= f.text_field :name %><br>
+  <%= render 'errors' %>
 
- <%= f.label :link %>
- <%= f.text_field :link %><br>
-
- <%= f.label :year%>
- <%= f.text_field :year %><br>
-
- <%= f.label :embed_link%>
- <%= f.text_field :embed_link%><br>
-
- <%= f.label "VIDEO WATCHED YET?" %>
- 
- <%= f.radio_button :watched, "yes" %> YES
- <%= f.radio_button :watched, "no" %> NO <br>
-
-<%= f.label :section %>
-<%= f.collection_select(:section_id, Section.all, :id, :name) %><br>
-
-
- <%= f.submit %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+  <%= f.label :link %>
+  <%= f.text_field :link %><br>
+  <%= f.label :year%>
+  <%= f.text_field :year %><br>
+  <%= f.label :embed_link%>
+  <%= f.text_field :embed_link%><br>
+  <%= f.label "VIDEO WATCHED YET?" %>
+  <%= f.radio_button :watched, "yes" %> YES
+  <%= f.radio_button :watched, "no" %> NO <br>
+  <%= f.label :section %>
+  <%= f.collection_select(:section_id, Section.all, :id, :name) %><br>
+  <%= f.submit %>
 
  <% end %>

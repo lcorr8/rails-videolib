@@ -16,7 +16,6 @@ class VideosController < ApplicationController
   end
 
   def create
-    raise @video.errors.inspect
     @video = Video.new(video_params)
     @video.user = @user
     if @video.save
@@ -41,7 +40,9 @@ class VideosController < ApplicationController
 
   def destroy 
     #ensure user can delete this video
-    @video = Video.find(params[:id])
+    @video = @user.videos.find(params[:id])
+    @video.destroy
+    redirect_to videos_path
   end
 
   def watched
