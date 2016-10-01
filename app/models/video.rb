@@ -12,4 +12,10 @@ class Video < ActiveRecord::Base
   validates :watched, presence: true
   validates :section_id, presence: true #from existing ones?
 
+  def section=(section)
+      section = Section.find_or_create_by(name: section[:name])
+      self.section_id = section.id
+  end
+  
+
 end

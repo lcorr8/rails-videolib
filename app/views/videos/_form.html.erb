@@ -14,7 +14,13 @@
   <%= f.radio_button :watched, "yes" %> YES
   <%= f.radio_button :watched, "no" %> NO <br>
   <%= f.label :section %>
-  <%= f.collection_select(:section_id, current_user.sections.all, :id, :name) %><br>
+  <%= f.collection_select(:section_id, current_user.sections.all, :id, :name, :include_blank => true) %><br>
+
+  <%= f.label "Create a new Section" %>
+  <%= f.fields_for :section, @video.build_section do |section_fields| %>
+    <%= section_fields.text_field :name %>
+  <% end %>
+
   <%= f.submit %>
 
  <% end %>

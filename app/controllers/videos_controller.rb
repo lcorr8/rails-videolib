@@ -16,8 +16,12 @@ class VideosController < ApplicationController
   end
 
   def create
+    #raise params.inspect
     @video = Video.new(video_params)
     @video.user = @user
+    @section = Section.find_by(name: params[:video][:section][:name])
+    @section.user = @user
+    @section.save
     if @video.save
       redirect_to video_path(@video)
     else
@@ -72,7 +76,7 @@ class VideosController < ApplicationController
   private
 
   def video_params
-    params.require(:video).permit(:name, :link, :year, :watched, :embed_link, :section_id, :note_ids, :user_id)
+    params.require(:video).permit(:name, :link, :year, :watched, :embed_link, :section_id, :note_ids, :user_id, section: [:name])
   end
 
   def set_user
