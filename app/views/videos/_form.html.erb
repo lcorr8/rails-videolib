@@ -16,6 +16,8 @@
   <%= f.label :section %>
   <%= f.collection_select(:section_id, current_user.sections.all, :id, :name, :include_blank => true) %><br>
 
+  <!-- how to disable the create a new section if one is already choosen via the collection select? -->
+
   <%= f.label "Create a new Section" %>
   <%= f.fields_for :section, @video.build_section do |section_fields| %>
     <%= section_fields.text_field :name %>

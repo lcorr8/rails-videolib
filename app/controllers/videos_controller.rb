@@ -17,11 +17,23 @@ class VideosController < ApplicationController
 
   def create
     #raise params.inspect
+    #if video section_id is not empty then ignore the creation box
+
+    # Creating a video with a section by ID
+    if !params[:video][:section_id].blank?
+      # lets delete the key from the hash
+      params[:video].delete(:section)
+      # => raise "stop".inspect
+    else
+      # Creating a video with a section by name
+      @section = Section.find_or_create_by(name: params[:video][:section][:name])
+      @section.user = @user
+      @section.save
+    end
+
     @video = Video.new(video_params)
     @video.user = @user
-    @section = Section.find_by(name: params[:video][:section][:name])
-    @section.user = @user
-    @section.save
+
     if @video.save
       redirect_to video_path(@video)
     else
@@ -42,9 +54,11 @@ class VideosController < ApplicationController
     #raise params.inspect
     if @video = @user.videos.find(params[:id])
       if @video.update(video_params)
-        @section = Section.find_by(name: params[:video][:section][:name])
-        @section.user = @user
-        @section.save
+         if params[:video][:section][:name] != "" 
+            @section = Section.find_by(name: params[:video][:section][:name])
+            @section.user = @user
+            @section.save
+          end
         redirect_to video_path(@video)
       else
         render :edit
