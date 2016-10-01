@@ -39,8 +39,12 @@ class VideosController < ApplicationController
   end
 
   def update
+    #raise params.inspect
     if @video = @user.videos.find(params[:id])
       if @video.update(video_params)
+        @section = Section.find_by(name: params[:video][:section][:name])
+        @section.user = @user
+        @section.save
         redirect_to video_path(@video)
       else
         render :edit
