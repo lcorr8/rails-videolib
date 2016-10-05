@@ -1,7 +1,8 @@
 class Video < ActiveRecord::Base
   belongs_to :section
   belongs_to :user
-  has_many :notes
+  has_many :video_ratings
+  has_many :ratings, through: :video_ratings
 
   validates :name, presence: true
   validates :link , presence: true, uniqueness: true

@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160926175114) do
+ActiveRecord::Schema.define(version: 20161005231303) do
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer  "stars"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "sections", force: :cascade do |t|
     t.string   "name"
@@ -43,6 +49,14 @@ ActiveRecord::Schema.define(version: 20160926175114) do
   add_index "users", ["provider"], name: "index_users_on_provider"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["uid"], name: "index_users_on_uid"
+
+  create_table "video_ratings", force: :cascade do |t|
+    t.string   "reason"
+    t.integer  "video_id"
+    t.integer  "rating_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "videos", force: :cascade do |t|
     t.string   "name"
