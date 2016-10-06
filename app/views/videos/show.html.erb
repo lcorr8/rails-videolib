@@ -12,9 +12,22 @@
   <% end %></p>
 <p>embed link: <%= @video.embed_link %></p>
 
+
+
+<p>Rating: </p>
+<ul>
+<% @video.video_ratings.each do |rating|   %>
+  <li><p> Stars: <%= Rating.find(rating.rating_id).stars %> | Reason: <%= rating.reason %>
+  </p></li>
+<% end %>  
+</ul>
+
+
+
 <%= link_to :edit, edit_video_path(@video) %>
 <%= link_to "Delete", @video, method: :delete, data: { confirm: "Are you sure?" } %>
 <%= link_to "Back to section", section_path(@video.section) %>
 <%= link_to "Mark video watched", watched_path(@video) %>
+<%= link_to "Add a difficulty rating for this video lesson", new_video_rating_path(@video) %>
 
 

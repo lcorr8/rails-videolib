@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :ratings
 
-  resources :videos
+  resources :videos do 
+      resources :ratings
+  end
 
   resources :sections
 
