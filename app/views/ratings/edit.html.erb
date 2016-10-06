@@ -1,0 +1,7 @@
+<h2>Edit a difficulty rating to <%= @video.name %></h2>
+
+<%= form_for(@rating, :url => video_rating_path(@video, @rating)) do |f| %>
+  
+ <%= render 'fields', :f => f %>
+
+<% end %>

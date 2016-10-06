@@ -17,7 +17,7 @@
 <p>Rating: </p>
 <ul>
 <% @video.video_ratings.each do |rating|   %>
-  <li><p> Stars: <%= Rating.find(rating.rating_id).stars %> | Reason: <%= rating.reason %>
+  <li><p> Stars: <%= Rating.find(rating.rating_id).stars %> | Reason: <%= rating.reason %> -<%= link_to "Edit", edit_video_rating_path(@video, rating) %>
   </p></li>
 <% end %>  
 </ul>

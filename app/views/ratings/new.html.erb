@@ -2,13 +2,6 @@
 
 <%= form_for(@rating) do |f| %>
   
-  <%= f.label "Rate difficulty of video lesson, one being the easiest, 5 being the hardest" %><br>
-  <%= f.collection_select(:rating_id, Rating.all, :id, :stars)  %><br>
-
-  <%= f.label "Reason for your rating?" %><br>
-  <%= f.text_field :reason %><br>
-  
-
-  <%= f.submit %>
+ <%= render 'fields', :f => f %>
 
 <% end %>
