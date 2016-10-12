@@ -14,7 +14,7 @@
       </button>
       <% if current_user %>
         <!-- make a page to see how many videos you havent seen yet -->
-        <%= link_to "VideoLib", videos_path, :class => "navbar-brand" %>
+        <%= link_to "VideoLib", study_suggestions_path, :class => "navbar-brand" %>
       <% else %>
         <%= link_to "VideoLib", root_path, :class => "navbar-brand" %>
       <% end %>  
