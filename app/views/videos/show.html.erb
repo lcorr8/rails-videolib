@@ -14,10 +14,10 @@
 
 
 
-<p>Rating: </p>
+<p>Ratings: </p>
 <ul>
 <% @video.video_ratings.each do |rating|   %>
-  <li><p> Stars: <%= Rating.find(rating.rating_id).stars %> | Reason: <%= rating.reason %> -<%= link_to "Edit", edit_video_rating_path(@video, rating) %>
+  <li><p> Stars: <%= Rating.find(rating.rating_id).stars %> | Reason: <%= rating.reason %> - <%= link_to "Edit", edit_video_rating_path(@video, rating) %>   <%= link_to "Delete", video_rating_path(@video, rating), method: :delete, data: { confirm: "Are you sure?" }  %>   
   </p></li>
 <% end %>  
 </ul>

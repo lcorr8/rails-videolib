@@ -1,5 +1,6 @@
 class RatingsController < ApplicationController
   before_action :set_video
+  before_action :set_rating, only: [:edit, :update, :destroy]
 
   def new
     @rating = @video.video_ratings.build
@@ -17,12 +18,9 @@ class RatingsController < ApplicationController
   end
 
   def edit
-    @rating = VideoRating.find(params[:id])
   end
 
   def update
-    #raise params.inspect
-    @rating = VideoRating.find(params[:id])
     if @rating.update(rating_params)
       redirect_to video_path(@video)
     else
@@ -30,11 +28,20 @@ class RatingsController < ApplicationController
     end
   end
 
+  def destroy 
+    @rating.destroy
+    redirect_to video_path(@video)
+  end
+
   private
 
   def set_video
     @video = Video.find(params[:video_id])
     #scope by user in the future
+  end
+
+  def set_rating
+    @rating = VideoRating.find(params[:id])
   end
 
   def rating_params
