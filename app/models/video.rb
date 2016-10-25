@@ -16,10 +16,10 @@ class Video < ActiveRecord::Base
   #scope :hardest_videos, -> {where(ratings: 5)} #look at how to scope the joins table for this?
   #^ videos with a rating of 4 + 5 to study again
 
-  scope :sixteen, -> {where(year: "2016")}
-  scope :fifteen, -> {where(year: "2015")}
-  scope :fourteen, -> {where(year: "2014")}
-  scope :not_watched, -> {where(watched: "no")}
+  scope :sixteen, -> { where( year: "2016" ) }
+  scope :fifteen, -> { where( year: "2015" ) }
+  scope :fourteen, -> { where( year: "2014" ) }
+  scope :not_watched, -> { where(watched: "no" ) }
 
   def section=(section)
       section = Section.find_or_create_by(name: section[:name])
