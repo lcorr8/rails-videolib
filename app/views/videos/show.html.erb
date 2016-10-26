@@ -1,16 +1,16 @@
-<h2>Video info</h2>
-
+<p><%= @video.name %> -  <%= @video.year %> </p>
 <p>Section: <%= @video.section.name %></p>
-<p>Name: <%= @video.name %></p>
-<p>Year: <%= @video.year %></p>
-<p>Link: <%= @video.link %></p>
-<p>View status: 
+
+<p><%= link_to " Youtube Link", @video.link, :target => "_blank" %> - View status: 
   <% if @video.watched == "yes" %>
     <%= " ✓ viewed" %>
   <% else %>
     <%= "not yet" %>
   <% end %></p>
-<p>embed link: <%= @video.embed_link %></p>
+
+
+<br> 
+<%= raw @video.embed_link %><
 
 
 

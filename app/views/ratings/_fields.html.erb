@@ -1,4 +1,4 @@
- <%= f.label "Rate difficulty of video lesson, one being the easiest, 5 being the hardest" %><br>
+ <%= f.label "Rate difficulty of video lesson, 1 = easiest, 3 = average, 5 = hardest" %><br>
   <%= f.collection_select(:rating_id, Rating.all, :id, :stars)  %><br>
 
   <%= f.label "Reason for your rating?" %><br>
