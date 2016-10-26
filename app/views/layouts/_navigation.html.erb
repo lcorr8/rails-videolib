@@ -24,20 +24,20 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <% if current_user %>
         <ul class="nav navbar-nav">
-          <li><%= link_to "Sections", sections_path %></li>
-          <li><%= link_to "Videos", videos_path %></li>
-          <li><%= link_to "Add Section", new_section_path %></li>
-          <li><%= link_to "Add Video", new_video_path %></li>
+          <li><%= button_to "Sections", sections_path, class: "btn btn-default navbar-btn" %></li>
+          <li><%= button_to "Videos", videos_path, class: "btn btn-default navbar-btn" %></li>
+          <li><%= button_to "Add Section", new_section_path, class: "btn btn-default navbar-btn" %></li>
+          <li><%= button_to "Add Video", new_video_path, class: "btn btn-default navbar-btn" %></li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Sign out", destroy_user_session_path , :method => :delete, :class => "active" %></li>
+          <li><%= button_to "Sign out", destroy_user_session_path , :method => :delete, class: "btn btn-default navbar-btn active" %></li>
         </ul>  
       <% else %>
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Sign up", new_user_registration_path %></li>
-          <li><%= link_to "Sign in", new_user_session_path %></li>
-           <li><%= link_to "Sign in with github", user_omniauth_authorize_path("github"), :class => "active" %></li>
+          <li><%= button_to "Sign up", new_user_registration_path, class: "btn btn-default navbar-btn" %></li>
+          <li><%= button_to "Sign in", new_user_session_path, class: "btn btn-default navbar-btn" %></li>
+           <li><%= button_to "Sign in with github", user_omniauth_authorize_path("github"), class: "btn btn-default navbar-btn active" %></li>
         </ul>  
      <% end %>  
    </div>     <!-- /.navbar-collapse -->   
