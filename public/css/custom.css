@@ -17,6 +17,18 @@ nav {
   font-size: 1.3em;
 }
 
+nav a {
+  color: #00802b;
+}
+
+
+
+
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #00802b;
+}
+
 .background-div {
   position: relative;
   overflow: hidden;
@@ -53,8 +65,7 @@ h2 {
 */
 
 a {
-  color: #6D6D6D;
-  
+  color: #6D6D6D; 
 }
 
 p {
@@ -77,9 +88,13 @@ p {
 #flash_notice {
   border-left: 2px solid green;
   border-top: 2px solid green;
-  
 }
 
-
+a.navbar-brand img{
+  height: 50px;
+  position: absolute;
+  left: 5px;
+  top: 0px; 
+}
 
 
