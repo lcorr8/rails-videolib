@@ -1,38 +1,41 @@
-<p><%= @video.name %> -  <%= @video.year %> </p> 
-<p>Section: <%= @video.section.name %></p>
-
-<%= button_to :edit, edit_video_path(@video), method: :get, :class => "btn rounded-outline-btn inline" %>
-
-<p><%= link_to " Youtube Link", @video.link, :target => "_blank" %> - View status: 
+<div class="container center">
+  <p>Video: <%= @video.name %> -  <%= @video.year %> </p> 
+  <p>Section: <%= @video.section.name %></p>
+  <p><%= link_to " Youtube Link", @video.link, :target => "_blank" %></p>
+  <p>View status: 
     <% if @video.watched == "yes" %>
       <%= " ✓ viewed" %>
     <% else %>
       <%= "not yet" %>
-    <% end %></p>
-  
-<%= button_to "Mark video watched", watched_path(@video), method: :get, :class => "btn rounded-outline-btn" %>
- 
+    <% end %>  
+  </p>
+</div> 
+
 <div class="video-container">
   <%= raw @video.embed_link %>
 </div>
-
 <br>
+<div class="container center">
+  <%= button_to "Back to section", section_path(@video.section), :class => "btn rounded-outline-btn" %>
+  <%= button_to :edit, edit_video_path(@video), method: :get, :class => "btn rounded-outline-btn inline" %>
+  <%= button_to "Delete", @video, method: :delete, data: { confirm: "Are you sure?" }, :class => "btn rounded-outline-btn inline" %>
+  <%= button_to "Mark video watched", watched_path(@video), method: :get, :class => "btn rounded-outline-btn" %>
+  <%= button_to "Add Rating", new_video_rating_path(@video), method: :get, :class => "btn rounded-outline-btn" %>
 
-<p>Ratings: </p>
-<%= button_to "Add Rating", new_video_rating_path(@video), method: :get, :class => "btn rounded-outline-btn" %>
-
-<ul>
-<% @video.video_ratings.each do |rating|   %>
-  <li><p> Stars: <%= Rating.find(rating.rating_id).stars %> | Reason: <%= rating.reason %> - <%= link_to "Edit", edit_video_rating_path(@video, rating) %>   <%= link_to "Delete", video_rating_path(@video, rating), method: :delete, data: { confirm: "Are you sure?" }  %>   
-  </p></li>
-<% end %>  
-</ul>
-
+  <p>Ratings: </p>
+    <ul>
+      <% @video.video_ratings.each do |rating|   %>
+        <li><p> Stars: <%= Rating.find(rating.rating_id).stars %> | Reason: <%= rating.reason %> - <%= link_to "Edit", edit_video_rating_path(@video, rating) %>   <%= link_to "Delete", video_rating_path(@video, rating), method: :delete, data: { confirm: "Are you sure?" }  %></p></li>
+      <% end %>  
+    </ul>
+</div>
+<br><br>
 
 
 
 
-<%= button_to "Back to section", section_path(@video.section), :class => "btn rounded-outline-btn" %>
+
+
 
 
 

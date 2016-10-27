@@ -127,3 +127,10 @@ a.navbar-brand img{
   background: #00802b;
   color: white;
 }
+
+
+.button_to,
+.button_to div {
+  display: inline;
+}
+
