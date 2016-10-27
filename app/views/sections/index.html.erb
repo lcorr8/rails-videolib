@@ -1,5 +1,5 @@
 <h2>Which section would you like to review?</h2>
-<h3>Full Stack Web Dev Program:</h3>
+
 
 <% @sections.each do |section| %>
 
@@ -7,4 +7,4 @@
 
  <% end %>
 <br>
- <%= link_to "Add a section", new_section_path %>
+ <%= button_to "Add a section", new_section_path, method: :get, :class => "btn rounded-outline-btn" %>
