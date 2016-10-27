@@ -1,22 +1,26 @@
-<p><%= @video.name %> -  <%= @video.year %> </p>
+<p><%= @video.name %> -  <%= @video.year %> </p> 
 <p>Section: <%= @video.section.name %></p>
 
+<%= button_to :edit, edit_video_path(@video), method: :get, :class => "btn rounded-outline-btn inline" %>
+
 <p><%= link_to " Youtube Link", @video.link, :target => "_blank" %> - View status: 
-  <% if @video.watched == "yes" %>
-    <%= " ✓ viewed" %>
-  <% else %>
-    <%= "not yet" %>
-  <% end %></p>
-
-
-<br> 
+    <% if @video.watched == "yes" %>
+      <%= " ✓ viewed" %>
+    <% else %>
+      <%= "not yet" %>
+    <% end %></p>
+  
+<%= button_to "Mark video watched", watched_path(@video), method: :get, :class => "btn rounded-outline-btn" %>
+ 
 <div class="video-container">
   <%= raw @video.embed_link %>
 </div>
 
-
+<br>
 
 <p>Ratings: </p>
+<%= button_to "Add Rating", new_video_rating_path(@video), method: :get, :class => "btn rounded-outline-btn" %>
+
 <ul>
 <% @video.video_ratings.each do |rating|   %>
   <li><p> Stars: <%= Rating.find(rating.rating_id).stars %> | Reason: <%= rating.reason %> - <%= link_to "Edit", edit_video_rating_path(@video, rating) %>   <%= link_to "Delete", video_rating_path(@video, rating), method: :delete, data: { confirm: "Are you sure?" }  %>   
@@ -26,10 +30,10 @@
 
 
 
-<%= link_to :edit, edit_video_path(@video) %>
-<%= link_to "Delete", @video, method: :delete, data: { confirm: "Are you sure?" } %>
-<%= link_to "Back to section", section_path(@video.section) %>
-<%= link_to "Mark video watched", watched_path(@video) %>
-<%= link_to "Add a difficulty rating for this video lesson", new_video_rating_path(@video) %>
+
+
+<%= button_to "Back to section", section_path(@video.section), :class => "btn rounded-outline-btn" %>
+
+
 
 

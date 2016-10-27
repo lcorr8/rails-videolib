@@ -1,3 +1,5 @@
 <h2>Edit A Video</h2>
 
 <%= render 'form' %>
+
+<%= button_to "Delete", @video, method: :delete, data: { confirm: "Are you sure?" }, :class => "btn rounded-outline-btn inline" %>

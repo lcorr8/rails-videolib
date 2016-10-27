@@ -114,3 +114,16 @@ a.navbar-brand img{
     height: 100%;
 }
 
+.rounded-outline-btn {
+  background: none;
+  margin-bottom: 10px;
+  border: 2px solid #00802b;
+  border-radius: 24px;
+  font-weight: 800;
+  color: #00802b;
+}
+
+.rounded-outline-btn:hover {
+  background: #00802b;
+  color: white;
+}
