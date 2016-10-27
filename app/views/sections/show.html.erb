@@ -1,15 +1,33 @@
 <h2><%= @section.name %></h2>
-<%= link_to "Edit", edit_section_path(@section) %>
-<%= link_to "Delete", @section, method: :delete, data: { confirm: "Are you sure?" } %>
+<%= button_to "Edit", edit_section_path(@section), method: :get, :class => "btn rounded-outline-btn" %>
+<%= button_to "Delete", @section, method: :delete, data: { confirm: "Are you sure?" }, :class => "btn rounded-outline-btn" %>
 <br>
 
-<h3> Videos:</h3>
-<% @section.videos.each do |video| %>
-  <p><%= link_to video.name, video_path(video) %></p>
-<% end %>  
-<br>
-Should this be a nested resource action? -->
-<%= link_to "Add a video", new_video_path %>
+<div class="container container-cohorts">
+<div class="cohorts cohort-fourteen"> 
+  <h3> 2014 Videos:</h3>
+  <% @section.videos.fourteen.each do |video| %>
+    <p><%= link_to video.name, video_path(video) %></p>
+  <% end %>  
+</div>
+
+<div class="cohorts cohort-fifteen">
+  <h3> 2015 Videos:</h3>
+  <% @section.videos.fifteen.each do |video| %>
+    <p><%= link_to video.name, video_path(video) %></p>
+  <% end %> 
+</div>
+
+<div class="cohorts cohort-sixteen"> 
+  <h3> 2016 Videos:</h3>
+  <% @section.videos.sixteen.each do |video| %>
+    <p><%= link_to video.name, video_path(video) %></p>
+  <% end %>
+</div>
+</div>
+<%= button_to "Back to sections", sections_path, method: :get, :class => "btn rounded-outline-btn" %>
+<%= button_to "Add a video", new_video_path, method: :get, :class => "btn rounded-outline-btn" %>
+
 
 
 

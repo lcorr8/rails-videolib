@@ -134,3 +134,11 @@ a.navbar-brand img{
   display: inline;
 }
 
+div.container-cohorts {
+  width: 100%;
+}
+
+div.container-cohorts div.cohorts{
+  float: left;
+  width: 250px;
+  }
