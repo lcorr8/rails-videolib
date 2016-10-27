@@ -1,6 +1,12 @@
 <h2>Study suggestions for you</h2>
 <br>
 
+<p>Stat: There are currently <%= @videos.count %> videos that you have not seen.</p>
+
+<p>Stat: There are currently # videos that are rated difficult and you could benefit from re-watching.</p>
+
+<p>Stat: There are currently # videos in your programming rabbit hole section...go be productive!</p>
+
 <% @videos.each do |video| %>
   <p><%= link_to video.name, video_path(video) %></p>
 <% end %>  
