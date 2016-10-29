@@ -1,7 +1,7 @@
 <div class="container center">
   <p>Video: <%= @video.name %> -  <%= @video.year %> </p> 
   <p>Section: <%= @video.section.name %></p>
-  <p><%= link_to " Youtube Link", @video.link, :target => "_blank" %></p>
+  <p><%= link_to "Link", @video.link, :target => "_blank" %></p>
   <p>View status: 
     <% if @video.watched == "yes" %>
       <%= " ✓ viewed" %>
@@ -12,7 +12,7 @@
 </div> 
 
 <div class="video-container">
-    <%= embed_html_from_youtube(@video.link)%>
+  <%= embed_html(@video.link)%>
 </div>
 <br>
 <div class="container center">
