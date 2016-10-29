@@ -48,8 +48,6 @@ class VideosController < ApplicationController
 
   def update
     #account for when a section is being created and a section id is selected
-
-
       #update video section by ID
       if !params[:video][:section_id].blank?
         #delete the section name key from the params object

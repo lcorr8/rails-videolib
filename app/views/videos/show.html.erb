@@ -12,7 +12,7 @@
 </div> 
 
 <div class="video-container">
-  <%= raw @video.embed_link %>
+    <%= embed_html_from_youtube(@video.link)%>
 </div>
 <br>
 <div class="container center">
@@ -30,13 +30,3 @@
     </ul>
 </div>
 <br><br>
-
-
-
-
-
-
-
-
-
-
