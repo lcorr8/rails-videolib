@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
 
   def study_suggestions
-    @videos = Video.not_watched
+    @videos = Video.all
   end
   
 end

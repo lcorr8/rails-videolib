@@ -1,12 +1,23 @@
 <h2>Study suggestions for you</h2>
 <br>
 
-<p>Stat: There are currently <%= @videos.count %> videos that you have not seen.</p>
+<div class="container-statistics">
+  <div class="container statistics statistics-not-seen">
+    <p>Stat: There are currently <%= @videos.not_watched.count %> videos that you have not yet seen.</p>
+    <ul>
+      <% @videos.not_watched.each do |video| %>
+        <p><li><%= link_to video.name, video_path(video) %></li></p>
+      <% end %>
+    </ul>
+  </div>
+  <div class="container statistics statistics-see-again">
+    <p>Stat: There are currently <%= hard_lessons.count %> videos that are rated difficult.</p>
+    <ul>
+      <% hard_lessons.each do |rating| %>
+        <p><li> <%= link_to rating.video.name, video_path(rating.video) %></li></p>
+      <% end %>
+    </ul>
+  </div>
+</div>
 
-<p>Stat: There are currently # videos that are rated difficult and you could benefit from re-watching.</p>
-
-<p>Stat: There are currently # videos in your programming rabbit hole section...go be productive!</p>
-
-<% @videos.each do |video| %>
-  <p><%= link_to video.name, video_path(video) %></p>
-<% end %>  
+  

@@ -140,5 +140,14 @@ div.container-cohorts {
 
 div.container-cohorts div.cohorts{
   float: left;
-  width: 250px;
+  width: 300px;
   }
+
+div.container-statistics {
+  width: 100%;
+}
+
+div.container-statistics div.statistics{
+  float: left;
+  width: 450px;
+  }  

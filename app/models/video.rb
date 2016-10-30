@@ -20,11 +20,12 @@ class Video < ActiveRecord::Base
   scope :fifteen, -> { where( year: "2015" ) }
   scope :fourteen, -> { where( year: "2014" ) }
   scope :not_watched, -> { where(watched: "no" ) }
-
+  
   def section=(section)
       section = Section.find_or_create_by(name: section[:name])
       self.section_id = section.id
   end
+
   
 
 end
