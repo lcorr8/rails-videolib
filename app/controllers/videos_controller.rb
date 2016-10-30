@@ -12,10 +12,10 @@ class VideosController < ApplicationController
   def create
     # Creating a video with a section by ID
     if !params[:video][:section_id].blank?
-      # lets delete the key from the hash
+      # lets delete the section key from the params hash, which is used to create section by name
       params[:video].delete(:section)
     else
-      # Creating a video with a section by name
+      # Creating a video with a section by name, using section key in params hash
       @section = Section.find_or_create_by(name: params[:video][:section][:name])
       @section.user = @user
       @section.save
@@ -77,6 +77,7 @@ class VideosController < ApplicationController
   end
 
   def watched
+    #mark video watched
     if @video = @user.videos.find(params[:id])
       @video.watched = "yes"
       @video.save
