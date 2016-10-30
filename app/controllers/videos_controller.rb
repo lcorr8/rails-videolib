@@ -1,12 +1,6 @@
 class VideosController < ApplicationController
   before_action :set_user, only: [:index, :show, :create, :edit, :update, :destroy, :watched, :study_suggestions]
 
-
-  def index
-    #scope to the user's section
-    @videos = @user.videos.all
-  end
-
   def show
     @video = Video.find(params[:id])
   end
