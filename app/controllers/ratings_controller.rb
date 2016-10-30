@@ -2,17 +2,18 @@ class RatingsController < ApplicationController
   before_action :set_video
   before_action :set_rating, only: [:edit, :update, :destroy]
 
+  #is it best practice to make your controller for the joins table have the same name?
+  # bc in ex: carts controller, handled the line items in a cart
+  #this ratings controller handles the video-ratings (join table rows)
   def new
     @rating = @video.video_ratings.build
   end
 
   def create
-    #raise params.inspect
     @rating = @video.video_ratings.build(rating_params)
     if @rating.save
       redirect_to video_path(@video)
     else
-      #raise "@rating did not save".inspect
       render :new
     end
   end
