@@ -16,7 +16,7 @@
   -a join table to show a user's rating of the video
     .id, rating_id, video_id, reason.
 
-3. edit validations
+3. edit AR relationships and validations
   -videos:
     .remove belongs to user
     .add has_many :user_watched
@@ -32,3 +32,6 @@
   -user_watched:
     .add belongs_to :videos
     .add belongs_to :users
+    .add validates :watched, presence: true
+    .validates :video_id, presence: true
+    .validates :user_id, presence: true
