@@ -1,5 +1,5 @@
 
-1.remove extra attributes from tables
+1. remove extra attributes from tables
   -videos:
     .watched: this will now be a join table
     .embed_link: this is now created dynamically with an iframe, no need to store it in the db in order to display the video.
@@ -15,3 +15,15 @@
     .id, video_id:integer, user_id:integer, watched:boolean
   -a join table to show a user's rating of the video
     .id, rating_id, video_id, reason.
+
+3. edit validations
+  -videos:
+    .remove belongs to user
+    .add has_many :user_watched
+    .add has_many :watched, through: :user_watched
+    .remove validates watched
+  -sections:
+    .remove belongs to user
+  -users:
+    .remove has many sections, and videos through sections
+    .remove has many notes
