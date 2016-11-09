@@ -27,3 +27,8 @@
   -users:
     .remove has many sections, and videos through sections
     .remove has many notes
+    .add has_many :user_watched
+    .add has_many :watched, through: :user_watched
+  -user_watched:
+    .add belongs_to :videos
+    .add belongs_to :users
