@@ -68,11 +68,10 @@
 
 *** Determine:
 -videos
-  -who can add a video?
-  -who can edit a video?
-  -who can delete a video?
-  -will you need videos to have user_id for permissions?
-  -how many ratings will you be allowed to leave a video? many or one?
-  -are video ratings reasons from other users useful to you?
-  -who can elete sections? only when they are empty?
-  -add a feature to remove videos from view if you are not interested in watching them rather than deleting them?
+  -who can add a video? : Anybody
+  -who can edit a video? :only the admin, regular user's can only report a problem with the video
+  -who can delete a video? :only the admin, regular user's can only report a problem with the video
+  -will you need videos to have user_id for permissions? no you can use permissions instead.
+  -how many ratings will you be allowed to leave a video?: only one
+  -are video ratings reasons from other users useful to you? :maybe, but only yours should show
+  -who can delete sections? only when they are empty?: admins only, once they are empty.
