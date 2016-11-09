@@ -9,3 +9,9 @@
   -sections:
     .user_id: sections don't have user's now, they belong to everybody and everybody can see them?   
     .video_ids: AR takes care of this, so it's not needed. 
+
+2. create join tables
+  -a join table to show if a user has watched a video already
+    .id, video_id:integer, user_id:integer, watched:boolean
+  -a join table to show a user's rating of the video
+    .id, rating_id, video_id, reason.
