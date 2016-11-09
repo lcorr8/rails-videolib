@@ -35,3 +35,38 @@
     .add validates :watched, presence: true
     .validates :video_id, presence: true
     .validates :user_id, presence: true
+
+4. Edit controllers to reflect past changes
+  -videos:
+    .remove set user from show, new. not being used
+    .remove watched, embed_link, notes_ids, user_id*** from video_params. not being used
+    .remove assignment of user in create action
+    .change edit, who can edit a video? who can delete a video?***
+    .mark video watched has to move to wherever the join table controller logic goes next
+  - sections:
+    .remove set user from create, . not being used.***
+    CONTINUE HERE
+  -ratings:
+  -watched: 
+
+5. edit views to reflect controller changes
+  -videos:
+    .show view status edited to reflect the info from the join table
+    .add the view check mark from font awesome to the video show view
+    .edit ratings to reflect the join table. Show your ratings with reason. Add an average rating from other users.
+  -sections:
+    .make sure to add the view check mark from font awesome to the section view 
+    CONTINUE HERE
+  -user page?  
+ 
+
+*** Determine:
+-videos
+  -who can add a video?
+  -who can edit a video?
+  -who can delete a video?
+  -will you need videos to have user_id for permissions?
+  -how many ratings will you be allowed to leave a video? many or one?
+  -are video ratings reasons from other users useful to you?
+  -who can elete sections? only when they are empty?
+  -add a feature to remove videos from view if you are not interested in watching them rather than deleting them?
