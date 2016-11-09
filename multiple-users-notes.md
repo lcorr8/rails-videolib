@@ -45,18 +45,24 @@
     .mark video watched has to move to wherever the join table controller logic goes next
   - sections:
     .remove set user from create, . not being used.***
-    CONTINUE HERE
+    .remove set section from show, only allow on edit, update, destroy so users can only delete sections they have created themselves (also only when they are empty, check join table for other user's view status, if other user's have viewed the video, or plan to view it, don't delete.)
+    .dont scope sections by user on index action. users should be able to see all sections
   -ratings:
-  -watched: 
-
+    .show rating action, scope by user
+  -watched: create watched controller
+    .create a watched controller, instead of having the info in the video controller, if you do this then move the ratings info into the video controller as well.
+    .set video and star_rating
+    .use build in th new and create action.
+    .scope watched to user, only one allowed per user. make sure to use find_or_create
+    
 5. edit views to reflect controller changes
   -videos:
     .show view status edited to reflect the info from the join table
     .add the view check mark from font awesome to the video show view
     .edit ratings to reflect the join table. Show your ratings with reason. Add an average rating from other users.
+    .show your ratings, and an average of the other user's ratings.
   -sections:
     .make sure to add the view check mark from font awesome to the section view 
-    CONTINUE HERE
   -user page?  
  
 
