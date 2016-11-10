@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161110021355) do
+ActiveRecord::Schema.define(version: 20161110022029) do
 
   create_table "ratings", force: :cascade do |t|
     t.integer  "stars"
@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 20161110021355) do
   create_table "sections", force: :cascade do |t|
     t.string   "name"
     t.string   "user_id"
-    t.string   "video_ids"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
