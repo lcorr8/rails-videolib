@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161110015922) do
+ActiveRecord::Schema.define(version: 20161110021355) do
 
   create_table "ratings", force: :cascade do |t|
     t.integer  "stars"
@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(version: 20161110015922) do
     t.string   "last_sign_in_ip"
     t.string   "provider"
     t.string   "uid"
-    t.string   "section_ids"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
