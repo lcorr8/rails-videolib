@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
-  has_many :sections
-  has_many :videos, through: :sections
-  has_many :notes, through: :videos
+  #has_many :sections
+  #has_many :videos, through: :sections
+  #has_many :notes, through: :videos
+  has_many :watched_videos
+  has_many :videos, through: :watched_videos
 
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
