@@ -36,15 +36,15 @@
 
 []4. Edit controllers to reflect past changes
 []  -videos:
-[]    .remove set user from show, new. not being used
-[]    .remove watched, embed_link, notes_ids, user_id*** from video_params. not being used
-[]    .remove assignment of user in create action
-[]    .change edit, who can edit a video? who can delete a video?***
+[x]    .remove set user from show, new. not being used
+[x]    .remove watched, embed_link, notes_ids, user_id*** from video_params. not being used
+[x]    .remove assignment of user in create action
+[]    .change edit,update who can edit a video? who can delete a video?***
 []    .mark video watched has to move to wherever the join table controller logic goes next
 
 []  - sections:
-[]    .remove set user from create, . not being used.***
-[]    .remove set section from show, only allow on edit, update, destroy so users can only delete sections they have created themselves (also only when they are empty, check join table for other user's view status, if other user's have viewed the video, or plan to view it, don't delete.)
+[x]    .remove set user from create, . not being used.***
+[x]    .remove set section from show, only allow on edit, update, destroy so users can only delete sections they have created themselves (also only when they are empty, check join table for other user's view status, if other user's have viewed the video, or plan to view it, don't delete.)
 []    .dont scope sections by user on index action. users should be able to see all sections
 
 []  -ratings:

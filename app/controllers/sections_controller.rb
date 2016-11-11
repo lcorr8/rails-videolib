@@ -1,6 +1,6 @@
 class SectionsController < ApplicationController
   before_action :set_user 
-  before_action :set_section, only: [:edit, :update, :show, :destroy]
+  before_action :set_section, only: [:edit, :update, :destroy, :show] 
 
   def new
     @section = Section.new
@@ -8,7 +8,6 @@ class SectionsController < ApplicationController
 
   def create
     @section = Section.new(section_params)
-    @section.user = current_user
     if @section.save
       redirect_to section_path(@section)
     else
@@ -17,6 +16,7 @@ class SectionsController < ApplicationController
   end
 
   def edit
+    #if user admin not creator of section
     if @section = @user.sections.find(params[:id])
       render :edit
     else
@@ -26,6 +26,7 @@ class SectionsController < ApplicationController
   end
 
   def update
+        #if user admin not creator of section
     if @section = @user.sections.find(params[:id])
       if @section.update(section_params)
         redirect_to section_path(@section)
@@ -39,13 +40,14 @@ class SectionsController < ApplicationController
   end
 
   def index
-    @sections = @user.sections.all 
+    @sections = Section.all
   end
 
   def show
   end
 
   def destroy
+        #if user admin not creator of section
     if @section.user_id == @user.id
       if @section.videos.count <1
         @section.destroy
@@ -67,7 +69,7 @@ class SectionsController < ApplicationController
   end
 
   def set_section
-    @section = current_user.sections.find(params[:id])
+    @section = Section.find(params[:id])
   end
 
   def set_user

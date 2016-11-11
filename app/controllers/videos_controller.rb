@@ -1,5 +1,5 @@
 class VideosController < ApplicationController
-  before_action :set_user, only: [:index, :show, :create, :edit, :update, :destroy, :watched, :study_suggestions]
+  before_action :set_user, only: [:index, :create, :edit, :update, :destroy, :watched, :study_suggestions] # , :show
 
   def show
     @video = Video.find(params[:id])
@@ -17,12 +17,12 @@ class VideosController < ApplicationController
     else
       # Creating a video with a section by name, using section key in params hash
       @section = Section.find_or_create_by(name: params[:video][:section][:name])
-      @section.user = @user
+      #@section.user = @user
       @section.save
     end
 
     @video = Video.new(video_params)
-    @video.user = @user
+    #@video.user = @user
 
     if @video.save
       redirect_to video_path(@video)
@@ -32,6 +32,7 @@ class VideosController < ApplicationController
   end
 
   def edit
+    #if user is an admin rather than if a video blongs to a user
     if @video = @user.videos.find(params[:id])
       render :edit
     else
@@ -49,10 +50,10 @@ class VideosController < ApplicationController
       else
         #update video section by creating a new section by NAME
         @section = Section.find_or_create_by(name: params[:video][:section][:name])
-        @section.user = @user
+        #@section.user = @user
         @section.save
       end
-    
+    #if you are an admin not if the video belongs to you
     if @video = @user.videos.find(params[:id])
       if @video.update(video_params)
         redirect_to video_path(@video)
@@ -66,7 +67,7 @@ class VideosController < ApplicationController
   end
 
   def destroy 
-    #ensure user can delete this video
+    #if user is admin
     if @video = @user.videos.find(params[:id])
       @video.destroy
       redirect_to videos_path
@@ -76,22 +77,12 @@ class VideosController < ApplicationController
     end
   end
 
-  def watched
-    #mark video watched
-    if @video = @user.videos.find(params[:id])
-      @video.watched = "yes"
-      @video.save
-      redirect_to video_path(@video)
-    else
-      flash[:error] = "Not your video to edit!"
-      redirect_to sections_path
-    end
-  end
+  
 
   private
 
   def video_params
-    params.require(:video).permit(:name, :link, :year, :watched, :embed_link, :section_id, :note_ids, :user_id, section: [:name])
+    params.require(:video).permit(:name, :link, :year, :section_id, section: [:name]) # , :watched, :embed_link, :note_ids, :user_id
   end
 
   def set_user
