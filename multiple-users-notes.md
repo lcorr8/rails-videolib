@@ -44,8 +44,8 @@
 
 []  - sections:
 [x]    .remove set user from create, . not being used.***
-[x]    .remove set section from show, only allow on edit, update, destroy so users can only delete sections they have created themselves (also only when they are empty, check join table for other user's view status, if other user's have viewed the video, or plan to view it, don't delete.)
-[]    .dont scope sections by user on index action. users should be able to see all sections
+[x]    .users can only delete sections if they are an admin (also only when they are empty, check join table for other user's view status, if other user's have viewed the video, or plan to view it, don't delete.)
+[x]    .dont scope sections by user on index action. users should be able to see all sections
 
 []  -ratings:
 []    .show rating action, scope by user
@@ -76,3 +76,69 @@
   -how many ratings will you be allowed to leave a video?: only one
   -are video ratings reasons from other users useful to you? :maybe, but only yours should show
   -who can delete sections? only when they are empty?: admins only, once they are empty.
+
+
+
+Pundit:
+  users, videos, sections, watched join table, ratings join table,
+  - add pundit to gemfile. gem 'pundit'
+  - include Pundit, in the application controller above the protect from forgery.
+  -bundle install
+  -run the generator rails g pundit:install
+  -restart rails to pickup changes
+  -stub out policies:
+    normal users: are allowe to view non flatiron videos. or flatiron public videos.
+    flatiron students: allowed to see private flatiron videos.
+    admin: allowed to edit sections and videos.
+  -create policy files in the app/policies directory.
+    class VideoPolicy < ApplicationPolicy
+    end
+  - generate migration to add role to users table. rails generate migration AddRoleToUsers role:integer
+   
+  -implement the policy within the controller by using authorize.
+    def update
+      @video = Video.find(1)
+      authorize @video
+      #perform the update
+      end 
+  -implement the policy within the views by using the policy constructing helper pundit offers
+    <% if policy(@post).update? %>
+      <%= link_to "Edit post", edit_post_path(@post) %>
+    <% end %> 
+  -add flatiron attribute to videos so videos can be scoped by pundit.
+  -implement scope by adding a class Scope < Scope inside your policy class. Then write the resolve scopes
+    def resolve
+      if user.admin?
+        scope.all
+      else
+        scope.where(:published => true)
+      end
+    end  
+  -implement the scope within the views by using the policy scope helper
+    <% policy_scope(@user.videos).each do |video| %>
+      <p><%= link_to video.name, video_path(video) %></p>
+    <% end %>
+
+
+
+
+
+  -add role enum to user model
+  -write policy governing user model
+    -normal: can read all videos and sections. can add videos and section.
+    -admin: can edit, and delete all videos and sections.
+  -add authentication and authorization filters to user's controller. only administrators can update or destroy users.
+
+    
+
+
+
+
+
+
+
+
+
+
+
+

@@ -3,6 +3,7 @@ class VideosController < ApplicationController
 
   def show
     @video = Video.find(params[:id])
+    authorize @video
   end
 
   def new
@@ -53,17 +54,22 @@ class VideosController < ApplicationController
         #@section.user = @user
         @section.save
       end
+
+      
     #if you are an admin not if the video belongs to you
-    if @video = @user.videos.find(params[:id])
+    @video = Video.find(params[:id])
+    authorize @video 
+    #if @video = @user.videos.find(params[:id])
       if @video.update(video_params)
         redirect_to video_path(@video)
       else
         render :edit
       end
-    else
-      flash[:error] = "Not your video to edit!"
-      redirect_to sections_path
-    end
+    #do you need to rescue an error to let somebody know they are not admins and cant update videos?  
+    #else
+      #flash[:error] = "Not your video to edit!"
+      #redirect_to sections_path
+    #end
   end
 
   def destroy 

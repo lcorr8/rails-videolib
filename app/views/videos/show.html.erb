@@ -3,11 +3,7 @@
   <p>Section: <%= @video.section.name %></p>
   <p><%= link_to "Link", @video.link, :target => "_blank" %></p>
   <p>View status: 
-    <% if @video.watched == "yes" %>
-      <%= " ✓ viewed" %>
-    <% else %>
-      <%= "not yet" %>
-    <% end %>  
+    
   </p>
 </div> 
 
@@ -17,8 +13,12 @@
 <br>
 <div class="container center">
   <%= button_to "Back to section", section_path(@video.section), :class => "btn rounded-outline-btn" %>
-  <%= button_to :edit, edit_video_path(@video), method: :get, :class => "btn rounded-outline-btn inline" %>
-  <%= button_to "Delete", @video, method: :delete, data: { confirm: "Are you sure?" }, :class => "btn rounded-outline-btn inline" %>
+  <% if policy(@video).update? %>
+    <%= button_to :edit, edit_video_path(@video), method: :get, :class => "btn rounded-outline-btn inline" %>
+  <% end %>  
+  <% if policy(@video).destroy? %>
+    <%= button_to "Delete", @video, method: :delete, data: { confirm: "Are you sure?" }, :class => "btn rounded-outline-btn inline" %>
+  <% end %>   
   <%= button_to "Mark video watched", watched_path(@video), method: :get, :class => "btn rounded-outline-btn" %>
   <%= button_to "Add Rating", new_video_rating_path(@video), method: :get, :class => "btn rounded-outline-btn" %>
 

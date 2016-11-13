@@ -44,6 +44,7 @@ class SectionsController < ApplicationController
   end
 
   def show
+    @videos = policy_scope(Video).where(section_id: @section.id)
   end
 
   def destroy

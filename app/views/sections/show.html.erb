@@ -6,21 +6,21 @@
 <div class="container container-cohorts">
 <div class="container cohorts cohort-fourteen"> 
   <h3> 2014 Videos:</h3>
-  <% @section.videos.fourteen.each do |video| %>
+  <% @videos.fourteen.each do |video| %>
     <p><%= link_to video.name, video_path(video) %></p>
   <% end %>  
 </div>
 
 <div class="container cohorts cohort-fifteen">
   <h3> 2015 Videos:</h3>
-  <% @section.videos.fifteen.each do |video| %>
+  <% @videos.fifteen.each do |video| %>
     <p><%= link_to video.name, video_path(video) %></p>
   <% end %> 
 </div>
 
 <div class="container cohorts cohort-sixteen"> 
   <h3> 2016 Videos:</h3>
-  <% @section.videos.sixteen.each do |video| %>
+  <% @videos.sixteen.each do |video| %>
     <p><%= link_to video.name, video_path(video) %></p>
   <% end %>
 </div>

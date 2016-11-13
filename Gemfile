@@ -25,6 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bcrypt'
 gem 'devise'
+gem 'pundit'
 
 gem 'figaro'
 gem 'omniauth-github', '~> 1.1', '>= 1.1.2'
