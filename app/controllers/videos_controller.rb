@@ -5,6 +5,7 @@ class VideosController < ApplicationController
   def show
     @video = Video.find(params[:id])
     authorize @video
+    @user_ratings = @video.video_ratings.select{ |rating| rating.user_id == @user.id }
   end
 
   def new
