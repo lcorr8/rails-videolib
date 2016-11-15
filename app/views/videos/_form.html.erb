@@ -8,11 +8,8 @@
   <%= f.text_field :link %><br>
   <%= f.label :year%>
   <%= f.text_field :year %><br>
-  <%= f.label "VIDEO WATCHED YET?" %>
-  <%= f.radio_button :watched, "yes" %> YES
-  <%= f.radio_button :watched, "no" %> NO <br>
   <%= f.label :section %>
-  <%= f.collection_select(:section_id, current_user.sections.all, :id, :name, :include_blank => true) %><br>
+  <%= f.collection_select(:section_id, Section.all, :id, :name, :include_blank => true) %><br>
 
   <!-- how to disable the create a new section if one is already choosen via the collection select? -->
 
@@ -20,6 +17,10 @@
   <%= f.fields_for :section, @video.build_section do |section_fields| %>
     <%= section_fields.text_field :name %>
   <% end %>
+  <br><br>
+  <%= f.label "what type of video is this?" %><br>
+  <%= f.radio_button :flatiron, :true %> Flatiron Private Video
+  <%= f.radio_button :flatiron, :false %> Public Video
   <br>
   <%= f.submit :class => 'btn rounded-outline-btn' %>
 
