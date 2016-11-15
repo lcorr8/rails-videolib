@@ -33,16 +33,14 @@
 [x]    .add validates :watched, presence: true
 [x]    .validates :video_id, presence: true
 [x]    .validates :user_id, presence: true
-
-[]4. Edit controllers to reflect past changes
-[]  -videos:
+[x]4. Edit controllers to reflect past changes
+[x]  -videos:
 [x]    .remove set user from show, new. not being used
 [x]    .remove watched, embed_link, notes_ids, user_id*** from video_params. not being used
 [x]    .remove assignment of user in create action
-[]    .change edit,update who can edit a video? who can delete a video?***
-[]    .mark video watched has to move to wherever the join table controller logic goes next
-
-[]  - sections:
+[x]    .change edit,update who can edit a video? who can delete a video?***
+[x]    .mark video watched has to move to wherever the join table controller logic goes next
+[x]  - sections:
 [x]    .remove set user from create, . not being used.***
 [x]    .users can only delete sections if they are an admin (also only when they are empty, check join table for other user's view status, if other user's have viewed the video, or plan to view it, don't delete.)
 [x]    .dont scope sections by user on index action. users should be able to see all sections
@@ -50,21 +48,30 @@
 []  -ratings:
 []    .show rating action, scope by user
 
-[]  -watched: create watched controller
-[]    .create a watched controller, instead of having the info in the video controller, if you do this then move the ratings info into the video controller as well.
-[]    .set video and star_rating
-[]    .use build in th new and create action.
-[]    .scope watched to user, only one allowed per user. make sure to use find_or_create
+[x]  -watched: create watched controller
+[x]    .create a watched controller, instead of having the info in the video controller, if you do this then move the ratings info into the video controller as well.
+[x]    .set video, user, watched attribute
+[x]    .use build in th new and create action.
+[x]    .scope watched to user, only one allowed per user. redirect with errors when one is already present and user tries to create it anyway
 
 []5. edit views to reflect controller changes
 []  -videos:
-[]    .show view status edited to reflect the info from the join table
-[]    .add the view check mark from font awesome to the video show view
+[x]    .show view status edited to reflect the info from the join table
+[x]    .add border color to indicate view status on video show view
 []    .edit ratings to reflect the join table. Show your ratings with reason. Add an average rating from other users.
-[]    .show your ratings, and an average of the other user's ratings.
+[]    .show your ratings and reasons, and an average of the other user's ratings.
 []  -sections:
 []    .make sure to add the view check mark from font awesome to the section view 
-[]  -user page?  
+[]  -user page? 
+      .allow admins to change the status of another user to flatiron student 
+
+[]6. edit views for final look
+    - all pages: 
+      .show what type of user you are.
+      .make a request button to request flatiron status.
+      
+
+  
  
 
 *** Determine:
