@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
-  enum role: [:user, :flatiron_student, :admin]
+  enum role: [:public_student, :flatiron_student, :admin]
   after_initialize :set_default_role, :if => :new_record?
 
   def set_default_role
-    self.role ||= :user
+    self.role ||= :public_student
   end
   
   #has_many :sections
@@ -22,24 +22,17 @@ class User < ActiveRecord::Base
 
 
   def self.from_omniauth(auth)
-      where(email: auth.info.email).first_or_create do |user|
+      where(email: auth.info.email).first_or_create! do |user|
       user.uid = auth.uid
       user.provider = auth.provider
       #use the github username to link to learn.co profiles
       user.username = auth.info.nickname
       #add image to show the github/learn avatar
       #user.image_link = auth.info.image
-   
-      user.password = SecureRandom.hex
       user.role = 0
-      #user.save 
-       #if user.persisted?
-#        user.password
-#        raise "stop and check password has been saved".inspect
-#      else
-#        raise "user not persisted, go back and check errors and make sure password is saved".inspect
-#      end
-      #raise "has user been saved?"
+
+      #cant get devise password to save from the getgo 
+      user.password= Devise.friendly_token[0,20]
     end      
   end
 
