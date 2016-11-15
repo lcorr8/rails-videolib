@@ -1,5 +1,6 @@
 class VideosController < ApplicationController
-  before_action :set_user, only: [:index, :create, :edit, :update, :destroy, :watched, :study_suggestions] # , :show
+  before_action :authenticate_user! #devise helper, enures users are signed in before actions can be accessed
+  before_action :set_user, only: [:index, :create, :edit, :update, :destroy, :watched, :study_suggestions, :show] 
 
   def show
     @video = Video.find(params[:id])
@@ -8,6 +9,7 @@ class VideosController < ApplicationController
 
   def new
     @video = Video.new
+    authorize @video
   end
 
   def create
@@ -18,13 +20,11 @@ class VideosController < ApplicationController
     else
       # Creating a video with a section by name, using section key in params hash
       @section = Section.find_or_create_by(name: params[:video][:section][:name])
-      #@section.user = @user
       @section.save
     end
 
     @video = Video.new(video_params)
-    #@video.user = @user
-
+    authorize @video
     if @video.save
       redirect_to video_path(@video)
     else
@@ -33,13 +33,8 @@ class VideosController < ApplicationController
   end
 
   def edit
-    #if user is an admin rather than if a video blongs to a user
-    if @video = @user.videos.find(params[:id])
-      render :edit
-    else
-      flash[:error] = "Not your video to edit!"
-      redirect_to sections_path
-    end
+    @video = Video.find(params[:id])
+    authorize @video
   end
 
   def update
@@ -51,44 +46,30 @@ class VideosController < ApplicationController
       else
         #update video section by creating a new section by NAME
         @section = Section.find_or_create_by(name: params[:video][:section][:name])
-        #@section.user = @user
         @section.save
       end
 
-      
-    #if you are an admin not if the video belongs to you
     @video = Video.find(params[:id])
     authorize @video 
-    #if @video = @user.videos.find(params[:id])
       if @video.update(video_params)
         redirect_to video_path(@video)
       else
         render :edit
       end
-    #do you need to rescue an error to let somebody know they are not admins and cant update videos?  
-    #else
-      #flash[:error] = "Not your video to edit!"
-      #redirect_to sections_path
-    #end
   end
 
   def destroy 
-    #if user is admin
-    if @video = @user.videos.find(params[:id])
-      @video.destroy
-      redirect_to videos_path
-    else
-      flash[:error] = "Not your video to delete!"
-      redirect_to sections_path
-    end
+    @video = Video.find(params[:id])
+    @section = @video.section
+    authorize @video 
+    @video.destroy
+    redirect_to section_path(@section)
   end
-
-  
 
   private
 
   def video_params
-    params.require(:video).permit(:name, :link, :year, :section_id, section: [:name]) # , :watched, :embed_link, :note_ids, :user_id
+    params.require(:video).permit(:name, :link, :year, :flatiron, :section_id, section: [:name])
   end
 
   def set_user

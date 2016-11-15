@@ -114,6 +114,14 @@ a.navbar-brand img{
     height: 100%;
 }
 
+div.container div.video-container div.video-watched iframe{
+  border: 10px solid #00802b;
+}
+
+div.container div.video-container div.video-not-watched iframe{
+  border: 10px solid red;
+}
+
 .rounded-outline-btn {
   background: none;
   margin-bottom: 10px;
