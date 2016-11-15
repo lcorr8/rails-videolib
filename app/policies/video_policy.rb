@@ -6,20 +6,36 @@ class VideoPolicy < ApplicationPolicy
     @record = record
   end
   
-  def index
-    @user.user? || @user.flatiron_student? || @user.admin?
-  end
+#  def index
+#    if @record.flatiron = true
+#      if @user.admin? || @user.flatiron_student?
+#        true
+#      else
+#        false
+#      end
+#    else
+#      true
+#    end
+#  end
 
   def show?
-    @user.user? || @user.flatiron_student? || @user.admin?
+    if @record.flatiron == true
+      if @user.admin? || @user.flatiron_student?
+        true
+      else
+        false
+      end
+    else
+      true
+    end
   end
 
   def new?
-    @user.user? || @user.flatiron_student? || @user.admin?
+    true
   end
 
   def create?
-    @user.user? || @user.flatiron_student? || @user.admin?
+    true
   end
 
   def edit?
@@ -34,12 +50,11 @@ class VideoPolicy < ApplicationPolicy
     @user.admin?
   end
 
-
   class Scope < Scope
     def resolve
-      if user.user?
+      if user.public_student?
         scope.where(:flatiron => false)
-      else
+      elsif user.admin? || user.flatiron_student?
         scope.all
       end
     end
