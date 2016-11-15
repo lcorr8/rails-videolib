@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161115134954) do
+ActiveRecord::Schema.define(version: 20161115135920) do
 
   create_table "ratings", force: :cascade do |t|
     t.integer  "stars"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "description"
   end
 
   create_table "sections", force: :cascade do |t|
