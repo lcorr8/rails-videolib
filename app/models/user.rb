@@ -11,6 +11,11 @@ class User < ActiveRecord::Base
   #has_many :notes, through: :videos
   has_many :watched_videos
   has_many :videos, through: :watched_videos
+  has_many :video_ratings
+  has_many :videos, through: :video_ratings
+  #has_many :video_ratings
+  #has_many :ratings, through: :video_ratings
+
 
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true

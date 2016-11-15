@@ -41,11 +41,9 @@
   <%= button_to "Add Rating", new_video_rating_path(@video), method: :get, :class => "btn rounded-outline-btn" %>
 <br>
 
-  <p>Ratings: </p>
-    <ul>
-      <% @video.video_ratings.each do |rating|   %>
-        <li><p> Stars: <%= Rating.find(rating.rating_id).stars %> | Reason: <%= rating.reason %> - <%= link_to "Edit", edit_video_rating_path(@video, rating) %>   <%= link_to "Delete", video_rating_path(@video, rating), method: :delete, data: { confirm: "Are you sure?" }  %></p></li>
-      <% end %>  
-    </ul>
+  <p>Ratings (1= easy, 5= hard) </p>
+
+  <%= render 'ratings/user_ratings' %>
+    
 </div>
 <br><br>

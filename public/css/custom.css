@@ -122,6 +122,11 @@ div.container div.video-container div.video-not-watched iframe{
   border: 10px solid red;
 }
 
+i.fa {
+  color: #00802b;
+}
+
+
 .rounded-outline-btn {
   background: none;
   margin-bottom: 10px;
