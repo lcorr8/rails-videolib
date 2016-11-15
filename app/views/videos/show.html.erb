@@ -21,13 +21,23 @@
 
 <div class="container center">
   <%= button_to "Back to section", section_path(@video.section), method: :get, :class => "btn rounded-outline-btn" %>
+
   <% if policy(@video).update? %>
     <%= button_to :edit, edit_video_path(@video), method: :get, :class => "btn rounded-outline-btn inline" %>
   <% end %>  
+
   <% if policy(@video).destroy? %>
     <%= button_to "Delete", @video, method: :delete, data: { confirm: "Are you sure?" }, :class => "btn rounded-outline-btn inline" %>
-  <% end %>   
-  <%= button_to "Mark video watched", watched_path(@video), method: :get, :class => "btn rounded-outline-btn", params: {'video[video_id]' => @video.id, 'video[user_id]' => current_user.id, 'video[watched]' => true} %>
+  <% end %>  
+
+  <% if !@video.video_watched(@user, @video) %>
+    <%= button_to "Mark video watched", watched_path(@video), method: :get, :class => "btn rounded-outline-btn", params: {'video[watched]' => true} %>
+  <% end %> 
+
+  <% if @video.video_watched(@user, @video) %>
+    <%= button_to "Delete View Status", watched_edit_path(@video), method: :get, :class => "btn rounded-outline-btn", params: {'video[watched]' => false} %>
+  <% end %> 
+
   <%= button_to "Add Rating", new_video_rating_path(@video), method: :get, :class => "btn rounded-outline-btn" %>
 <br>
 

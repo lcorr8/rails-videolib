@@ -4,4 +4,10 @@ class Rating < ActiveRecord::Base
 
   validates :stars, presence: true
   validates :stars, inclusion: 1..5
+
+  #1 = "so easy I can do it in my sleep"
+  #2 = "oh this old thing?"
+  #3 = "yeah I know how to do that"
+  #4 = "Theoretically i know how to do it, just have to look up some syntax"
+  #5 = "gulp....help?"
 end

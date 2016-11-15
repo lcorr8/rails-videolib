@@ -3,13 +3,16 @@ Rails.application.routes.draw do
 
   resources :videos do 
       resources :ratings
+      #resources :watched
   end
 
   resources :sections
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
-  get 'videos/:id/watched' => 'videos#watched', as: :watched
+  get 'videos/:id/watched' => 'watched#watched', as: :watched
+  get 'videos/:id/watched/delete' => 'watched#destroy', as: :watched_edit
+
   get '/study_suggestions' => 'application#study_suggestions', as: :study_suggestions
 
   #get '/auth/github/callback' => 'sessions#create'

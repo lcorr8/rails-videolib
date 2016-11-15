@@ -4,5 +4,5 @@ class WatchedVideo < ActiveRecord::Base
 
   validates :watched, presence: true
   validates :video_id, presence: true
-  validates :rating_id, presence: true
+  validates :user_id, presence: true
 end
