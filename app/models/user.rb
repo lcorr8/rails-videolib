@@ -2,18 +2,12 @@ class User < ActiveRecord::Base
   enum role: [:public_student, :flatiron_student, :admin]
   after_initialize :set_default_role, :if => :new_record?
 
-  
-  
-  #has_many :sections
-  #has_many :videos, through: :sections
-  #has_many :notes, through: :videos
   has_many :watched_videos
   has_many :videos, through: :watched_videos
   has_many :video_ratings
   has_many :videos, through: :video_ratings
   #has_many :video_ratings
   #has_many :ratings, through: :video_ratings
-
 
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
@@ -22,7 +16,6 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:github]
-
 
   def self.from_omniauth(auth)
       where(email: auth.info.email).first_or_create! do |user|
@@ -43,5 +36,4 @@ class User < ActiveRecord::Base
     self.role ||= :public_student
   end
 
-
-end
+end #class
