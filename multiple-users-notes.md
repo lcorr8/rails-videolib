@@ -44,10 +44,8 @@
 [x]    .remove set user from create, . not being used.***
 [x]    .users can only delete sections if they are an admin (also only when they are empty, check join table for other user's view status, if other user's have viewed the video, or plan to view it, don't delete.)
 [x]    .dont scope sections by user on index action. users should be able to see all sections
-
-[]  -ratings:
-[]    .show rating action, scope by user
-
+[x]  -ratings:
+[x]    .show rating action, scope by user
 [x]  -watched: create watched controller
 [x]    .create a watched controller, instead of having the info in the video controller, if you do this then move the ratings info into the video controller as well.
 [x]    .set video, user, watched attribute
@@ -58,10 +56,10 @@
 []  -videos:
 [x]    .show view status edited to reflect the info from the join table
 [x]    .add border color to indicate view status on video show view
-[]    .edit ratings to reflect the join table. Show your ratings with reason. Add an average rating from other users.
-[]    .show your ratings and reasons, and an average of the other user's ratings.
-[]  -sections:
-[]    .make sure to add the view check mark from font awesome to the section view 
+[x]    .edit ratings to reflect the join table. Show your ratings with reason. 
+[]    .Add an average rating from other users.
+[x]  -sections:
+[x]    .make sure to add the view check mark from font awesome to the section view 
 []  -user page? 
       .allow admins to change the status of another user to flatiron student 
 
