@@ -14,9 +14,11 @@ class Video < ActiveRecord::Base
   #, :inclusion => { :in => %w(2014 2015 2016), :message => "%{value} is not a valid cohort year for LV" } 
   validates :section_id, presence: true 
 
-  scope :sixteen, -> { where( year: "2016" ) }
-  scope :fifteen, -> { where( year: "2015" ) }
-  scope :fourteen, -> { where( year: "2014" ) }
+  scope :sixteen, -> { where(year: "2016" ) }
+  scope :fifteen, -> { where(year: "2015" ) }
+  scope :fourteen, -> { where(year: "2014" ) }
+  scope :flatiron, -> { where(flatiron: true) }
+  scope :general, -> { where(flatiron: false) }
   
   def section=(section)
       section = Section.find_or_create_by(name: section[:name])
