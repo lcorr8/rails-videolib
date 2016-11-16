@@ -1,10 +1,10 @@
 <h2>Which section would you like to review?</h2>
 
+<div class=" sections text-center">
+  <% @sections.each do |section| %>
+    <h3><%= link_to section.name, section_path(section) %></h3>
+  <% end %>
+  <br>
+</div>
 
-<% @sections.each do |section| %>
-
- <p><%= link_to section.name, section_path(section) %></p>
-
- <% end %>
-<br>
- <%= button_to "Add a section", new_section_path, method: :get, :class => "btn rounded-outline-btn" %>
+<%= button_to "Add a section", new_section_path, method: :get, :class => "btn rounded-outline-btn" %>

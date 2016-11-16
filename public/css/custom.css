@@ -114,6 +114,8 @@ a.navbar-brand img{
     height: 100%;
 }
 
+
+
 div.container div.video-container div.video-watched iframe{
   border: 10px solid #00802b;
 }
@@ -125,6 +127,8 @@ div.container div.video-container div.video-not-watched iframe{
 i.fa {
   color: #00802b;
 }
+
+
 
 
 .rounded-outline-btn {
@@ -156,6 +160,10 @@ div.container-cohorts div.cohorts{
   width: 300px;
   }
 
+div.container-general {
+  width: 100%;
+}  
+
 div.container-cohorts div.container.cohorts.cohort-general{
   width: 100%;
   }  
@@ -168,4 +176,8 @@ div.container-statistics div.statistics{
   float: left;
   width: 450px;
   }  
+
+div.sections {
+  width: 100%;
+}
 
