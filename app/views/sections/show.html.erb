@@ -7,27 +7,60 @@
 <% end %>
 <br>
 
+
 <div class="container container-cohorts">
-  <div class="container cohorts cohort-fourteen"> 
-    <h3> 2014 Videos:</h3>
-    <% @videos.fourteen.each do |video| %>
-      <p><%= link_to video.name, video_path(video) %></p>
+<center><h2>Flatiron Videos</h2></center>
+
+  <div class="container cohorts cohort-fourteen text-center"> 
+    <h3> 2014:</h3>
+    <% @videos.fourteen.flatiron.each do |video| %>
+      <p>
+        <% if video.video_watched(@user, video) %>
+          <%= fa_icon "check-square-o" %>
+        <% end %>
+        <%= link_to video.name, video_path(video) %>  
+      </p>
     <% end %>  
   </div>
 
-  <div class="container cohorts cohort-fifteen">
-    <h3> 2015 Videos:</h3>
-    <% @videos.fifteen.each do |video| %>
-      <p><%= link_to video.name, video_path(video) %></p>
-    <% end %> 
+  <div class="container cohorts cohort-fifteen text-center">
+    <h3> 2015:</h3>
+    <% @videos.fifteen.flatiron.each do |video| %>
+      <p>
+        <% if video.video_watched(@user, video) %>
+          <%= fa_icon "check-square-o" %>
+        <% end %>
+        <%= link_to video.name, video_path(video) %>  
+      </p>
+    <% end %>  
   </div>
 
-  <div class="container cohorts cohort-sixteen"> 
-    <h3> 2016 Videos:</h3>
-    <% @videos.sixteen.each do |video| %>
-      <p><%= link_to video.name, video_path(video) %></p>
-    <% end %>
+  <div class="container cohorts cohort-sixteen text-center"> 
+    <h3> 2016:</h3>
+    <% @videos.sixteen.flatiron.each do |video| %>
+      <p>
+        <% if video.video_watched(@user, video) %>
+          <%= fa_icon "check-square-o" %>
+        <% end %>
+        <%= link_to video.name, video_path(video) %>  
+      </p>
+    <% end %>  
   </div>
+
+  <center><h2>General Videos </h2></center>
+
+  <div class="container cohorts cohort-general text-center"> 
+    <h3> Public Videos:</h3>
+    <% @videos.general.each do |video| %>
+      <p>
+        <% if video.video_watched(@user, video) %>
+          <%= fa_icon "check-square-o" %>
+        <% end %>
+        <%= link_to video.name, video_path(video) %>  
+      </p>
+    <% end %>  
+  </div>
+
 </div>
 
 <%= button_to "Back to sections", sections_path, method: :get, :class => "btn rounded-outline-btn" %>
