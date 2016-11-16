@@ -3,8 +3,18 @@
     <h3>Section: <%= @video.section.name %></h3>
     <h2>Video: 
     <%= link_to @video.name, @video.link, :target => "_blank"  %>
-      -  <small><%= @video.year %></small> </h2>
-      </span>
+      -  <small><%= @video.year %></small></h2>    
+  </span>
+
+    
+     <span class="pull-right">
+     <br>
+      <% (@total_video_rating.stars).times do %>
+          <%= fa_icon "star-o 3x" %>
+        <% end %>
+     </span>   
+      
+       
 </div>
 
 <div class="video-container">
