@@ -1,0 +1,43 @@
+class UserPolicy < ApplicationPolicy
+  attr_reader :user, :record
+
+  def initialize(user, record)
+    @user = user
+    @record = record
+  end
+
+  def index?
+    @user.admin?
+  end
+
+  def new?
+    #only users can make themselves how do i handle that in terms of policies.
+  end
+
+  def create?
+    #only users can make themselves how do i handle that in terms of policies.
+  end
+
+  def show?
+    @user.admin?
+  end
+
+  def edit?
+    #only an admin can assign/remove flatiron status
+  end
+
+  def update?
+    @user.admin? 
+  end
+
+  def destroy?
+    if @user.admin? && @record != @user
+      true
+    else
+      false
+    end
+    #users can delete themselves or an admin can delete them
+  end
+
+
+end

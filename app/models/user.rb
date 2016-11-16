@@ -2,9 +2,7 @@ class User < ActiveRecord::Base
   enum role: [:public_student, :flatiron_student, :admin]
   after_initialize :set_default_role, :if => :new_record?
 
-  def set_default_role
-    self.role ||= :public_student
-  end
+  
   
   #has_many :sections
   #has_many :videos, through: :sections
@@ -39,6 +37,10 @@ class User < ActiveRecord::Base
       #cant get devise password to save from the getgo 
       user.password= Devise.friendly_token[0,20]
     end      
+  end
+
+  def set_default_role
+    self.role ||= :public_student
   end
 
 

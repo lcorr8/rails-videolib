@@ -1,0 +1,16 @@
+<td>
+  <%= link_to user.email, user_path(user) %>
+</td>
+
+<td>
+  <%= form_for(user) do |f| %>
+    <%= f.select :role, User.roles.keys %>
+    </td>
+    <td>
+    <%= f.submit "Change Role", :class => "btn rounded-outline-btn" %>
+  <% end %>
+  </td>
+</td>
+<td>
+  <%= link_to "Delete User", user_path(user), data: {confirm: "Are you sure?"}, method: :delete, :class => "btn rounded-outline-btn" %>
+</td>

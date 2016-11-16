@@ -51,22 +51,22 @@
 [x]    .set video, user, watched attribute
 [x]    .use build in th new and create action.
 [x]    .scope watched to user, only one allowed per user. redirect with errors when one is already present and user tries to create it anyway
-
-[]5. edit views to reflect controller changes
-[]  -videos:
+[x]5. edit views to reflect controller changes
+[x]  -videos:
 [x]    .show view status edited to reflect the info from the join table
 [x]    .add border color to indicate view status on video show view
 [x]    .edit ratings to reflect the join table. Show your ratings with reason. 
-[]    .Add an average rating from other users.
+[x]    .Add an average rating from other users.
 [x]  -sections:
-[x]    .make sure to add the view check mark from font awesome to the section view 
-[]  -user page? 
+[x]    .make sure to add the view check mark from font awesome to the section view
+
+[x]  -user page? 
       .allow admins to change the status of another user to flatiron student 
 
 []6. edit views for final look
-    - all pages: 
-      .show what type of user you are.
-      .make a request button to request flatiron status.
+[]  - all pages: 
+[x]    .show what type of user you are.
+[]    .make a request button to request flatiron status.
       
 
   

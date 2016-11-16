@@ -1,0 +1,13 @@
+<h1>Admin portal for handling users</h1>
+
+<table>
+  <% @users.each do |user| %>
+    <tr>
+      <%= render partial: user, locals: {user: user} %>
+    </tr>
+  <% end %>
+</table>
+
+
+
+

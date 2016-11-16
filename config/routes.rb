@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   get '/study_suggestions' => 'application#study_suggestions', as: :study_suggestions
 
+
+  resources :users, only: [:index, :show, :destroy, :update]
   #get '/auth/github/callback' => 'sessions#create'
 
   
