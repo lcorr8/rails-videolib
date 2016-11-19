@@ -1,3 +1,6 @@
-<% if current_user %>
-Loged in as <%= current_user.email %> : <%= current_user.role %>
-<% end %> 
+<div class="text-right">
+  <% if current_user %>
+    Loged in as <%= current_user.email %><br>
+    <%= current_user.role %>
+  <% end %>
+</div>
