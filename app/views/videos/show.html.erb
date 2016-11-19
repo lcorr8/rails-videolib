@@ -10,6 +10,9 @@
      <span class="pull-right">
      <br>
       <% (@total_video_rating.stars).times do %>
+          <%= fa_icon "star 3x" %>
+        <% end %>
+        <% (5-(@total_video_rating.stars)).times do %>
           <%= fa_icon "star-o 3x" %>
         <% end %>
      </span>   
