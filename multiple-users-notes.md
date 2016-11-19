@@ -59,7 +59,6 @@
 [x]    .Add an average rating from other users.
 [x]  -sections:
 [x]    .make sure to add the view check mark from font awesome to the section view
-
 [x]  -user page? 
       .allow admins to change the status of another user to flatiron student 
 
