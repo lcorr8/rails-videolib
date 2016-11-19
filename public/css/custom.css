@@ -55,7 +55,9 @@ body {
 }
 
 h2, h3 {
-  color: #327311;
+  color: black;
+/*  color: #327311; */
+
 }
 
 /* 
@@ -65,7 +67,8 @@ h2 {
 */
 
 a {
-  color: #6D6D6D; 
+  color: black; 
+  /*  color: #6D6D6D; */
 }
 
 p {
@@ -114,7 +117,11 @@ a.navbar-brand img{
     height: 100%;
 }
 
-
+.home-container {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 50px;
+}
 
 div.container div.video-container div.video-watched iframe{
   border: 10px solid #00802b;
@@ -127,9 +134,6 @@ div.container div.video-container div.video-not-watched iframe{
 i.fa {
   color: #00802b;
 }
-
-
-
 
 .rounded-outline-btn {
   background: none;
@@ -144,7 +148,6 @@ i.fa {
   background: #00802b;
   color: white;
 }
-
 
 .button_to,
 .button_to div {
@@ -180,4 +183,3 @@ div.container-statistics div.statistics{
 div.sections {
   width: 100%;
 }
-
