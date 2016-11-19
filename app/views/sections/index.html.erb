@@ -1,9 +1,11 @@
 <h2>Which section would you like to review?</h2>
 
-<div class=" sections text-center">
+<div class=" sections">
+  <ol>
   <% @sections.each do |section| %>
-    <h3><%= link_to section.name, section_path(section) %></h3>
+    <h3><li><%= link_to section.name, section_path(section) %></li></h3>
   <% end %>
+  </ol>
   <br>
 </div>
 
