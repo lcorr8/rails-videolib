@@ -2,21 +2,35 @@
 <br>
 
 <div class="container-statistics">
-  <div class="container statistics statistics-not-seen">
-    <p>Stat: There are currently <%= @videos.not_watched.count %> videos that you have not yet seen.</p>
-    <ul>
-      <% @videos.not_watched.each do |video| %>
-        <p><li><%= link_to video.name, video_path(video) %></li></p>
-      <% end %>
-    </ul>
+
+  <div class="container overall-statistics">
+    <p>Stat: There are currently a total of <%= Video.flatiron.count %> Flatiron videos.</p>
+    progress bar of % flatiron videos watched
+    <br><a href="http://getbootstrap.com/components/#progress">Reference to progress bar</a><br><br><br>
+
+    <p>Stat: There are currently a total of <%= Video.general.count %> public videos.</p>
+    progress bar for % of total videos watched
+    <br><a href="http://getbootstrap.com/components/#progress">Reference to progress bar</a><br><br><br>
   </div>
+
+  <div class="container personal-statistics">
+    <p>Stat: You have seen <%= Video.watched_flatiron_videos(current_user).count %> Flatiron videos.</p>
+    
+      <% Video.watched_flatiron_videos(current_user).each do |video| %>
+        <p><li> <%= link_to video.name, video_path(video) %></li></p>
+      <% end %>
+  </div>
+
   <div class="container statistics statistics-see-again">
+    Videos you thought were difficult, to re-watch?
     <p>Stat: There are currently <%= hard_lessons.count %> videos that are rated difficult.</p>
     <ul>
       <% hard_lessons.each do |rating| %>
         <p><li> <%= link_to rating.video.name, video_path(rating.video) %></li></p>
       <% end %>
     </ul>
+
+    videos you have yet to see?
   </div>
 </div>
 
