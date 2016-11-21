@@ -6,8 +6,14 @@ class VideosController < ApplicationController
     @video = Video.find(params[:id])
     authorize @video
     @user_ratings = @video.video_ratings.select{ |rating| rating.user_id == @user.id }
-    @average_rating = @video.video_ratings.average(:rating_id).to_i.to_s
-    @total_video_rating = Rating.find(@average_rating)
+    #refactor into helper?
+    #if there are any video ratings, display a total video rating,
+    #else display a message "not rated yet"
+    if @video.video_ratings.count > 0
+      @average_rating = @video.video_ratings.average(:rating_id).to_i.to_s
+      @total_video_rating = Rating.find(@average_rating)
+    end
+    
   end
 
   def new
