@@ -7,11 +7,6 @@ module ApplicationHelper
   end
 
 #OVERALL STATS:
-  #all flatiron videos
-  def flatiron_videos
-    @videos = Video.all 
-    @flatiron_videos = @videos.where(:flatiron => true)
-  end
 
   #most watched videos (top 10 by everyone)
 
@@ -20,9 +15,14 @@ module ApplicationHelper
 
 #PERSONAL STATS:
 
-  #watched flatiron videos by current user, for count.
-  def seen_flatiron_videos
-    WatchedVideo.where(:user_id => current_user, :flatiron => true)
+  #has the current user rated any flatiron videos?
+  def rated_any_flatiron_videos?
+    @videos = WatchedVideo.all
+    if @videos.where(:user_id => @user.id)
+      true
+    else
+      false
+    end
   end
 
   #Videos you thought were difficult, to re-watch?
