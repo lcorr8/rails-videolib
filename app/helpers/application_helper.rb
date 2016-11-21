@@ -6,13 +6,6 @@ module ApplicationHelper
     @hard_ratings.to_a.uniq!{|rating| rating.video_id}
   end
 
-#OVERALL STATS:
-
-  #most watched videos (top 10 by everyone)
-
-  #hardest videos (top 10 videos with most 5 ratings)
-
-
 #PERSONAL STATS:
 
   #has the current user rated any flatiron videos?
@@ -24,15 +17,5 @@ module ApplicationHelper
       false
     end
   end
-
-  #Videos you thought were difficult, to re-watch?
-
-  #videos you have yet to see?
-
-  #progress bar of % flatiron videos watched
-  #http://getbootstrap.com/components/#progress
-
-  #progress bar for % of total videos watched
-  #http://getbootstrap.com/components/#progress
 
 end

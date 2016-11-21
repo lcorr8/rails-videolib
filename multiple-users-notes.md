@@ -62,10 +62,34 @@
 [x]  -user page? 
       .allow admins to change the status of another user to flatiron student 
 
-[]6. edit views for final look
+[]6. add stats & study suggestion page 
+  [x].general video total count
+  [x].flatiron video total count
+  [].general video watched count
+  [x].private video watched count
+  [].progress bar for general videos - http://getbootstrap.com/components/#progress
+  [].progress bar for private videos - http://getbootstrap.com/components/#progress
+
+  [].most watched videos (top 10 by everyone)  
+  [].hardest videos (top 10 rated 5 by everyone)
+
+  [].videos you rated 5-difficult, in order to study topics that were already hard for you (study_suggestions)
+  [].videos you have not yet seen by section, if you know which section you would like to review more.
+
+  optional helpers:
+  [] have any users rated a given video? to display 0 colored stars.   
+
+[]7. edit views for final look
 []  - all pages: 
 [x]    .show what type of user you are.
 []    .make a request button to request flatiron status.
+[]    .make view for the secret stats pages
+[]    .style all links with black letters and green underline? or all green with green underline?
+[]    .style titles green and numbers in the section page green as well
+
+[]7. Add conditionals to views
+      . if ratings present, show, else nothing
+      .if
       
 
   
