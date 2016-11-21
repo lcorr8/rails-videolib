@@ -1,6 +1,6 @@
 <div class="container center"> 
   <span class="pull-left">
-    <h3>Section: <%= @video.section.name %></h3>
+    <h1>Section: <%= @video.section.name %></h1>
     <h2>Video: 
     <%= link_to @video.name, @video.link, :target => "_blank"  %>
       -  <small><%= @video.year %></small></h2>    
@@ -9,12 +9,19 @@
     
      <span class="pull-right">
      <br>
+     <% if @video.video_ratings.count > 0 %>
       <% (@total_video_rating.stars).times do %>
           <%= fa_icon "star 3x" %>
         <% end %>
         <% (5-(@total_video_rating.stars)).times do %>
           <%= fa_icon "star-o 3x" %>
         <% end %>
+     <% else %>
+      <% 5.times do %>
+          <%= fa_icon "star-o 3x" %>
+        <% end %><br>
+       <p class="text-right"> Not yet rated </p>
+     <% end %>   
      </span>   
       
        
