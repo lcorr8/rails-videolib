@@ -71,11 +71,10 @@
   [].progress bar for private videos - http://getbootstrap.com/components/#progress
 
   [x].most watched videos (top 10 by everyone)  
-  [].hardest videos (top 10 rated 5 by everyone)
+  [x].hardest videos (top 10 rated 5 by everyone)
 
-  [].videos you rated 5-difficult, in order to study topics that were already hard for you (study_suggestions)
-  [].videos you have not yet seen by section, if you know which section you would like to review more.
-
+  [x].videos you rated 5-difficult, in order to study topics that were already hard for you (study_suggestions)
+  
   optional helpers:
   [] have any users rated a given video? to display 0 colored stars.   
 

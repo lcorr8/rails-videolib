@@ -18,33 +18,40 @@
        <li> <%= link_to video.name, video_path(video) %></li>
       <% end %>
       </ul>
+
+    <p>Stat: top <%= Video.hardest_videos.count %> hardest rated videos</p>
+     <ul>
+      <% Video.hardest_videos.each do |video| %>
+       <li> <%= link_to video.name, video_path(video) %></li>
+      <% end %>
+      </ul>  
   </div>
 
   <div class="container personal-statistics">
     <p>Stat: You have seen <%= Video.watched_flatiron_videos(current_user).count %> Flatiron videos.</p>
-    
+      <ul>
       <% Video.watched_flatiron_videos(current_user).each do |video| %>
         <p><li> <%= link_to video.name, video_path(video) %></li></p>
       <% end %>
+      </ul>
 
 
     <p>Stat: You have seen <%= Video.watched_public_videos(current_user).count %> public videos.</p>  
-
+      <ul>
       <% Video.watched_public_videos(current_user).each do |video| %>
         <p><li> <%= link_to video.name, video_path(video) %></li></p>
       <% end %>
+      </ul>
   </div>
 
   <div class="container statistics statistics-see-again">
-    Videos you thought were difficult, to re-watch?
-    <p>Stat: There are currently <%= hard_lessons.count %> videos that are rated difficult.</p>
+    
+    <p>Stat: There are currently <%= hard_lessons.count %> videos you thought were difficult, perhaps watch them again?</p>
     <ul>
       <% hard_lessons.each do |rating| %>
         <p><li> <%= link_to rating.video.name, video_path(rating.video) %></li></p>
       <% end %>
     </ul>
-
-    videos you have yet to see?
   </div>
 </div>
 

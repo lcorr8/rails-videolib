@@ -61,4 +61,26 @@ class Video < ActiveRecord::Base
 #        <Video:0x007ff21f758e60 id: 79, name: "ActiveRecord Query Interface">]     
   end
 
+  def self.hardest_videos
+    Video.joins(:video_ratings).where("video_ratings.rating_id = ?", 5).select("videos.id, videos.name, count(videos.id) as hardest_rated_count").order("hardest_rated_count DESC").group("videos.id").limit(10).to_a
+#       => [<Video:0x007ff21f6aaf68 id: 15, name: "name">,
+#           <Video:0x007ff21f6aae00 id: 2, name: "Sugar Daddy">,
+#           <Video:0x007ff21f6aac98 id: 1, name: "wig in a box">,
+#           <Video:0x007ff21f6aab30 id: 3, name: "fantastic beasts and where to find them">]
+
+
+#    Video.joins(:video_ratings).group("videos.name").where("video_ratings.rating_id = ?", 5).count
+#       => {"Sugar Daddy"=>4,
+#           "fantastic beasts and where to find them"=>1,
+#           "name"=>5,
+#           "wig in a box"=>1}
+
+#    Video.joins(:video_ratings).group("videos.name").where("video_ratings.rating_id = ?", 5).count.sort_by{|k, v| v}.reverse
+#        => [["name", 5],
+#         ["Sugar Daddy", 4],
+#         ["wig in a box", 1],
+#         ["fantastic beasts and where to find them", 1]]
+
+  end
+
 end
