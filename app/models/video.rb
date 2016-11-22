@@ -44,4 +44,21 @@ class Video < ActiveRecord::Base
     joins(:watched_videos).where(flatiron: false).where("watched_videos.user_id = ?", current_user.id)
   end
 
+  def self.most_watched_videos
+#    Video.joins(:watched_videos).group("videos.name").count
+#    => {"ActiveRecord Query Interface"=>1,
+#         "Sugar Daddy"=>1,
+#         "hedwig edited, made public"=>1,
+#         "name"=>1,
+#         "wig in a box"=>2}
+
+
+    Video.joins(:watched_videos).select("videos.id, videos.name, count(videos.id) as watched_count").order("watched_count DESC").group("videos.id").limit(10).to_a
+#    => [<Video:0x007ff21f759400 id: 1, name: "wig in a box">,
+#        <Video:0x007ff21f759298 id: 2, name: "Sugar Daddy">,
+#        <Video:0x007ff21f759130 id: 12, name: "hedwig edited, made public">,
+#        <Video:0x007ff21f758fc8 id: 15, name: "name">,
+#        <Video:0x007ff21f758e60 id: 79, name: "ActiveRecord Query Interface">]     
+  end
+
 end

@@ -11,6 +11,13 @@
     <p>Stat: There are currently a total of <%= Video.general.count %> public videos.</p>
     progress bar for % of total videos watched
     <br><a href="http://getbootstrap.com/components/#progress">Reference to progress bar</a><br><br><br>
+  
+    <p>Stat: top <%= Video.most_watched_videos.count %> most watched videos</p>
+     <ul>
+      <% Video.most_watched_videos.each do |video| %>
+       <li> <%= link_to video.name, video_path(video) %></li>
+      <% end %>
+      </ul>
   </div>
 
   <div class="container personal-statistics">

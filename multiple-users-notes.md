@@ -60,17 +60,17 @@
 [x]  -sections:
 [x]    .make sure to add the view check mark from font awesome to the section view
 [x]  -user page? 
-      .allow admins to change the status of another user to flatiron student 
+[x]    .allow admins to change the status of another user to flatiron student 
 
 []6. add stats & study suggestion page 
   [x].general video total count
   [x].flatiron video total count
-  [].general video watched count
+  [x].general video watched count
   [x].private video watched count
   [].progress bar for general videos - http://getbootstrap.com/components/#progress
   [].progress bar for private videos - http://getbootstrap.com/components/#progress
 
-  [].most watched videos (top 10 by everyone)  
+  [x].most watched videos (top 10 by everyone)  
   [].hardest videos (top 10 rated 5 by everyone)
 
   [].videos you rated 5-difficult, in order to study topics that were already hard for you (study_suggestions)
