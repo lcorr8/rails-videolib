@@ -19,6 +19,13 @@
       <% Video.watched_flatiron_videos(current_user).each do |video| %>
         <p><li> <%= link_to video.name, video_path(video) %></li></p>
       <% end %>
+
+
+    <p>Stat: You have seen <%= Video.watched_public_videos(current_user).count %> public videos.</p>  
+
+      <% Video.watched_public_videos(current_user).each do |video| %>
+        <p><li> <%= link_to video.name, video_path(video) %></li></p>
+      <% end %>
   </div>
 
   <div class="container statistics statistics-see-again">
