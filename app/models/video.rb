@@ -39,7 +39,9 @@ class Video < ActiveRecord::Base
     joins(:watched_videos).where(flatiron: true).where("watched_videos.user_id = ?", current_user.id)
   end
 
-  #
-  
+  #watched public videos by user
+  def self.watched_public_videos(current_user)
+    joins(:watched_videos).where(flatiron: false).where("watched_videos.user_id = ?", current_user.id)
+  end
 
 end
