@@ -89,9 +89,9 @@
 [x]    .if no one has rated a video show empty stars
 
 []8. test views
-[]    .stats page
+[x]    .stats page
 [x]      .when you have seen 0 flatiron videos
-[x]      .when you have seen 0 public videos
+[x]      .when you have seen 0 general videos
 [x]      .0 most watched videos
 [x]      .less than 10, most watched videos
 [x]      .top 10 most watched videos
@@ -101,8 +101,8 @@
 [x]      .when you have rated 0 videos with 5 stars
 [x]      .when you have rated some videos with 5 stars, to watch again
 []    .sections page
-[]      .name all general and public videos, public videos for consistency
-[x]      .show public videos in 2 rows, make them dynamic
+[x]      .name all general and public videos, general videos for consistency in code bc "public" interferes with the public method
+[x]      .show general videos in 2 rows, make them dynamic
 []    .create video rating page
 []      .show error when the text are is empty
 []      .

@@ -52,7 +52,7 @@ class VideoPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      if user.public_student?
+      if user.general_student?
         scope.where(:flatiron => false)
       elsif user.admin? || user.flatiron_student?
         scope.all

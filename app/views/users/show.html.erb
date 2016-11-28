@@ -7,11 +7,11 @@
 <br>
 
 
-<% if policy(@user).update? && @user_record.role == "public_student" %>
+<% if policy(@user).update? && @user_record.role == "general_student" %>
   <%= button_to "Assign Flatiron Permission", user_path(@user_record), method: :patch, :class => "btn rounded-outline-btn", params: {'user[role]' => "flatiron_student"} %>
 <% end %>  
 
 <% if policy(@user).update? && @user_record.role == "flatiron_student" %>
-  <%= button_to "Remove Flatiron Permission", user_path(@user_record), method: :patch, :class => "btn rounded-outline-btn", params: {'user[role]' => "public_student"}  %>
+  <%= button_to "Remove Flatiron Permission", user_path(@user_record), method: :patch, :class => "btn rounded-outline-btn", params: {'user[role]' => "general_student"}  %>
 <% end %>  
 

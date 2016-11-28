@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  enum role: [:public_student, :flatiron_student, :admin]
+  enum role: [:general_student, :flatiron_student, :admin]
   after_initialize :set_default_role, :if => :new_record?
 
   has_many :watched_videos
@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
   end
 
   def set_default_role
-    self.role ||= :public_student
+    self.role ||= :general_student
   end
 
 end #class

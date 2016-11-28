@@ -15,9 +15,9 @@
   
     
   <div class="container general-statistics">
-    <h3>There are currently a total of <%= Video.general.count %> public videos, and you have seen <%= Video.watched_public_videos(current_user).count %> so far.</h3>
-    <p>Current Public videos progress:</p>
-    <% @percentage_watched_general_videos = ( (Video.watched_public_videos(current_user).count * 100) / Video.general.count) %>
+    <h3>There are currently a total of <%= Video.general.count %> general videos, and you have seen <%= Video.watched_general_videos(current_user).count %> so far.</h3>
+    <p>Current general videos progress:</p>
+    <% @percentage_watched_general_videos = ( (Video.watched_general_videos(current_user).count * 100) / Video.general.count) %>
     <div class="container general-statistics-progress-bar">
         <%= render partial: 'application/progress_bar', locals: {percentage: @percentage_watched_general_videos} %>
     </div>
@@ -45,7 +45,7 @@
           <li> <%= link_to video.name, video_path(video) %></li>
         <% end %>
       </ul> 
-    <% end %>   
+    <% end %> 
   </div>    
 
   <div class="container statistics-see-again">  
