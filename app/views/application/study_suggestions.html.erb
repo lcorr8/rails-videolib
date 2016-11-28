@@ -46,12 +46,17 @@
 
   <div class="container statistics statistics-see-again">
     
-    <p>Stat: There are currently <%= hard_lessons.count %> videos you thought were difficult, perhaps watch them again?</p>
-    <ul>
-      <% hard_lessons.each do |rating| %>
-        <p><li> <%= link_to rating.video.name, video_path(rating.video) %></li></p>
-      <% end %>
-    </ul>
+    <p>Stat:  
+    <% if hard_lessons.nil? %>
+      <%= "You have not rated any videos with a 5 star difficulty rating yet." %>
+    <% else %>  
+      There are currently <%= hard_lessons.count %> videos you thought were difficult, perhaps watch them again?</p>
+      <ul>
+        <% hard_lessons.each do |rating| %>
+          <p><li> <%= link_to rating.video.name, video_path(rating.video) %></li></p>
+        <% end %>
+      </ul>
+    <% end %>
   </div>
 </div>
 
