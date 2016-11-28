@@ -85,25 +85,33 @@
 []    .style h3 black
 
 []7. Add conditionals to views
-[]    .if ratings present, show, else nothing
-[]    .if
+[x]    .if ratings present, show, else nothing
+[x]    .if no one has rated a video show empty stars
 
 []8. test views
 []    .stats page
-[]      .when you have seen 0 flatiron videos
-[]      .when you have seen 0 public videos
-[]      .0 most watched videos
+[x]      .when you have seen 0 flatiron videos
+[x]      .when you have seen 0 public videos
+[x]      .0 most watched videos
 [x]      .less than 10, most watched videos
-[]      .top 10 most watched videos
-[]      .0 hardest videos (5 stars)
+[x]      .top 10 most watched videos
+[x]      .0 hardest videos (5 stars)
 [x]      .less than 10, hardest  videos
-[]      .top 10 hardest videos
+[x]      .top 10 hardest videos
 [x]      .when you have rated 0 videos with 5 stars
 [x]      .when you have rated some videos with 5 stars, to watch again
 []    .sections page
 []      .name all general and public videos, public videos for consistency
 [x]      .show public videos in 2 rows, make them dynamic
-
+[]    .create video rating page
+[]      .show error when the text are is empty
+[]      .
+[]      .
+[]      .
+[]      .
+[]      .
+[]      .
+[]      .
 
       
 
