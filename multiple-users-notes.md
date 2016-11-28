@@ -102,7 +102,7 @@
 [x]      .when you have rated some videos with 5 stars, to watch again
 []    .sections page
 []      .name all general and public videos, public videos for consistency
-[x]      .show public videos in 2 rows
+[x]      .show public videos in 2 rows, make them dynamic
 
 
       
