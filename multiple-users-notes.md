@@ -100,6 +100,11 @@
 []      .top 10 hardest videos
 [x]      .when you have rated 0 videos with 5 stars
 [x]      .when you have rated some videos with 5 stars, to watch again
+[]    .sections page
+[]      .name all general and public videos, public videos for consistency
+[x]      .show public videos in 2 rows
+
+
       
 
   

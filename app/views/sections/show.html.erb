@@ -49,18 +49,19 @@
   </div>
 
 <div class="container container-general">
-  <center><h2>General Videos </h2></center>
+  <center><h2>Public Videos </h2></center>
 
-  <div class="container cohorts cohort-general text-center"> 
-    <h3> Public Videos:</h3>
+  <div class="container general"> 
+    <ul style="list-style-type:none" id="double">
     <% @videos.general.each do |video| %>
-      <p>
+      <li><p>
         <% if video.video_watched(@user, video) %>
           <%= fa_icon "check-square-o" %>
         <% end %>
         <%= link_to video.name, video_path(video) %>  
-      </p>
-    <% end %>  
+      </p></li>
+    <% end %>
+    </ul>  
   </div>
 
 </div>

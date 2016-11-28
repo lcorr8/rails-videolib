@@ -167,9 +167,25 @@ div.container-general {
   width: 100%;
 }  
 
-div.container-cohorts div.container.cohorts.cohort-general{
+div.container-gneral div.general{
   width: 100%;
   }  
+
+ul#double {
+  width: 100%;
+  margin-bottom:20px;
+  overflow:hidden;
+  /* border-top:1px solid #ccc; */
+}
+
+ul#double li{
+  line-height:1.5em;
+  /* border-bottom:1px solid #ccc; */
+  float:left;
+  display:inline;
+  width:50%;
+}
+
 
 div.container-statistics {
   width: 100%;
