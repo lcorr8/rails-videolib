@@ -25,19 +25,27 @@
   
 
   <div class="container top-statistics"> 
-    <h3>top <%= Video.most_watched_videos.count %> most watched videos</h3>
-     <ul>
-      <% Video.most_watched_videos.each do |video| %>
-       <li> <%= link_to video.name, video_path(video) %></li>
-      <% end %>
+    <% if Video.most_watched_videos.count == 0 %>
+      <h3>No videos have been watched yet!</h3>
+    <% else %>  
+      <h3>top <%= Video.most_watched_videos.count %> most watched videos</h3>
+      <ul>
+        <% Video.most_watched_videos.each do |video| %>
+          <li> <%= link_to video.name, video_path(video) %></li>
+        <% end %>
       </ul>
+    <% end %>  
 
-    <h3>top <%= Video.hardest_videos.count %> hardest rated videos</h3>
-     <ul>
-      <% Video.hardest_videos.each do |video| %>
-       <li> <%= link_to video.name, video_path(video) %></li>
-      <% end %>
-      </ul>  
+    <% if Video.hardest_videos.count == 0 %>
+      <h3>No videos have been rated difficult yet!</h3>
+    <% else %>  
+      <h3>top <%= Video.hardest_videos.count %> hardest rated videos</h3>
+      <ul>
+        <% Video.hardest_videos.each do |video| %>
+          <li> <%= link_to video.name, video_path(video) %></li>
+        <% end %>
+      </ul> 
+    <% end %>   
   </div>    
 
   <div class="container statistics-see-again">  
