@@ -61,8 +61,7 @@
 [x]    .make sure to add the view check mark from font awesome to the section view
 [x]  -user page? 
 [x]    .allow admins to change the status of another user to flatiron student 
-
-[]6. add stats & study suggestion page 
+[x]6. add stats & study suggestion page 
 [x]  .general video total count
 [x]  .flatiron video total count
 [x]  .general video watched count
@@ -80,13 +79,27 @@
 []  - all pages: 
 [x]    .show what type of user you are.
 []    .make a request button to request flatiron status.
-[]    .make view for the secret stats pages
+[x]    .make view for the secret stats pages
 []    .style all links with black letters and green underline? or all green with green underline?
-[]    .style titles green and numbers in the section page green as well
+[]    .style titles h1 and h2 green and numbers in the section page green as well.
+[]    .style h3 black
 
 []7. Add conditionals to views
-      . if ratings present, show, else nothing
-      .if
+[]    .if ratings present, show, else nothing
+[]    .if
+
+[]8. test views
+[]    .stats page
+[]      .when you have seen 0 flatiron videos
+[]      .when you have seen 0 public videos
+[]      .0 most watched videos
+[x]      .less than 10, most watched videos
+[]      .top 10 most watched videos
+[]      .0 hardest videos (5 stars)
+[x]      .less than 10, hardest  videos
+[]      .top 10 hardest videos
+[x]      .when you have rated 0 videos with 5 stars
+[x]      .when you have rated some videos with 5 stars, to watch again
       
 
   
