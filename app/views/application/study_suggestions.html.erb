@@ -1,56 +1,50 @@
-<h2>Study suggestions for you</h2>
+<h1>Secret Study Suggestions</h1>
 <br>
 
 <div class="container-statistics">
 
-  <div class="container overall-statistics">
-    <p>Stat: There are currently a total of <%= Video.flatiron.count %> Flatiron videos.</p>
-    progress bar of % flatiron videos watched
-    <br><a href="http://getbootstrap.com/components/#progress">Reference to progress bar</a><br><br><br>
-
-    <p>Stat: There are currently a total of <%= Video.general.count %> public videos.</p>
-    progress bar for % of total videos watched
-    <br><a href="http://getbootstrap.com/components/#progress">Reference to progress bar</a><br><br><br>
+  <div class="container flatiron-statistics">
+    <h3>There are currently a total of <%= Video.flatiron.count %> Flatiron videos, and you have seen <%= Video.watched_flatiron_videos(current_user).count %> so far.</h3>
+    <p>Current Flatiron videos progress:</p>
+    <% @percentage_watched_flatiron_videos = ( (Video.watched_flatiron_videos(current_user).count * 100) / Video.flatiron.count) %>
+    
+    <div class="container flatiron-statistics-progress-bar">
+        <%= render partial: 'application/progress_bar', locals: {percentage: @percentage_watched_flatiron_videos} %>
+    </div>
+  </div>
   
-    <p>Stat: top <%= Video.most_watched_videos.count %> most watched videos</p>
+    
+  <div class="container general-statistics">
+    <h3>There are currently a total of <%= Video.general.count %> public videos, and you have seen <%= Video.watched_public_videos(current_user).count %> so far.</h3>
+    <p>Current Public videos progress:</p>
+    <% @percentage_watched_general_videos = ( (Video.watched_public_videos(current_user).count * 100) / Video.general.count) %>
+    <div class="container general-statistics-progress-bar">
+        <%= render partial: 'application/progress_bar', locals: {percentage: @percentage_watched_general_videos} %>
+    </div>
+  </div>
+  
+
+  <div class="container top-statistics"> 
+    <h3>top <%= Video.most_watched_videos.count %> most watched videos</h3>
      <ul>
       <% Video.most_watched_videos.each do |video| %>
        <li> <%= link_to video.name, video_path(video) %></li>
       <% end %>
       </ul>
 
-    <p>Stat: top <%= Video.hardest_videos.count %> hardest rated videos</p>
+    <h3>top <%= Video.hardest_videos.count %> hardest rated videos</h3>
      <ul>
       <% Video.hardest_videos.each do |video| %>
        <li> <%= link_to video.name, video_path(video) %></li>
       <% end %>
       </ul>  
-  </div>
+  </div>    
 
-  <div class="container personal-statistics">
-    <p>Stat: You have seen <%= Video.watched_flatiron_videos(current_user).count %> Flatiron videos.</p>
-      <ul>
-      <% Video.watched_flatiron_videos(current_user).each do |video| %>
-        <p><li> <%= link_to video.name, video_path(video) %></li></p>
-      <% end %>
-      </ul>
-
-
-    <p>Stat: You have seen <%= Video.watched_public_videos(current_user).count %> public videos.</p>  
-      <ul>
-      <% Video.watched_public_videos(current_user).each do |video| %>
-        <p><li> <%= link_to video.name, video_path(video) %></li></p>
-      <% end %>
-      </ul>
-  </div>
-
-  <div class="container statistics statistics-see-again">
-    
-    <p>Stat:  
+  <div class="container statistics-see-again">  
     <% if hard_lessons.nil? %>
-      <%= "You have not rated any videos with a 5 star difficulty rating yet." %>
+      <h3><%= "You have not rated any videos with a 5 star difficulty rating yet." %></h3>
     <% else %>  
-      There are currently <%= hard_lessons.count %> videos you thought were difficult, perhaps watch them again?</p>
+      <h3>There are currently <%= hard_lessons.count %> videos you thought were difficult, perhaps watch them again?</h3>
       <ul>
         <% hard_lessons.each do |rating| %>
           <p><li> <%= link_to rating.video.name, video_path(rating.video) %></li></p>
@@ -59,5 +53,7 @@
     <% end %>
   </div>
 </div>
+
+<br><br>
 
   
