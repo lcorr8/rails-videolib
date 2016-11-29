@@ -71,16 +71,13 @@
 [x]  .most watched videos (top 10 by everyone)  
 [x]  .hardest videos (top 10 rated 5 by everyone)
 [x]  .videos you rated 5-difficult, in order to study topics that were already hard for you (study_suggestions)
-
-[]7. edit views for final look
-[]  - all pages: 
+[x]7. edit views for final look
+[x]  - all pages: 
 [x]    .show what type of user you are.
-[]    .make a request button to request flatiron status.
 [x]    .make view for the secret stats pages
 [x]    .style all links with black letters and green underline? or all green with green underline?
 [x]    .style titles h1 and h2 green and numbers in the section page green as well.
 [x]    .style h3 black
-
 [x]7. Add conditionals to views
 [x]    .if ratings present, show, else nothing
 [x]    .if no one has rated a video show empty stars
@@ -106,6 +103,8 @@
 refactor optional helpers:
 [] have any users rated a given video? to display 0 colored stars.   
 [] add 2 general videos per section to seed file
+[] make a request button to request flatiron status.
+[] note everything
 
       
 
