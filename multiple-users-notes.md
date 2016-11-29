@@ -99,6 +99,10 @@
 [x]    .create video rating page
 [x]      .show error when the text area is empty
 [x]      . use pundit permissions on needed actions 
+[]9. Admin users panel
+[]    .make a route and mark it in spec file
+[]    .apply pundit authorization
+
 
 refactor optional helpers:
 [] have any users rated a given video? to display 0 colored stars.   
