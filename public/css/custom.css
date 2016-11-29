@@ -12,6 +12,10 @@ input[type='text'] {
   font-family: monospace; 
 }
 
+body {
+  font-family: "MoonLight";
+}
+
 nav {
   font-family: "MoonLight";
   font-size: 1.3em;
@@ -21,6 +25,21 @@ nav a {
   color: #00802b;
 }
 
+a:hover {
+  color: #00802b;
+}
+
+h1, h2 {
+  color: #00802b;
+}
+h3 {
+  color: black;
+/*  color: #327311; */
+}
+
+ol li {
+  color: #00802b;
+}
 
 
 
@@ -50,15 +69,7 @@ nav a {
 }
 
 
-body {
-  font-family: "MoonLight";
-}
 
-h2, h3 {
-  color: black;
-/*  color: #327311; */
-
-}
 
 /* 
 h2 {

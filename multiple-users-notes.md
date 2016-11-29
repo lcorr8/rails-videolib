@@ -77,15 +77,14 @@
 [x]    .show what type of user you are.
 []    .make a request button to request flatiron status.
 [x]    .make view for the secret stats pages
-[]    .style all links with black letters and green underline? or all green with green underline?
-[]    .style titles h1 and h2 green and numbers in the section page green as well.
-[]    .style h3 black
+[x]    .style all links with black letters and green underline? or all green with green underline?
+[x]    .style titles h1 and h2 green and numbers in the section page green as well.
+[x]    .style h3 black
 
 [x]7. Add conditionals to views
 [x]    .if ratings present, show, else nothing
 [x]    .if no one has rated a video show empty stars
-
-[]8. test views
+[x]8. test views
 [x]    .stats page
 [x]      .when you have seen 0 flatiron videos
 [x]      .when you have seen 0 general videos
@@ -97,7 +96,7 @@
 [x]      .top 10 hardest videos
 [x]      .when you have rated 0 videos with 5 stars
 [x]      .when you have rated some videos with 5 stars, to watch again
-[]    .sections page
+[x]    .sections page
 [x]      .name all general and public videos, general videos for consistency in code bc "public" interferes with the public method
 [x]      .show general videos in 2 rows, make them dynamic
 [x]    .create video rating page
@@ -106,14 +105,7 @@
 
 refactor optional helpers:
 [] have any users rated a given video? to display 0 colored stars.   
-
-[]      .
-[]      .
-[]      .
-[]      .
-[]      .
-[]      .
-[]      .
+[] add 2 general videos per section to seed file
 
       
 
