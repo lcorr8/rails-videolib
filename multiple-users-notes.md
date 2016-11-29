@@ -80,11 +80,11 @@
 [x]    .style h3 black
 []    .add footer
 
-[]  - section page
+[x]  - section page
 [x]    .only show the cohorts if you are a flatiron student
-[]  - video show
-[]    .call reason 'notes' to yourself.
-[]    
+[x]  - video show
+[x]    .call reason 'notes' to yourself.
+    
 
 [x]7. Add conditionals to views
 [x]    .if ratings present, show, else nothing
