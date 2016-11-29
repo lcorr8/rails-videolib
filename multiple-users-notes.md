@@ -72,9 +72,6 @@
 [x]  .hardest videos (top 10 rated 5 by everyone)
 [x]  .videos you rated 5-difficult, in order to study topics that were already hard for you (study_suggestions)
 
-  optional helpers:
-  [] have any users rated a given video? to display 0 colored stars.   
-
 []7. edit views for final look
 []  - all pages: 
 [x]    .show what type of user you are.
@@ -84,7 +81,7 @@
 []    .style titles h1 and h2 green and numbers in the section page green as well.
 []    .style h3 black
 
-[]7. Add conditionals to views
+[x]7. Add conditionals to views
 [x]    .if ratings present, show, else nothing
 [x]    .if no one has rated a video show empty stars
 
@@ -103,8 +100,13 @@
 []    .sections page
 [x]      .name all general and public videos, general videos for consistency in code bc "public" interferes with the public method
 [x]      .show general videos in 2 rows, make them dynamic
-[]    .create video rating page
-[]      .show error when the text are is empty
+[x]    .create video rating page
+[x]      .show error when the text area is empty
+[x]      . use pundit permissions on needed actions 
+
+refactor optional helpers:
+[] have any users rated a given video? to display 0 colored stars.   
+
 []      .
 []      .
 []      .

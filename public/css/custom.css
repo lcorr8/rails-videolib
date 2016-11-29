@@ -82,6 +82,10 @@ p {
 .field_with_errors input {
   border: 2px solid red; 
 }
+/* wont show red border around text area */
+.field_with_errors textarea {
+  border: 2px solid red; 
+}
 
 #error_explanation {
   border-left: 2px solid red;

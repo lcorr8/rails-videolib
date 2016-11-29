@@ -1,0 +1,13 @@
+<% if @rating.errors.any? %>
+  <div id="error_explanation" class="errors">
+    <p>
+      <%= pluralize(@rating.errors.count, "error") %>
+      prohibited this rating from being saved:
+    </p>
+    <ul>
+      <% @rating.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>  
+    </ul>
+  </div>
+<% end %>
