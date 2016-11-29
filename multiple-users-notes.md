@@ -78,6 +78,14 @@
 [x]    .style all links with black letters and green underline? or all green with green underline?
 [x]    .style titles h1 and h2 green and numbers in the section page green as well.
 [x]    .style h3 black
+[]    .add footer
+
+[]  - section page
+[x]    .only show the cohorts if you are a flatiron student
+[]  - video show
+[]    .call reason 'notes' to yourself.
+[]    
+
 [x]7. Add conditionals to views
 [x]    .if ratings present, show, else nothing
 [x]    .if no one has rated a video show empty stars
@@ -102,6 +110,9 @@
 []9. Admin users panel
 []    .make a route and mark it in spec file
 []    .apply pundit authorization
+[]10. spec.md requirements
+[]    .make a route for a class level scope
+[]    
 
 
 refactor optional helpers:

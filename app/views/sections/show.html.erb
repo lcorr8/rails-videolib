@@ -7,46 +7,9 @@
 <% end %>
 <br>
 
-
-<div class="container container-cohorts">
-<center><h2>Flatiron Videos</h2></center>
-
-  <div class="container cohorts cohort-fourteen text-center"> 
-    <h3> 2014:</h3>
-    <% @videos.fourteen.flatiron.each do |video| %>
-      <p>
-        <% if video.video_watched(@user, video) %>
-          <%= fa_icon "check-square-o" %>
-        <% end %>
-        <%= link_to video.name, video_path(video) %>  
-      </p>
-    <% end %>  
-  </div>
-
-  <div class="container cohorts cohort-fifteen text-center">
-    <h3> 2015:</h3>
-    <% @videos.fifteen.flatiron.each do |video| %>
-      <p>
-        <% if video.video_watched(@user, video) %>
-          <%= fa_icon "check-square-o" %>
-        <% end %>
-        <%= link_to video.name, video_path(video) %>  
-      </p>
-    <% end %>  
-  </div>
-
-  <div class="container cohorts cohort-sixteen text-center"> 
-    <h3> 2016:</h3>
-    <% @videos.sixteen.flatiron.each do |video| %>
-      <p>
-        <% if video.video_watched(@user, video) %>
-          <%= fa_icon "check-square-o" %>
-        <% end %>
-        <%= link_to video.name, video_path(video) %>  
-      </p>
-    <% end %>  
-  </div>
-  </div>
+<% if current_user.admin? || current_user.flatiron_student? %>
+  <%= render 'flatiron_cohorts' %>
+<% end %>  
 
 <div class="container container-general">
   <center><h2>General Videos </h2></center>
