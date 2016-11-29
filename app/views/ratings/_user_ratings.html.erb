@@ -3,6 +3,7 @@
         <li><p> 
         <%= render partial: 'ratings/stars', locals: {rating: rating} %>
         <br>
-         Reason: <%= rating.reason %> - <%= link_to "Edit", edit_video_rating_path(@video, rating) %>   <%= link_to "Delete", video_rating_path(@video, rating), method: :delete, data: { confirm: "Are you sure?" }  %></p></li>
+         
+          <%= rating.reason %> - <%= link_to "Edit", edit_video_rating_path(@video, rating) %>   <%= link_to "Delete", video_rating_path(@video, rating), method: :delete, data: { confirm: "Are you sure?" }  %></p></li>
       <% end %>  
     </ul>
