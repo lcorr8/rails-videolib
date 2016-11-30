@@ -109,7 +109,7 @@
 [x]    .make a route and mark it in spec file
 
 []10. spec.md requirements
-[]    .make a route for a class level scope and a page to fulfill reqs. stats page does not count
+[x]    .make a route for a class level scope and a page to fulfill reqs. stats page does not count
 [x]   .include nested resource index
 []    .include a nested from writing to an associated model using a custom attribute writer, make sure to use nested url
 
