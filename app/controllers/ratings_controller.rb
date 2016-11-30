@@ -29,6 +29,10 @@ class RatingsController < ApplicationController
     #@user_ratings = @video.video_ratings.select{ |rating| rating.user_id == @user.id }
   end
 
+  def index
+    @user_ratings = @video.video_ratings.where(user_id: current_user.id)
+  end
+
   def edit
     authorize @rating
   end

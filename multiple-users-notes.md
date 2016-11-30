@@ -84,8 +84,6 @@
 [x]    .only show the cohorts if you are a flatiron student
 [x]  - video show
 [x]    .call reason 'notes' to yourself.
-    
-
 [x]7. Add conditionals to views
 [x]    .if ratings present, show, else nothing
 [x]    .if no one has rated a video show empty stars
