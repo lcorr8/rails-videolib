@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-
+  get 'videos/all_hardest_videos' => 'videos#all_hardest_videos', as: :all_hardest_videos
+  
   resources :videos do 
       resources :ratings
       #resources :watched
@@ -14,6 +15,9 @@ Rails.application.routes.draw do
   get 'videos/:id/watched/delete' => 'watched#destroy', as: :watched_edit
 
   get '/study_suggestions' => 'application#study_suggestions', as: :study_suggestions
+
+
+  
 
 
   resources :users, only: [:index, :show, :destroy, :update]

@@ -1,0 +1,11 @@
+<% if Video.all_hardest_videos.count == 0 %>
+  <h3>No videos have been rated difficult yet!</h3>
+<% else %>  
+  <h2> <%= Video.all_hardest_videos.count %> Total Videos</h2>
+  <h3> ordered from most to least difficult by all user ratings </h3>
+      <ul>
+        <% Video.all_hardest_videos.each do |video| %>
+          <li> <%= link_to video.name, video_path(video) %></li>
+<% end %>
+      </ul> 
+    <% end %>
