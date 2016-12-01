@@ -78,8 +78,7 @@
 [x]    .style all links with black letters and green underline? or all green with green underline?
 [x]    .style titles h1 and h2 green and numbers in the section page green as well.
 [x]    .style h3 black
-[]    .add footer
-
+[x]    .add footer
 [x]  - section page
 [x]    .only show the cohorts if you are a flatiron student
 [x]  - video show
