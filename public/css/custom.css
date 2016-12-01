@@ -14,7 +14,7 @@ input[type='text'] {
 
 body {
   font-family: "MoonLight";
-  padding-bottom: 35px;
+  /* padding-bottom: 35px; */
 }
 
 nav {
@@ -40,6 +40,24 @@ h3 {
 
 ol li {
   color: #00802b;
+}
+
+html, body {
+    height: 100%;
+}
+
+.wrapper {
+    min-height: 100%;
+    margin-bottom: -85px;
+    padding-bottom: 85px;
+}
+footer {
+    height: 85px;
+}
+
+#personal-footer {
+  background: #E6E6E6;
+  padding-top: 10px;
 }
 
 .navbar-default .navbar-toggle .icon-bar {
@@ -184,6 +202,7 @@ div.container-gneral div.general{
   width: 100%;
   }  
 
+/* styling for the general videos in the section view */
 ul#double {
   width: 100%;
   margin-bottom:20px;
@@ -198,7 +217,7 @@ ul#double li{
   display:inline;
   width:450px;
 }
-
+/* ----------- styling for the general videos in the section view ----------- */
 
 div.container-statistics {
   width: 100%;
