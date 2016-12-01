@@ -60,6 +60,12 @@ footer {
   padding-top: 10px;
 }
 
+#personal-footer a {
+  color: #00802b;
+  font-weight: bold;
+
+}
+
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #00802b;
 }
