@@ -1,3 +1,4 @@
+/* app layout css */
 @font-face {
   font-family: "MoonLight";
   src: url("../fonts/MoonLight.otf");
@@ -26,6 +27,15 @@ nav a {
   color: #00802b;
 }
 
+a {
+  color: black; 
+  /*  color: #6D6D6D; */
+}
+
+p {
+  font-size: 1.2em;
+}
+
 a:hover {
   color: #00802b;
 }
@@ -42,34 +52,25 @@ ol li {
   color: #00802b;
 }
 
-html, body {
-    height: 100%;
-}
-
-.wrapper {
-    min-height: 100%;
-    margin-bottom: -85px;
-    padding-bottom: 85px;
-}
-footer {
-    height: 85px;
-}
-
-#personal-footer {
-  background: #E6E6E6;
-  padding-top: 10px;
-}
-
-#personal-footer a {
-  color: #00802b;
-  font-weight: bold;
-
-}
-
+/* navbar css */
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #00802b;
 }
 
+.navbar-brand {
+  background-color: #E7E7E7;
+}
+
+a.navbar-brand img{
+  height: 50px;
+  position: absolute;
+  left: 5px;
+  top: 0px; 
+}
+/* ---------- navbar css ---------- */
+
+
+/* background image css */
 .background-div {
   position: relative;
   overflow: hidden;
@@ -89,29 +90,37 @@ footer {
   overflow-y: hidden;
   opacity: 0.2;
 }
+/* ---------- END background image css ---------- */
 
-
-
-
-/* 
-h2 {
-  padding-top: 2em;
-}
-*/
-
-a {
-  color: black; 
-  /*  color: #6D6D6D; */
+/* footer css */
+html, body {
+    height: 100%;
 }
 
-p {
-  font-size: 1.2em;
+.wrapper {
+    min-height: 100%;
+    margin-bottom: -85px;
+    padding-bottom: 85px;
 }
 
-.navbar-brand {
-  background-color: #E7E7E7;
+footer {
+    height: 85px;
 }
 
+#personal-footer {
+  background: #E6E6E6;
+  padding-top: 10px;
+}
+
+#personal-footer a {
+  color: #00802b;
+  font-weight: bold;
+}
+/* ----------  END footer css ---------- */
+
+/* ----------  END app layout css ---------- */
+
+/* END form errors and flash notices */
 .field_with_errors input {
   border: 2px solid red; 
 }
@@ -129,15 +138,10 @@ p {
   border-left: 2px solid green;
   border-top: 2px solid green;
 }
-
-a.navbar-brand img{
-  height: 50px;
-  position: absolute;
-  left: 5px;
-  top: 0px; 
-}
+/* ---------- END form errors and flash notices ---------- */
 
 
+/* ---------- video css ---------- */
 .video-container {
     position: relative;
     padding-bottom: 56.25%;
@@ -167,7 +171,9 @@ div.container div.video-container div.video-watched iframe{
 div.container div.video-container div.video-not-watched iframe{
   border: 10px solid red;
 }
+/* ---------- END video css ---------- */
 
+/* button and icon css */
 i.fa {
   color: #00802b;
 }
@@ -190,7 +196,9 @@ i.fa {
 .button_to div {
   display: inline;
 }
+/* ---------- END button and icon css ---------- */
 
+/* styling for the flatiron videos in the section view */
 div.container-cohorts {
   width: 100%;
 }
@@ -207,6 +215,7 @@ div.container-general {
 div.container-gneral div.general{
   width: 100%;
   }  
+/* ---------- styling for the flatiron videos in the section view ---------- */
 
 /* styling for the general videos in the section view */
 ul#double {
@@ -225,6 +234,7 @@ ul#double li{
 }
 /* ----------- styling for the general videos in the section view ----------- */
 
+/* study suggestions css */
 div.container-statistics {
   width: 100%;
 }  
@@ -232,3 +242,4 @@ div.container-statistics {
 div.sections {
   width: 100%;
 }
+/* ----------- study suggestions css ----------- */
