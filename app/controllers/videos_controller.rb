@@ -24,24 +24,27 @@ class VideosController < ApplicationController
   def new
     @video = Video.new
     authorize @video
+    #pull section from params to meet req for nested form with custo attr writer
+    if params[:section_id]
+      @section = params[:section_id]
+    end
+    #raise "Stop"
   end
 
   def create
     # Creating a video with a section by ID (from select box)
     if !params[:video][:section_id].blank?
-      # lets delete the section key from the params hash, which is used to create section by name
+      # delete the section key from the params hash, which is used to create section by name
       params[:video].delete(:section)
     else
       # Creating a video with a section by name, using section key in params hash (from write your own new section)
       @section = Section.find_or_create_by(name: params[:video][:section][:name])
       @section.save
     end
-    #another option can be to pull the id from a nested url to meet the requirements, 
-    #then if that is present dont show the selection box, or create your own fields
 
     @video = Video.new(video_params)
     authorize @video
-    raise 'stop'
+    #raise 'stop'
     if @video.save
       redirect_to video_path(@video)
     else

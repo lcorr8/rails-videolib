@@ -107,14 +107,14 @@
 [x]9. Admin users panel
 [x]    .make a route and mark it in spec file
 
-[]10. spec.md requirements
+[x]10. spec.md requirements
 [x]    .make a route for a class level scope and a page to fulfill reqs. stats page does not count
 [x]   .include nested resource index
-[]    .include a nested form writing to an associated model using a custom attribute writer, make sure to use nested url
-[]       -build a "add a video to this section" to meet this requirement
+[x]    .include a nested form writing to an associated model using a custom attribute writer, make sure to use nested url
+[x]       -build a "add a video to this section" to meet this requirement
 [x]       -button right by the edit/delete section buttons
 [x]       -must have a nested url
-[]       -must have a custom writer
+[x]       -must have a custom writer: uses section custom writer that was previously written
 
 
 

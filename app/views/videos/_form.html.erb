@@ -8,16 +8,25 @@
   <%= f.text_field :link %><br>
   <%= f.label :year%>
   <%= f.text_field :year %><br>
-  <%= f.label :section %>
-  <%= f.collection_select(:section_id, Section.all, :id, :name, :include_blank => true) %><br>
+  
 
-  <!-- how to disable the create a new section if one is already choosen via the collection select? -->
+  <!-- hidden field for nested form with custom attribute writer -->
+  <% if !@section.nil? %>
+    <%= f.hidden_field :section_id, :value => @section %>
+  <!-- else use regular fields --> 
+  <% else %> 
+    <!-- select a section -->
+    <%= f.label :section %>
+    <%= f.collection_select(:section_id, Section.all, :id, :name, :include_blank => true) %><br>
+    <!-- make new section by name -->
+    <%= f.label "Create a new Section" %>
+    <%= f.fields_for :section, @video.build_section do |section_fields| %>
+      <%= section_fields.text_field :name %>
+    <% end %>
+    <br><br>
+  <% end %>  
 
-  <%= f.label "Create a new Section" %>
-  <%= f.fields_for :section, @video.build_section do |section_fields| %>
-    <%= section_fields.text_field :name %>
-  <% end %>
-  <br><br>
+  
   <%= f.label "what type of video is this?" %><br>
   <%= f.radio_button :flatiron, :true %> Flatiron Private Video
   <br>
