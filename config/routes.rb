@@ -7,7 +7,9 @@ Rails.application.routes.draw do
       #resources :watched
   end
 
-  resources :sections
+  resources :sections do 
+    resources :videos, only: [:new]
+  end
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
