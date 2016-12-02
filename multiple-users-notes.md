@@ -110,7 +110,7 @@
 []10. spec.md requirements
 [x]    .make a route for a class level scope and a page to fulfill reqs. stats page does not count
 [x]   .include nested resource index
-[]    .include a nested from writing to an associated model using a custom attribute writer, make sure to use nested url
+[]    .include a nested form writing to an associated model using a custom attribute writer, make sure to use nested url
 []       -build a "add a video to this section" to meet this requirement
 [x]       -button right by the edit/delete section buttons
 [x]       -must have a nested url
