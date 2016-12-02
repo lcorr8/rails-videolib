@@ -28,7 +28,7 @@
 </div>
 
 <div class="video-container">
-  <% if @video.video_watched(@user, @video) %>
+  <% if @video.video_watched?(@user, @video) %>
     <div class="video-watched ">
   <% else %>
     <div class="video-not-watched ">
@@ -50,11 +50,11 @@
     <%= button_to "Delete", @video, method: :delete, data: { confirm: "Are you sure?" }, :class => "btn rounded-outline-btn inline" %>
   <% end %>  
 
-  <% if !@video.video_watched(@user, @video) %>
+  <% if !@video.video_watched?(@user, @video) %>
     <%= button_to "Mark video watched", watched_path(@video), method: :get, :class => "btn rounded-outline-btn", params: {'video[watched]' => true} %>
   <% end %> 
 
-  <% if @video.video_watched(@user, @video) %>
+  <% if @video.video_watched?(@user, @video) %>
     <%= button_to "Delete View Status", watched_edit_path(@video), method: :get, :class => "btn rounded-outline-btn", params: {'video[watched]' => false} %>
   <% end %> 
 

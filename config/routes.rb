@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
+  #url to mark a video watched
   get 'videos/:id/watched' => 'watched#watched', as: :watched
   get 'videos/:id/watched/delete' => 'watched#destroy', as: :watched_edit
 

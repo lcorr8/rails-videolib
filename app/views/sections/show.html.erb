@@ -19,7 +19,7 @@
     <ul style="list-style-type:none" id="double">
     <% @videos.general.each do |video| %>
       <li><p>
-        <% if video.video_watched(@user, video) %>
+        <% if video.video_watched?(@user, video) %>
           <%= fa_icon "check-square-o" %>
         <% end %>
         <%= link_to video.name, video_path(video) %>  

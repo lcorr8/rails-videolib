@@ -4,7 +4,7 @@ class WatchedController < ApplicationController
   before_action :set_watched_video
 
   def watched
-    if !@video.video_watched(@user, @video)
+    if !@video.video_watched?(@user, @video)
       @watched_video = @video.watched_videos.build(watched_params)
       @watched_video.user = @user
       @watched_video.save 
@@ -13,12 +13,12 @@ class WatchedController < ApplicationController
       redirect_to video_path(@video)
       flash[:error] = "You have already marked this video watched, are you trying to delete the view status?"
     end
-    #only psitive views, if you havent seen a video then you dont have an entry in the join table,
+    #only positive views, if you havent seen a video then you dont have an entry in the join table,
     # if you want to delete a view, then you just delete the entry from the table
   end
 
   def destroy
-    if @video.video_watched(@user, @video)
+    if @video.video_watched?(@user, @video)
       @watched_video.destroy
       redirect_to video_path(@video)
     else

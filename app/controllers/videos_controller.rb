@@ -24,11 +24,10 @@ class VideosController < ApplicationController
   def new
     @video = Video.new
     authorize @video
-    #pull section from params to meet req for nested form with custo attr writer
+    #pull section from params to use in req for nested form with custo attr writer
     if params[:section_id]
       @section = params[:section_id]
     end
-    #raise "Stop"
   end
 
   def create
