@@ -5,6 +5,7 @@
 <% if policy(@section).destroy? %>
   <%= button_to "Delete", @section, method: :delete, data: { confirm: "Are you sure?" }, :class => "btn rounded-outline-btn" %>
 <% end %>
+<%= button_to "Add Video to this section", new_section_video_path(@section), method: :get, :class => "btn rounded-outline-btn" %>
 <br>
 
 <% if current_user.admin? || current_user.flatiron_student? %>
