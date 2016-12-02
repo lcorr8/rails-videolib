@@ -15,7 +15,6 @@ input[type='text'] {
 
 body {
   font-family: "MoonLight";
-  /* padding-bottom: 35px; */
 }
 
 nav {
@@ -27,25 +26,25 @@ nav a {
   color: #00802b;
 }
 
-a {
-  color: black; 
-  /*  color: #6D6D6D; */
-}
-
-p {
-  font-size: 1.2em;
-}
-
-a:hover {
-  color: #00802b;
-}
-
 h1, h2 {
   color: #00802b;
 }
 h3 {
   color: black;
 /*  color: #327311; */
+}
+
+a {
+  color: black; 
+  /*  color: #6D6D6D; */
+}
+
+a:hover {
+  color: #00802b;
+}
+
+p {
+  font-size: 1.2em;
 }
 
 ol li {
@@ -67,7 +66,7 @@ a.navbar-brand img{
   left: 5px;
   top: 0px; 
 }
-/* ---------- navbar css ---------- */
+/* ---------- END navbar css ---------- */
 
 
 /* background image css */
@@ -120,7 +119,7 @@ footer {
 
 /* ----------  END app layout css ---------- */
 
-/* END form errors and flash notices */
+/* form errors and flash notices */
 .field_with_errors input {
   border: 2px solid red; 
 }
@@ -173,7 +172,7 @@ div.container div.video-container div.video-not-watched iframe{
 }
 /* ---------- END video css ---------- */
 
-/* button and icon css */
+/* button and icons css */
 i.fa {
   color: #00802b;
 }

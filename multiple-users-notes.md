@@ -106,7 +106,6 @@
 [x]      . use pundit permissions on needed actions 
 [x]9. Admin users panel
 [x]    .make a route and mark it in spec file
-
 [x]10. spec.md requirements
 [x]    .make a route for a class level scope and a page to fulfill reqs. stats page does not count
 [x]   .include nested resource index
@@ -124,6 +123,7 @@ refactor optional helpers:
 [] add 2 general videos per section to seed file
 [] make a request button to request flatiron status.
 [] note everything
+[] check all files for duplicate code, and refactor it.
 
       
 
