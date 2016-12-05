@@ -119,6 +119,9 @@
 
 refactor optional helpers:
 [x] organize css and note what is doing what
+  [] note work on controllers
+  []note work on views?
+  
 [] have any users rated a given video? to display 0 colored stars.   
 [] add 2 general videos per section to seed file
 [] make a request button to request flatiron status.
