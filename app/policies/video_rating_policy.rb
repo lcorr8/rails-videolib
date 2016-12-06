@@ -4,6 +4,14 @@ class VideoRatingPolicy < ApplicationPolicy
     
   end
 
+  def index?
+    if record.first.user == user
+      true
+    else
+      false 
+    end
+  end
+
   def new?
     user.admin? || user.flatiron_student? || user.general_student?
   end
