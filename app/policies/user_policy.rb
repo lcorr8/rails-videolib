@@ -11,11 +11,13 @@ class UserPolicy < ApplicationPolicy
   end
 
   def new?
-    #only users can make themselves how do i handle that in terms of policies.
+    #only users can make themselves how do i handle that in terms of policies. 
+    #or does devise already do this
   end
 
   def create?
     #only users can make themselves how do i handle that in terms of policies.
+    #or does devise already do this
   end
 
   def show?
@@ -36,7 +38,7 @@ class UserPolicy < ApplicationPolicy
     else
       false
     end
-    #users can delete themselves or an admin can delete them
+    #admin can delete user's but can't delete their own account.
   end
 
 

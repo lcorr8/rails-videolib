@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:github]
 
+#used in the github method called by omniauth callback controller
   def self.from_omniauth(auth)
       where(email: auth.info.email).first_or_create! do |user|
       user.uid = auth.uid
