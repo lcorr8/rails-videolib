@@ -1,6 +1,6 @@
 class SectionsController < ApplicationController
-  before_action :authenticate_user! #devise helper, enures users are sgned in before actions can be accessed
-  before_action :set_user 
+  before_action :authenticate_user! #devise helper, enures users are signed in before actions can be accessed
+  before_action :set_user, only: [:show] 
   before_action :set_section, only: [:edit, :update, :destroy, :show] 
 
   def index
@@ -9,6 +9,9 @@ class SectionsController < ApplicationController
   end
 
   def show
+    #all sections show for all users, by section policy
+    #videos are scoped by user role, by video policy
+    #need to set user to determine the checkmarks for videos_watched?(user, video) method
     @videos = policy_scope(Video).where(section_id: @section.id)
     authorize @section
   end  
@@ -43,12 +46,13 @@ class SectionsController < ApplicationController
   end
 
   def destroy
+    #section can only be deleted by admin, and when its empty of videos.
     authorize @section 
     if @section.videos.count <1
       @section.destroy
       redirect_to sections_path
     else
-      flash[:error] = "There are still videos in this section, so it cant be deleted"
+      flash[:error] = "There are still videos in this section, so it can't be deleted"
       render :show
     end
   end
