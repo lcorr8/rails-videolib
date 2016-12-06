@@ -5,6 +5,7 @@ class VideoRatingPolicy < ApplicationPolicy
   end
 
   def index?
+    #when should i use @record versus record? or @user vs user
     if record.first.user == user
       true
     else
