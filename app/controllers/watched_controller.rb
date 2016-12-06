@@ -1,8 +1,9 @@
 class WatchedController < ApplicationController
-  before_action :set_video
-  before_action :set_user
-  before_action :set_watched_video
+  before_action :set_video, only: [:watched, :destroy]
+  before_action :set_user, only: [:watched,:destroy]
+  before_action :set_watched_video, only: [:destroy]
 
+  #marks a video watched if there are no watchedvideo records in the joins table
   def watched
     if !@video.video_watched?(@user, @video)
       @watched_video = @video.watched_videos.build(watched_params)
@@ -26,11 +27,6 @@ class WatchedController < ApplicationController
       flash[:error] = "There is no view status to delete, try marking the video watched first"
     end
   end
-
-
-
-
-
 
 
   private
