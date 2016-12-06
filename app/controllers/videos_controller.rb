@@ -10,10 +10,9 @@ class VideosController < ApplicationController
   def show
     @video = Video.find(params[:id])
     authorize @video
+    #personal ratings of the video
     @user_ratings = @video.video_ratings.select{ |rating| rating.user_id == @user.id }
-    #refactor into helper?
-    #if there are any video ratings, display a total video rating,
-    #else display a message "not rated yet"
+    #average video ratings if more than one rating present for the video
     if @video.video_ratings.count > 0
       @average_rating = @video.video_ratings.average(:rating_id).to_i.to_s
       @total_video_rating = Rating.find(@average_rating)
@@ -24,7 +23,7 @@ class VideosController < ApplicationController
   def new
     @video = Video.new
     authorize @video
-    #pull section from params to use in req for nested form with custo attr writer
+    #pull section from params to use in req for nested form with custom attr writer
     if params[:section_id]
       @section = params[:section_id]
     end
@@ -43,7 +42,6 @@ class VideosController < ApplicationController
 
     @video = Video.new(video_params)
     authorize @video
-    #raise 'stop'
     if @video.save
       redirect_to video_path(@video)
     else
