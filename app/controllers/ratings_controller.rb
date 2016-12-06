@@ -1,12 +1,13 @@
 class RatingsController < ApplicationController
+  #the ratings controller does not create ratings but rather handles the video-ratings (join table rows)
+  #there are only 5 ratings and they come pre-made, users dont make any more.
+
   before_action :authenticate_user!
   before_action :set_user, only: [:create]
   before_action :set_video
   before_action :set_rating, only: [:edit, :update, :destroy]
   
 
-  #this ratings controller handles the video-ratings (join table rows)
-  #there are only 5 ratings and they come pre-made, users dont make any more.
   def new
     @rating = @video.video_ratings.build
     authorize @rating
@@ -31,10 +32,18 @@ class RatingsController < ApplicationController
 
   def index
     @user_ratings = @video.video_ratings.where(user_id: current_user.id)
+    #do i need to authorize if im scoping by current user ratings?
+    authorize @user_ratings 
   end
 
   def edit
-    authorize @rating
+    #scoping by video to account for nested url
+    if @video.video_ratings.include?(@rating)
+      authorize @rating
+    else 
+      redirect_to video_path(@video)
+      flash[:error] = "That rating does not belong to this video, nice try."
+    end
   end
 
   def update
@@ -56,7 +65,6 @@ class RatingsController < ApplicationController
 
   def set_video
     @video = Video.find(params[:video_id])
-    #scope by user in the future
   end
 
   def set_rating
