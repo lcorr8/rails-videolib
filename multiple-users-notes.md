@@ -117,10 +117,16 @@
 
 
 
-refactor optional helpers:
+refactor:
 [x] organize css and note what is doing what
-  [] note work on controllers
-  []note work on views?
+[x] note work on controllers
+[]refactor views 
+  []refactor repeated views into partials
+  []refactor db logic to controllers and only have variables
+  []move logic that formats views and has to b shared in ore than one spot into helpers
+[]refactor controllers
+  []move db logic to models and use method names
+[]abstract code in model    
   
 [] have any users rated a given video? to display 0 colored stars.   
 [] add 2 general videos per section to seed file
