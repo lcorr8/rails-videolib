@@ -9,4 +9,8 @@ module VideosHelper
       content_tag(:iframe, nil, src: "#{url}")
     end
   end
+
+  def watched_videos_percentage(watched, total)
+    (watched.count * 100) / total.count
+  end
 end

@@ -120,19 +120,19 @@
 refactor:
 [x] organize css and note what is doing what
 [x] note work on controllers
-[]refactor views 
-  []refactor repeated views into partials
-  []refactor db logic to controllers and only have variables
-  []move logic that formats views and has to b shared in ore than one spot into helpers
-[]refactor controllers
-  []move db logic to models and use method names
-[]abstract code in model    
+[x]refactor views 
+  [x]refactor repeated views into partials
+  [x]refactor db logic to controllers and only have variables
+  [x]move logic that formats views and has to be shared in more than one spot into helpers
+[x]refactor controllers
+  [x]move db logic to models and use method names
+[x]abstract code in model    
   
-[] have any users rated a given video? to display 0 colored stars.   
 [] add 2 general videos per section to seed file
 [] make a request button to request flatiron status.
-[] note everything
-[] check all files for duplicate code, and refactor it.
+[] apply the request button
+[x] note everything
+[x] check all files for duplicate code, and refactor it.
 
 extras:
 build feature to request status change.

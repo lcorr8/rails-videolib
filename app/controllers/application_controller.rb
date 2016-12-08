@@ -15,10 +15,8 @@ class ApplicationController < ActionController::Base
     @videos = Video.all
     @flatiron_videos= Video.flatiron
     @watched_flatiron_videos = Video.watched_flatiron_videos(current_user)
-    @percentage_watched_flatiron_videos = Video.watched_videos_percentage(@watched_flatiron_videos, @flatiron_videos)
     @general_videos = Video.general
     @watched_general_videos = Video.watched_general_videos(current_user)
-    @percentage_watched_general_videos = Video.watched_videos_percentage(@watched_general_videos, @general_videos)
   end
 
   def home

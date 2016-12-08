@@ -7,7 +7,7 @@
     <h3>There are currently a total of <%= @flatiron_videos.count %> Flatiron videos, and you have seen <%= @watched_flatiron_videos.count %> so far.</h3>
     <p>Current Flatiron videos progress:</p>
     <div class="container flatiron-statistics-progress-bar">
-        <%= render partial: 'application/progress_bar', locals: {percentage: @percentage_watched_flatiron_videos} %>
+        <%= render partial: 'application/progress_bar', locals: {percentage: watched_videos_percentage(@watched_flatiron_videos, @flatiron_videos)} %>
     </div>
   </div>
   
@@ -16,7 +16,7 @@
     <h3>There are currently a total of <%= @general_videos.count %> general videos, and you have seen <%= @watched_general_videos.count %> so far.</h3>
     <p>Current general videos progress:</p>
     <div class="container general-statistics-progress-bar">
-        <%= render partial: 'application/progress_bar', locals: {percentage: @percentage_watched_general_videos} %>
+        <%= render partial: 'application/progress_bar', locals: {percentage: watched_videos_percentage(@watched_general_videos, @general_videos)} %>
     </div>
   </div>
   
