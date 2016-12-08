@@ -1,4 +1,4 @@
-<h2><%= @section.name %></h2>
+<h1><%= link_to @section.name, section_path(@section) %></h1>
 <% if policy(@section).edit? %>
   <%= button_to "Edit", edit_section_path(@section), method: :get, :class => "btn rounded-outline-btn" %>
 <% end %>  
@@ -9,7 +9,7 @@
 <br>
 
 <% if current_user.admin? || current_user.flatiron_student? %>
-  <%= render 'flatiron_cohorts' %>
+  <%= render 'flatiron_videos' %>
 <% end %>  
 
 <div class="container container-general">
@@ -29,10 +29,3 @@
   </div>
 
 </div>
-
-<%= button_to "Back to sections", sections_path, method: :get, :class => "btn rounded-outline-btn" %>
-<%= button_to "Add a video", new_video_path, method: :get, :class => "btn rounded-outline-btn" %>
-
-
-
-

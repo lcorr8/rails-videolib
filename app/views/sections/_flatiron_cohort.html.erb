@@ -1,0 +1,11 @@
+<div class="container cohorts text-center"> 
+  <h3> <%= year %>:</h3>
+    <% flatiron_videos.each do |video| %>
+      <p>
+        <% if video.video_watched?(@user, video) %>
+          <%= fa_icon "check-square-o" %>
+        <% end %>
+        <%= link_to video.name, video_path(video) %>  
+      </p>
+    <% end %>  
+  </div>
