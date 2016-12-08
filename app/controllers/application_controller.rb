@@ -13,10 +13,16 @@ class ApplicationController < ActionController::Base
 
   def study_suggestions
     @videos = Video.all
+    @flatiron_videos= Video.flatiron
+    @watched_flatiron_videos = Video.watched_flatiron_videos(current_user)
+    @percentage_watched_flatiron_videos = Video.watched_videos_percentage(@watched_flatiron_videos, @flatiron_videos)
+    @general_videos = Video.general
+    @watched_general_videos = Video.watched_general_videos(current_user)
+    @percentage_watched_general_videos = Video.watched_videos_percentage(@watched_general_videos, @general_videos)
   end
 
   def home
-    #does devise give you a logged_in? helper? = user_igned_in? and current_user
+    #does devise give you a logged_in? helper? => user_igned_in? and current_user
     if user_signed_in?
       redirect_to sections_path
     end

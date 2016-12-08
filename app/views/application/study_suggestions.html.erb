@@ -4,10 +4,8 @@
 <div class="container-statistics">
 
   <div class="container flatiron-statistics">
-    <h3>There are currently a total of <%= Video.flatiron.count %> Flatiron videos, and you have seen <%= Video.watched_flatiron_videos(current_user).count %> so far.</h3>
+    <h3>There are currently a total of <%= @flatiron_videos.count %> Flatiron videos, and you have seen <%= @watched_flatiron_videos.count %> so far.</h3>
     <p>Current Flatiron videos progress:</p>
-    <% @percentage_watched_flatiron_videos = ( (Video.watched_flatiron_videos(current_user).count * 100) / Video.flatiron.count) %>
-    
     <div class="container flatiron-statistics-progress-bar">
         <%= render partial: 'application/progress_bar', locals: {percentage: @percentage_watched_flatiron_videos} %>
     </div>
@@ -15,9 +13,8 @@
   
     
   <div class="container general-statistics">
-    <h3>There are currently a total of <%= Video.general.count %> general videos, and you have seen <%= Video.watched_general_videos(current_user).count %> so far.</h3>
+    <h3>There are currently a total of <%= @general_videos.count %> general videos, and you have seen <%= @watched_general_videos.count %> so far.</h3>
     <p>Current general videos progress:</p>
-    <% @percentage_watched_general_videos = ( (Video.watched_general_videos(current_user).count * 100) / Video.general.count) %>
     <div class="container general-statistics-progress-bar">
         <%= render partial: 'application/progress_bar', locals: {percentage: @percentage_watched_general_videos} %>
     </div>
