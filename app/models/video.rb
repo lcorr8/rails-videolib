@@ -90,4 +90,8 @@ class Video < ActiveRecord::Base
     Video.joins(:video_ratings).where("video_ratings.rating_id = ?", 5).select("videos.id, videos.name, count(videos.id) as hardest_rated_count").order("hardest_rated_count DESC").group("videos.id").to_a
   end
 
+  def user_ratings
+    self.video_ratings.select{ |rating| rating.user_id == current_user.id }
+  end
+
 end
