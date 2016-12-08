@@ -1,12 +1,12 @@
 <h1><%= link_to @section.name, section_path(@section) %></h1>
-<% if policy(@section).edit? %>
-  <%= button_to "Edit", edit_section_path(@section), method: :get, :class => "btn rounded-outline-btn" %>
-<% end %>  
-<% if policy(@section).destroy? %>
-  <%= button_to "Delete", @section, method: :delete, data: { confirm: "Are you sure?" }, :class => "btn rounded-outline-btn" %>
-<% end %>
-<%= button_to "Add Video to this section", new_section_video_path(@section), method: :get, :class => "btn rounded-outline-btn" %>
-<br>
+  <% if policy(@section).edit? %>
+    <%= button_to "Edit", edit_section_path(@section), method: :get, :class => "btn rounded-outline-btn" %>
+  <% end %>  
+  <% if policy(@section).destroy? %>
+    <%= button_to "Delete", @section, method: :delete, data: { confirm: "Are you sure?" }, :class => "btn rounded-outline-btn" %>
+  <% end %>
+  <%= button_to "Add Video to this section", new_section_video_path(@section), method: :get, :class => "btn rounded-outline-btn" %>
+  <br>
 
 <% if current_user.admin? || current_user.flatiron_student? %>
   <%= render 'flatiron_videos' %>
@@ -14,7 +14,6 @@
 
 <div class="container container-general">
   <center><h2>General Videos </h2></center>
-
   <div class="container general"> 
     <ul style="list-style-type:none" id="double">
     <% @videos.general.each do |video| %>
@@ -27,5 +26,4 @@
     <% end %>
     </ul>  
   </div>
-
 </div>
