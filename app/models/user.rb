@@ -37,4 +37,14 @@ class User < ActiveRecord::Base
     self.role ||= :general_student
   end
 
+  def user_role
+    if self.role == "general_student"
+      "General Student"
+    elsif self.role == "flatiron_student"
+      "Flatiron Student"
+    elsif self.role == "admin"
+      "Admin"
+    end
+  end
+
 end #class

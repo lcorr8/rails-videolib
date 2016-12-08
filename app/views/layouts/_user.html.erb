@@ -1,6 +1,5 @@
 <div class="text-right">
   <% if current_user %>
-    Loged in as <%= current_user.email %><br>
-    <%= current_user.role %>
+   <%= current_user.user_role %>: <%= current_user.email %><br>
   <% end %>
 </div>
