@@ -1,11 +1,11 @@
-<% if @rating.errors.any? %>
+<% if item.errors.any? %>
   <div id="error_explanation" class="errors">
     <p>
-      <%= pluralize(@rating.errors.count, "error") %>
+      <%= pluralize(item.errors.count, "error") %>
       prohibited this rating from being saved:
     </p>
     <ul>
-      <% @rating.errors.full_messages.each do |msg| %>
+      <% item.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>  
     </ul>

@@ -1,3 +1,6 @@
+  <%= render partial: 'application/show_errors', locals: {item: @rating} %>
+
+
  <%= f.label "Rate difficulty of video lesson, 1 = easiest, 3 = average, 5 = hardest" %><br>
   <%= f.collection_select(:rating_id, Rating.all, :id , :stars_with_description)  %><br>
 

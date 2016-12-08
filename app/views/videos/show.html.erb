@@ -1,6 +1,6 @@
 <div class="container center"> 
   <span class="pull-left">
-    <h1>Section: <%= @video.section.name %></h1>
+    <h1>Section: <%= link_to @video.section.name, section_path(@video.section) %></h1>
     <h2>Video: 
     <%= link_to @video.name, @video.link, :target => "_blank"  %>
       -  <small><%= @video.year %></small></h2>    

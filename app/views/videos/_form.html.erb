@@ -1,6 +1,6 @@
 <%= form_for @video do |f| %>
 
-  <%= render 'errors' %>
+  <%= render partial: 'application/show_errors', locals: {item: @video} %>
 
   <%= f.label :name %>
   <%= f.text_field :name %><br>

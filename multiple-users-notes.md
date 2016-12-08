@@ -134,6 +134,9 @@ refactor:
 [] note everything
 [] check all files for duplicate code, and refactor it.
 
+extras:
+build feature to request status change.
+
       
 
   

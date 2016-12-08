@@ -2,8 +2,5 @@
 <h3> <%= @video.name %></h3>
 
 <%= form_for(@rating) do |f| %>
-<%= render 'errors' %>
-  
- <%= render 'fields', :f => f %>
-
+  <%= render 'fields', :f => f %>
 <% end %>
