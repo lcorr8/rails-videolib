@@ -1,5 +1,5 @@
 module RatingsHelper
   def rating_stars(rating)
-    Rating.find(rating.rating_id).stars
+    Rating.find(rating.id).stars
   end
 end

@@ -1,9 +1,8 @@
 <ul>
     <% @user_ratings.each do |rating|   %>
         <li><p> 
-        <%= render partial: 'ratings/stars', locals: {rating: rating} %>
+        <%= render partial: 'ratings/stars', locals: {rating: rating.rating, size: ""} %>
         <br>
-         
           <%= rating.reason %> - <%= link_to "Edit", edit_video_rating_path(@video, rating) %>   <%= link_to "Delete", video_rating_path(@video, rating), method: :delete, data: { confirm: "Are you sure?" }  %></p></li>
       <% end %>  
     </ul>

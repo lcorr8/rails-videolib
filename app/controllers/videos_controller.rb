@@ -13,9 +13,10 @@ class VideosController < ApplicationController
     #personal ratings of the video
     @user_ratings = @video.video_ratings.select{ |rating| rating.user_id == @user.id }
     #average video ratings if more than one rating present for the video
-    if @video.video_ratings.count > 0
+    if @video.video_ratings.any?
+      #calculates the average star rating
       @average_rating = @video.video_ratings.average(:rating_id).to_i.to_s
-      @total_video_rating = Rating.find(@average_rating)
+      @total_video_rating = Rating.find_by(stars: @average_rating)
     end
     
   end
