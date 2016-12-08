@@ -32,6 +32,9 @@ gem 'omniauth-github', '~> 1.1', '>= 1.1.2'
 
 gem 'font-awesome-rails'
 
+#tool to help refactor code
+gem "rubycritic", :require => false
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
