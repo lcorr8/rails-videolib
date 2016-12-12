@@ -3,7 +3,7 @@ class RatingsController < ApplicationController
   #there are only 5 ratings and they come pre-made, users dont make any more.
 
   before_action :authenticate_user!
-  before_action :set_user, only: [:create]
+  before_action :set_user, only: [:create, :index]
   before_action :set_video
   before_action :set_rating, only: [:edit, :update, :destroy]
   
@@ -31,7 +31,7 @@ class RatingsController < ApplicationController
   end
 
   def index
-    @user_ratings = @video.video_ratings.where(user_id: current_user.id)
+    @user_ratings = @video.user_ratings(@user)
     #do i need to authorize if im scoping by current user ratings?
     authorize @user_ratings 
   end

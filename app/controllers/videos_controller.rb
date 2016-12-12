@@ -11,7 +11,7 @@ class VideosController < ApplicationController
     @video = Video.find(params[:id])
     authorize @video
     #personal ratings of the video
-    @user_ratings = @video.user_ratings
+    @user_ratings = @video.user_ratings(@user)
     #average video ratings if more than one rating present for the video
     if @video.video_ratings.any?
       #calculates the average star rating
