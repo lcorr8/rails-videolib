@@ -115,8 +115,6 @@
 [x]       -must have a nested url
 [x]       -must have a custom writer: uses section custom writer that was previously written
 
-
-
 refactor:
 [x] organize css and note what is doing what
 [x] note work on controllers
@@ -129,18 +127,13 @@ refactor:
 [x]abstract code in model    
   
 [] add 2 general videos per section to seed file
-[] make a request button to request flatiron status.
-[] apply the request button
+[x] make a request button to request flatiron status.
+[x] apply the request button
 [x] note everything
 [x] check all files for duplicate code, and refactor it.
 
 extras:
 build feature to request status change.
-
-      
-
-  
- 
 
 *** Determine:
 -videos
@@ -154,57 +147,7 @@ build feature to request status change.
 
 
 
-Pundit:
-  users, videos, sections, watched join table, ratings join table,
-  - add pundit to gemfile. gem 'pundit'
-  - include Pundit, in the application controller above the protect from forgery.
-  -bundle install
-  -run the generator rails g pundit:install
-  -restart rails to pickup changes
-  -stub out policies:
-    normal users: are allowe to view non flatiron videos. or flatiron public videos.
-    flatiron students: allowed to see private flatiron videos.
-    admin: allowed to edit sections and videos.
-  -create policy files in the app/policies directory.
-    class VideoPolicy < ApplicationPolicy
-    end
-  - generate migration to add role to users table. rails generate migration AddRoleToUsers role:integer
-   
-  -implement the policy within the controller by using authorize.
-    def update
-      @video = Video.find(1)
-      authorize @video
-      #perform the update
-      end 
-  -implement the policy within the views by using the policy constructing helper pundit offers
-    <% if policy(@post).update? %>
-      <%= link_to "Edit post", edit_post_path(@post) %>
-    <% end %> 
-  -add flatiron attribute to videos so videos can be scoped by pundit.
-  -implement scope by adding a class Scope < Scope inside your policy class. Then write the resolve scopes
-    def resolve
-      if user.admin?
-        scope.all
-      else
-        scope.where(:published => true)
-      end
-    end  
-  -implement the scope within the views by using the policy scope helper
-    <% policy_scope(@user.videos).each do |video| %>
-      <p><%= link_to video.name, video_path(video) %></p>
-    <% end %>
 
-
-
-
-
-  -add role enum to user model
-  -write policy governing user model
-    -normal: can read all videos and sections. can add videos and section.
-    -admin: can edit, and delete all videos and sections.
-  -add authentication and authorization filters to user's controller. only administrators can update or destroy users.
-
-    
 
 
 
