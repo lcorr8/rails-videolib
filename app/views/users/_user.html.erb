@@ -1,4 +1,11 @@
 <td>
+  <!--  if user.request == "Requesting Flatiron Status"  -->
+  <% if user.role == "general_student" %>
+    <%= button_to "//", "#", :class => "btn rounded-outline-btn-small" %>
+  <% end %>  
+  </td>
+
+<td>
   <%= link_to user.email, user_path(user) %>
 </td>
 

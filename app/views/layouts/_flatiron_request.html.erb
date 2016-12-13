@@ -1,3 +1,1 @@
-<% if @user_record.role == "genral_student" %>
-  <%= button_to "Request Flatiron Status", request_flatiron_status_path(@user_record), method: :get, :class => "btn rounded-outline-btn", params: {'user[request]' => "Requesting Flatiron Status"} %>
-<% end %>
+<%= button_to "//", request_flatiron_status_path(current_user), method: :get, :class => "btn rounded-outline-btn-small", params: {'user[request]' => "Requesting Flatiron Status"} %>

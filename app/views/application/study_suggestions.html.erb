@@ -46,7 +46,7 @@
   </div>    
 
   <div class="container statistics-see-again">  
-    <% if hard_lessons.nil? %>
+    <% if hard_lessons.count < 1 %>
       <h3><%= "You have not rated any videos with a 5 star difficulty rating yet." %></h3>
     <% else %>  
       <h3>There are currently <%= hard_lessons.count %> videos you thought were difficult, perhaps watch them again?</h3>

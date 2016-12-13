@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:index, :show, :update]
+  before_action :set_user, only: [:index, :show, :update, :request_flatiron_status]
   before_action :set_user_record, only: [:show, :update, :destroy]
 
   def index
@@ -50,6 +50,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def request_flatiron_status
+    @user.request = params[:user][:request]
+    #says there is no password for the user?!?!?!
+    #so if I add a password im assuming im overwriting login password when account not create via github
+    #what gives?
+    if @user.save
+      redirect_to(:back)
+      flash[:notice] = "Request submitted"
+    else
+      redirect_to(:back)
+      flash[:error] = "Unable to submit request"
+    end
+    
+  end
+
 
   private
 
@@ -64,4 +79,5 @@ class UsersController < ApplicationController
     def user_record_params
       params.require(:user).permit(:role)
     end
+
 end
