@@ -1,11 +1,16 @@
 class SectionsController < ApplicationController
-  before_action :authenticate_user! #devise helper, enures users are signed in before actions can be accessed
-  before_action :set_user, only: [:show] 
+  #before_action :authenticate_user! #devise helper, enures users are signed in before actions can be accessed
+  #before_action :set_user, only: [:show] 
   before_action :set_section, only: [:edit, :update, :destroy, :show] 
 
   def index
     @sections = Section.all
     authorize @sections
+  end
+
+  def api_index
+    @sections = Section.all
+    render json: @sections
   end
 
   def show
