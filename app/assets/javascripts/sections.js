@@ -7,9 +7,12 @@ $( function(){
       })
       .then(function(data) {
         console.log(data)
+        //$('.sections').html("")
+        for (i=0; i< data.length; i++) {
+          $('.sections').append($('<li></li>').text(data[i].name))
+        }
 
-        $('.sections').append(data[0].name)
+        //$('.sections').append(data[0].name)
       })
-
   })
 })
