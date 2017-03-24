@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get '/study_suggestions' => 'application#study_suggestions', as: :study_suggestions
 
   get '/api/sections', to: 'sections#api_index'
+  get '/api/sections/:id/videos', to: 'sections#api_show'
 
   
 

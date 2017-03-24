@@ -1,7 +1,7 @@
 class SectionsController < ApplicationController
   #before_action :authenticate_user! #devise helper, enures users are signed in before actions can be accessed
   #before_action :set_user, only: [:show] 
-  before_action :set_section, only: [:edit, :update, :destroy, :show] 
+  before_action :set_section, only: [:edit, :update, :destroy, :show, :api_show] 
 
   def index
     @sections = Section.all
@@ -20,6 +20,11 @@ class SectionsController < ApplicationController
     @videos = policy_scope(Video).where(section_id: @section.id)
     authorize @section
   end  
+
+  def api_show
+    @videos = @section.videos
+    render json: @videos
+  end
 
   def new
     @section = Section.new
