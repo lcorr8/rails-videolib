@@ -23,7 +23,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'bcrypt'
+#gem 'bcrypt'
 gem 'devise'
 gem 'pundit'
 
@@ -31,6 +31,8 @@ gem 'figaro'
 gem 'omniauth-github', '~> 1.1', '>= 1.1.2'
 
 gem 'font-awesome-rails'
+
+gem 'active_model_serializers'
 
 #tool to help refactor code
 gem "rubycritic", :require => false
