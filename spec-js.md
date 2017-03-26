@@ -2,10 +2,13 @@
 
 Specs:
 - [x] Use jQuery for implementing new requirements
+
 - [ ] Include a show resource rendered using jQuery and an Active Model Serialization JSON backend.
-- [ ] Include an index resource rendered using jQuery and an Active Model Serialization JSON backend.
-- [ ] Include at least one has_many relationship in information rendered via JSON and appended to the DOM.
-- [ ] Include at least one link that loads or updates a resource without reloading the page.
+
+- [x] Include an index resource rendered using jQuery and an Active Model Serialization JSON backend. - Sections index page (/api/sections)
+- [x] Include at least one has_many relationship in information rendered via JSON and appended to the DOM. - (/api/sections) sections have many videos, the sections api endpoint also shows each sections videos but those are only rendered upon a click.
+- [x] Include at least one link that loads or updates a resource without reloading the page. - button to load the sections index.
+
 - [ ] Translate JSON responses into js model objects.
 - [ ] At least one of the js model objects must have at least one method added by your code to the prototype.
 
