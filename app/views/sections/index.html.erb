@@ -1,10 +1,19 @@
 <h2>Which section would you like to review?</h2>
 
-<div class="sections">
-  <ol>
-    <button class="btn rounded-outline-btn">Click to view all Sections</button>
-  </ol>
-  <br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <ol class="sections">
+        <button class="btn rounded-outline-btn">Click to view all Sections</button>
+      </ol>
+      <br>
+      <%= button_to "Add a section", new_section_path, method: :get, :class => "btn rounded-outline-btn" %>
+    </div>
+    <div class="col-md-6">
+    <ol class="section-videos">
+    </ol>
+    </div>
+  </div>
 </div>
 
-<%= button_to "Add a section", new_section_path, method: :get, :class => "btn rounded-outline-btn" %>
+
