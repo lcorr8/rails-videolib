@@ -10,6 +10,7 @@ class SectionsController < ApplicationController
 
   def api_index
     @sections = Section.all
+    authorize @sections
     render json: @sections
   end
 
@@ -22,7 +23,8 @@ class SectionsController < ApplicationController
   end  
 
   def api_show
-    @videos = @section.videos
+    @videos = policy_scope(Video).where(section_id: @section.id)
+    #authorize @section
     render json: @videos
   end
 
