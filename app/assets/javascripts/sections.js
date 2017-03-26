@@ -13,10 +13,17 @@ function sectionsIndex(){
         console.log(data)
         //$('.sections').html("")
         for (i=0; i< data.length; i++) {
-          $('.sections').append($('<li></li>').text(data[i].name))
+          var newSection = new Section(data[i].id, data[i].name)
+          $('.sections').append($('<li></li>').text(newSection.name))
         }
 
         //$('.sections').append(data[0].name)
       })
   })
+}
+
+// section model object using constructor function
+function Section(id, name){
+  this.id = id,
+  this.name = name
 }
