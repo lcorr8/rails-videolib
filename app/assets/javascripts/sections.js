@@ -10,14 +10,11 @@ function sectionsIndex(){
         return response.json()
       })
       .then(function(data) {
-        console.log(data)
-        //$('.sections').html("")
-        for (i=0; i< data.length; i++) {
-          var newSection = new Section(data[i].id, data[i].name)
-          $('.sections').append($('<li></li>').text(newSection.name))
-        }
-
-        //$('.sections').append(data[0].name)
+        data.forEach(function(section) {
+          var newSection = new Section(section.id, section.name)
+          var formattedSection = newSection.formatSection()
+          $('.sections').append(formattedSection)
+        })
       })
   })
 }
@@ -26,4 +23,11 @@ function sectionsIndex(){
 function Section(id, name){
   this.id = id,
   this.name = name
+}
+
+// section prototype to format js model object
+Section.prototype.formatSection = function(){
+  var sectionHtml = ""
+  sectionHtml += "<h3><li>" + this.name + "</li></h3>"
+  return sectionHtml
 }
