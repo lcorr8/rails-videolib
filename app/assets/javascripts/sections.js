@@ -1,4 +1,8 @@
 $( function(){
+  sectionsIndex()
+})
+
+function sectionsIndex(){
   $(".sections button").on("click", function(){
     $('.sections').html('')
     fetch(`/api/sections`)
@@ -15,4 +19,4 @@ $( function(){
         //$('.sections').append(data[0].name)
       })
   })
-})
+}
