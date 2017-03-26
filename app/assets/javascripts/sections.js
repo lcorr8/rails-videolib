@@ -1,5 +1,5 @@
 $( function(){
-  $(".sections").on("click", function(){
+  $(".sections button").on("click", function(){
     $('.sections').html('')
     fetch(`/api/sections`)
       .then(function(response) {
