@@ -4,6 +4,10 @@ class SectionPolicy < ApplicationPolicy
     true
   end
 
+  def api_index?
+    true
+  end
+
   def show?
     true
   end
