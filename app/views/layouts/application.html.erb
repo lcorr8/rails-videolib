@@ -31,7 +31,9 @@
   <div class="container">
     <%= render 'layouts/user' %>
     <%= render 'layouts/messages' %>
-    <%= yield %>
+    <div id="template-container">
+      <%= yield %>
+    </div>
   </div> 
 
   <img src="/img/white-pineapple.jpeg">
