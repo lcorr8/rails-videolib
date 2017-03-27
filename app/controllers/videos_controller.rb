@@ -18,7 +18,11 @@ class VideosController < ApplicationController
       @average_rating = @video.video_ratings.average(:rating_id).to_i.to_s
       @total_video_rating = Rating.find_by(stars: @average_rating)
     end
-    
+  end
+
+  def api_show
+    @video = Video.find(params[:id])
+    render json: @video
   end
 
   def new
