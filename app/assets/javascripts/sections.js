@@ -1,5 +1,5 @@
 $( function(){
-  sectionsIndex();
+  sectionsIndex()
   sectionVideosIndex()
 })
 
@@ -25,7 +25,7 @@ function sectionsIndex(){
 function sectionVideosIndex() {
   // make the json response into a js model object, with a prototype method that formats them
   //format shouldd include checkmark for vatched videos
-  $(document).on("click", "li.section-show", function(event){
+  $(document).on("click", "li.section-index", function(event){
     var sectionId = $(this).data("id")
     var sectionName = $(this).text()
     $.ajax({
@@ -36,7 +36,7 @@ function sectionVideosIndex() {
         $('.section-videos').html('')
         $(".section-videos").append(`<h2>${sectionName} Videos</h2>`)
         videos.forEach(function(video){
-          var newVideo = new Video(video.id, video.name)
+          var newVideo = new SectionVideo(video.id, video.name)
           var formattedVideo = newVideo.formatSectionVideo()
           $(".section-videos").append(formattedVideo)
         })
@@ -51,14 +51,19 @@ function sectionVideosIndex() {
     // })
   })
 }
+
 // section, video model object using constructor function
 function Section(id, name, videos){
   this.id = id,
   this.name = name
   this.videos = videos
 }
-
-function Video(id, name){
+//should this be a sectionvideo so that i can create video objects with more attributes for the show page?
+// function Video(id, name){
+//   this.id = id,
+//   this.name = name
+// }
+function SectionVideo(id, name){
   this.id = id,
   this.name = name
 }
@@ -66,12 +71,12 @@ function Video(id, name){
 // section, video prototype to format js model object
 Section.prototype.formatSection = function(){
   var sectionHtml = ""
-  sectionHtml += `<h3><li data-id=${this.id} class="section-show">` + this.name + "</li></h3>"
+  sectionHtml += `<h3><li data-id=${this.id} class="section-index">` + this.name + "</li></h3>"
   return sectionHtml
 }
-Video.prototype.formatSectionVideo = function(){
+SectionVideo.prototype.formatSectionVideo = function(){
   var sectionVideoHtml = ""
-  sectionVideoHtml += `<h3><li class="video" data-id=${this.id}>${this.name}</li></h3>`
+  sectionVideoHtml += `<a href="#"><h3><li class="video-index" data-id=${this.id}>${this.name}</li></h3></a>`
   return sectionVideoHtml
 }
 
