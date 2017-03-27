@@ -3,6 +3,7 @@ $( function(){
   sectionVideosIndex()
 })
 
+// bind cicks for sections, and section videos
 function sectionsIndex(){
   $(".sections button").on("click", function(){
     $('.sections').html('')
@@ -21,20 +22,6 @@ function sectionsIndex(){
   })
 }
 
-// section model object using constructor function
-function Section(id, name, videos){
-  this.id = id,
-  this.name = name
-  this.videos = videos
-}
-
-// section prototype to format js model object
-Section.prototype.formatSection = function(){
-  var sectionHtml = ""
-  sectionHtml += `<h3><li data-id=${this.id} class="section-show">` + this.name + "</li></h3>"
-  return sectionHtml
-}
-
 function sectionVideosIndex() {
   // make the json response into a js model object, with a prototype method that formats them
   //format shouldd include checkmark for vatched videos
@@ -49,7 +36,9 @@ function sectionVideosIndex() {
         $('.section-videos').html('')
         $(".section-videos").append(`<h2>${sectionName} Videos</h2>`)
         videos.forEach(function(video){
-          $(".section-videos").append(`<h3><li class="video" data-id=${video.id}>${video.name}</li></h3>`)
+          var newVideo = new Video(video.id, video.name)
+          var formattedVideo = newVideo.formatSectionVideo()
+          $(".section-videos").append(formattedVideo)
         })
         //$("#games").html("")
       })
@@ -62,3 +51,27 @@ function sectionVideosIndex() {
     // })
   })
 }
+// section, video model object using constructor function
+function Section(id, name, videos){
+  this.id = id,
+  this.name = name
+  this.videos = videos
+}
+
+function Video(id, name){
+  this.id = id,
+  this.name = name
+}
+
+// section, video prototype to format js model object
+Section.prototype.formatSection = function(){
+  var sectionHtml = ""
+  sectionHtml += `<h3><li data-id=${this.id} class="section-show">` + this.name + "</li></h3>"
+  return sectionHtml
+}
+Video.prototype.formatSectionVideo = function(){
+  var sectionVideoHtml = ""
+  sectionVideoHtml += `<h3><li class="video" data-id=${this.id}>${this.name}</li></h3>`
+  return sectionVideoHtml
+}
+
