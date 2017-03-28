@@ -32,9 +32,27 @@ function Video(id, name, link, flatiron, sectionId, sectionName){
 }
 
 Video.prototype.formatVideo = function() {
+  if (this.link.includes("youtube")) {
+    var youtubeId = this.link.split("=").slice(-1)[0]
+    var url = `//www.youtube.com/embed/${youtubeId}`
+  } else { 
+  // if (this.link.includes("amazonaws")) {
+    var url = this.link
+  }
+
   var videoHtml = ""
-  videoHtml += `Section: ${this.sectionName}<br>`
-  videoHtml += `Video: ${this.name}<br>`
-  videoHtml += `Link: ${this.link}<br>`
+  videoHtml += `<h1>Section: ${this.sectionName}</h1>`
+  videoHtml += `<h2>Video: ${this.name}</h2>`
+
+  videoHtml += `<div class="video-container">`
+  videoHtml += `<iframe src=${url}></iframe>`
+  videoHtml += `</div>`
+
   return videoHtml
 }
+
+//from youtube embed page
+//<iframe width="560" height="315" src="https://www.youtube.com/embed/Cbtm3aRiGxU" frameborder="0" allowfullscreen></iframe>
+
+
+
