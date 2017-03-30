@@ -1,6 +1,6 @@
 class VideosController < ApplicationController
   before_action :authenticate_user! #devise helper, enures users are signed in before actions can be accessed
-  before_action :set_user, only: [:index, :create, :edit, :update, :destroy, :watched, :study_suggestions, :show] 
+  before_action :set_user, only: [:index, :create, :edit, :update, :destroy, :watched, :study_suggestions, :show, :api_show] 
 
   def all_hardest_videos
    # @hardest_videos = Video.hardest_videos
