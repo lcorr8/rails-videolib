@@ -1,10 +1,12 @@
 <div class="text-right">
-  <% if current_user %>
-    <% if current_user.role == "general_student" %>
-      <%= render 'layouts/flatiron_request' %>
-    <% elsif current_user.role == "admin" %>
-      <%= button_to "Admin Portal", users_path, method: :get, :class => "btn rounded-outline-btn-small" %>
+  <div class="current-user" data-id="<%=current_user.id%>">
+    <% if current_user %>
+      <% if current_user.role == "general_student" %>
+        <%= render 'layouts/flatiron_request' %>
+      <% elsif current_user.role == "admin" %>
+        <%= button_to "Admin Portal", users_path, method: :get, :class => "btn rounded-outline-btn-small" %>
+      <% end %>
+      <%= current_user.user_role %>: <%= current_user.email %><br>
     <% end %>
-    <%= current_user.user_role %>: <%= current_user.email %><br>
-  <% end %>
+  </div>
 </div>
