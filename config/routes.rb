@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   get '/api/sections/:id/videos', to: 'sections#api_show'
   get '/api/videos/:id', to: 'videos#api_show'
 
+  get '/api/current_user/', to: 'users#api_show'
+
   
 
 

@@ -19,6 +19,11 @@ class UsersController < ApplicationController
     authorize @user
   end
 
+  def api_show
+    @user = current_user
+    render json: @user
+  end
+
   def edit
     #no dedicated view, done via buttons that pass info (skips gets request)
   end
