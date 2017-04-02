@@ -29,7 +29,9 @@
   <br><br><br>
 
   <div class="container">
-    <%= render 'layouts/user' %>
+    <% if current_user %>
+      <%= render 'layouts/user' %>
+    <% end %>  
     <%= render 'layouts/messages' %>
     <div id="template-container">
       <%= yield %>
