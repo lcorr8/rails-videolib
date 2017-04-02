@@ -2,6 +2,7 @@ Video: <%= @video.name %>
 <br><br>
 
 Your notes: <br>
+<% if !@notes.nil? %>
 <ul>
   <% @notes.each do |note| %>
     <li>
@@ -10,4 +11,5 @@ Your notes: <br>
       <%= link_to "Delete", video_note_path(@video,note), method: :delete %>
     </li>
   <% end %>
-</ul>      
+</ul> 
+<% end %>
