@@ -1,7 +1,8 @@
 class NotesController < ApplicationController
-  before_action :set_user, only: [:index]
+  before_action :set_user, only: [:index, :show]
 
   def show
+    @video = Video.find(params[:video_id])
     @note = Note.find(params[:id])
   end
 

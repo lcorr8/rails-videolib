@@ -5,7 +5,7 @@ Your notes: <br>
 <ul>
   <% @notes.each do |note| %>
     <li>
-      <%= note.content %>
+      <%= link_to note.content, video_note_path(@video, note) %>
     </li>
   <% end %>
 </ul>      
