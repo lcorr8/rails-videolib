@@ -1,12 +1,16 @@
 # Specifications for extra functionality to add
 
-[] notes for each video
+[x] functional notes model, and actions for regular app
+
+[] finalize notes view for regular app
+[] jquery notes for each video
 [] pretty transitions for hide/show
 
 []rating gem
 
 match visual appearance
-[] video color outline
+[x] video color outline
+
 [] watched checkmark videos, index
 [] button: back to section
 [] button: mark video watched
