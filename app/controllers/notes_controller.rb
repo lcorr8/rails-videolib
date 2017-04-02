@@ -1,23 +1,28 @@
 class NotesController < ApplicationController
-  before_action :set_user, only: [:index, :show]
+  before_action :set_user, only: [:index, :show, :create]
+  before_action :set_video, only: [:show, :index, :new, :create]
 
   def show
-    @video = Video.find(params[:video_id])
     @note = Note.find(params[:id])
   end
 
   def index
     #scope index by video and user
-    @video = Video.find(params[:video_id])
     @notes = @video.notes.where(user_id: @user.id)
   end
 
   def new
-    @note = Note.new
+    @note = @video.notes.build
   end
 
   def create
-    @note = Note.new(note_params)
+    @note = @video.notes.build(note_params)
+    @note.user = @user
+    if @note.save
+      redirect_to video_note_path(@video, @note)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -25,22 +30,24 @@ class NotesController < ApplicationController
   end
 
   def update
-    @note = Note.find(params[:id])
     @note = Note.update(note_params)
   end
 
   def destroy
-    @note = Note.find(params[:id])
   end
 
 
   private
 
   def note_params
-    params.require(:note).permit(:user_id, :video_id, :content)
+    params.require(:note).permit(:video_id, :content)
   end
 
   def set_user
     @user = current_user
+  end
+
+  def set_video
+    @video = Video.find(params[:video_id])
   end
 end
