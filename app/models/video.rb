@@ -5,6 +5,7 @@ class Video < ActiveRecord::Base
   has_many :ratings, through: :video_ratings
   has_many :watched_videos
   has_many :users, through: :watched_videos
+  has_many :notes
 
   validates :name, presence: true
   validates :link , presence: true, uniqueness: true

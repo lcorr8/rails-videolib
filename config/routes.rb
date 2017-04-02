@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   resources :videos do 
       resources :ratings
-      #resources :watched
+      resources :notes
   end
 
   resources :sections do 

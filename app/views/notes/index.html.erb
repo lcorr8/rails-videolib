@@ -1,0 +1,11 @@
+Video: <%= @video.name %>
+<br><br>
+
+Your notes: <br>
+<ul>
+  <% @notes.each do |note| %>
+    <li>
+      <%= note.content %>
+    </li>
+  <% end %>
+</ul>      
