@@ -1,0 +1,6 @@
+<h2>Edit this note</h2>
+<h3> <%= @video.name %></h3>
+
+<%= form_for(@note, url: video_note_path) do |f| %>
+  <%= render 'fields', :f => f %>
+<% end %>
