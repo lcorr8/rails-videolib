@@ -1,3 +1,8 @@
 Video: <%= @video.name %><br><br>
 Note by: <%= @note.user.email %><br><br>
-Note content: <%= @note.content %>
+Note content: <%= @note.content %><br><br>
+
+
+  <%= button_to "Delete Note", video_note_path(@video, @note), method: :delete, :class => "btn rounded-outline-btn" %>
+
+  <%= button_to "ALL Notes", video_notes_path(@video), method: :get, :class => "btn rounded-outline-btn" %>

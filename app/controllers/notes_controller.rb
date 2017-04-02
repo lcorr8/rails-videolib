@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
-  before_action :set_user, only: [:index, :show, :create, :edit, :update]
-  before_action :set_video, only: [:show, :index, :new, :create, :edit, :update]
+  before_action :set_user, only: [:index, :show, :create, :edit, :update, :destroy]
+  before_action :set_video
 
   def show
     @note = Note.find(params[:id])
@@ -35,16 +35,23 @@ class NotesController < ApplicationController
   end
 
   def update
-    #
     @note = Note.find(params[:id])
     if @note.update(note_params)
-      redirect_to video_note_path(@video, @note)
+      redirect_to video_notes_path(@video)
     else
       render :edit
     end
   end
 
   def destroy
+    @note = Note.find(params[:id])
+    if @note.user != @user
+      flash[:error] = "Not your note to delete"
+    elsif @note.video != @video
+      flash[:error] = "Note does not belong to this video"
+    end
+    @note.delete
+      redirect_to video_notes_path(@video)
   end
 
 

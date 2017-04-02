@@ -7,6 +7,7 @@ Your notes: <br>
     <li>
       <%= link_to note.content, video_note_path(@video, note) %> - 
       <%= link_to "Edit", edit_video_note_path(@video,note) %>
+      <%= link_to "Delete", video_note_path(@video,note), method: :delete %>
     </li>
   <% end %>
 </ul>      
