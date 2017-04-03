@@ -12,8 +12,10 @@ function notesIndex(){
       url: `/api/videos/${id}/notes`
     }).success(function(data){
       var notes = data
-      $(".video-notes").html('')
-      $(".video-notes").before("<p>Your Notes:</p>")
+      $(".notes-container").html('')
+      $(".notes-container").append( $("<p>Your Notes:</p>"))
+      $(".notes-container").append( $('<div class="video-notes"></div>'))
+      
       for (i=0; i< notes.length; i++) {
         var note = new Note(notes[i].content)
         var formattedNote = note.formatNote()
@@ -29,6 +31,6 @@ function Note(content){
 
 Note.prototype.formatNote = function() {
   var html = ""
-  html += `<li><p>${this.content}</p></li>`
+  html += `<li>${this.content}</li>`
   return html
 }

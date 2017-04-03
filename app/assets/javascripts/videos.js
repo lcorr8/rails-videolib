@@ -59,8 +59,13 @@ Video.prototype.formatVideo = function() {
   }
 
   var videoHtml = ""
-  videoHtml += `<h1>Section: ${this.sectionName}</h1>`
-  videoHtml += `<h2>Video: ${this.name}</h2>`
+
+  videoHtml += `<div class="container center video-info-container">`
+    videoHtml += `<span class="pull-left">`
+      videoHtml += `<h1>Section: <a href="">${this.sectionName}</a></h1>`
+      videoHtml += `<h2>Video: <a href="">${this.name}</a></h2>`
+    videoHtml += `</span>`  
+  videoHtml += `</div>`
 
   videoHtml += `<div class="video-container">`
     videoHtml += `<div class=${klass}>`
@@ -69,9 +74,11 @@ Video.prototype.formatVideo = function() {
   videoHtml += `</div>`
   videoHtml += `<br>`
 
-  videoHtml += `<div>`
+  videoHtml += `<div class="buttons-container">`
     videoHtml += `<button id="view-notes" data-id=${this.id} class="btn rounded-outline-btn">View Notes</button>`
-    videoHtml += `<br>`
+  videoHtml += `</div>`
+
+  videoHtml += `<div class="notes-container">`
     videoHtml += `<ul class="video-notes"></ul>`
   videoHtml += `</div>`
 
