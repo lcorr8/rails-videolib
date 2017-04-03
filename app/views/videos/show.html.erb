@@ -53,15 +53,19 @@
   <%= button_to "Add Note", new_video_note_path(@video), method: :get, :class => "btn rounded-outline-btn" %>
 
   <button id="view-notes" data-id="<%=@video.id%>" class="btn rounded-outline-btn">View Notes</button> 
-  <br>
 
+</div>  
+
+<div class="notes-container">
   <ul class="video-notes"></ul>
-  
-<br>
+</div>  
+
+<div class="ratings-container">
 
   <p> Your Ratings(1= easy, 5= hard), and personal notes </p>
 
   <%= render 'ratings/user_ratings' %>
-    
 </div>
+    
+
 <br><br>

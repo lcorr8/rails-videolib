@@ -13,6 +13,7 @@ function notesIndex(){
     }).success(function(data){
       var notes = data
       $(".video-notes").html('')
+      $(".video-notes").before("<p>Your Notes:</p>")
       for (i=0; i< notes.length; i++) {
         var note = new Note(notes[i].content)
         var formattedNote = note.formatNote()
@@ -28,6 +29,6 @@ function Note(content){
 
 Note.prototype.formatNote = function() {
   var html = ""
-  html += `<li>${this.content}</li>`
+  html += `<li><p>${this.content}</p></li>`
   return html
 }
