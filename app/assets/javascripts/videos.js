@@ -63,9 +63,16 @@ Video.prototype.formatVideo = function() {
   videoHtml += `<h2>Video: ${this.name}</h2>`
 
   videoHtml += `<div class="video-container">`
-  videoHtml += `<div class=${klass}>`
-  videoHtml += `<iframe src=${url}></iframe>`
+    videoHtml += `<div class=${klass}>`
+      videoHtml += `<iframe src=${url}></iframe>`
+    videoHtml += `</div>`
   videoHtml += `</div>`
+  videoHtml += `<br>`
+
+  videoHtml += `<div>`
+    videoHtml += `<button id="view-notes" data-id=${this.id} class="btn rounded-outline-btn">View Notes</button>`
+    videoHtml += `<br>`
+    videoHtml += `<ul class="video-notes"></ul>`
   videoHtml += `</div>`
 
   return videoHtml
