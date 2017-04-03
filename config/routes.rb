@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
 
   resources :users, only: [:index, :show, :destroy, :update]
+  get 'api/videos/:video_id/notes', to: 'notes#api_index'
   #get '/auth/github/callback' => 'sessions#create'
 
   

@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  before_action :set_user, only: [:index, :show, :create, :edit, :update, :destroy]
+  before_action :set_user, only: [:index, :show, :create, :edit, :update, :destroy, :api_index]
   before_action :set_video
   before_action :set_note, only: [:show, :edit, :update, :destroy]
 
@@ -15,8 +15,14 @@ class NotesController < ApplicationController
   def index
     #scope index by video and user
     @notes = @video.notes.where(user_id: @user.id)
+
   end
 
+  def api_index
+    @notes = @video.notes.where(user_id: @user.id) 
+    render json: @notes
+  end
+    
   def new
     @note = @video.notes.build
   end
@@ -54,7 +60,7 @@ class NotesController < ApplicationController
       flash[:error] = "Note does not belong to this video"
     end
     @note.delete
-      redirect_to video_notes_path(@video)
+    redirect_to video_notes_path(@video)
   end
 
 
