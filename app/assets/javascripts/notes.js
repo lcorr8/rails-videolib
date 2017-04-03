@@ -5,7 +5,7 @@ $(function(){
 function notesIndex(){
   $(document).on("click", '#view-notes', function(e){
     e.preventDefault()
-    var id = $(this).data("id")
+    var id = $(this).data("video-id")
     //make requets to api
     $.ajax({
       method: "GET",

@@ -1,5 +1,6 @@
 $( function(){
   videoShow();
+  backToSections();
 })
 
 // bind cicks for sections, and section videos
@@ -75,7 +76,8 @@ Video.prototype.formatVideo = function() {
   videoHtml += `<br>`
 
   videoHtml += `<div class="buttons-container">`
-    videoHtml += `<button id="view-notes" data-id=${this.id} class="btn rounded-outline-btn">View Notes</button>`
+    videoHtml += `<button id="back-to-sections" data-section-id=${this.sectionId} class="btn rounded-outline-btn">Back to Sections</button>`
+    videoHtml += `<button id="view-notes" data-video-id=${this.id} class="btn rounded-outline-btn">View Notes</button>`
   videoHtml += `</div>`
 
   videoHtml += `<div class="notes-container">`
@@ -90,10 +92,33 @@ function currentUser(){
   return id
 }
 
+// bind clicks for buttons: back to sections,
+
+function backToSections() {
+  $(document).on("click", "#back-to-sections", function(e){
+    //no need to prevent event on jquery button
+    $.ajax({
+      method: "GET",
+      url: `/api/sections`
+    }).success(function(data){
+      var sections = data
+      $("#template-container").html('')
+      //adds html from sections index view. is there a better way to do this?
+      $("#template-container").append('<div class="container-fluid"><div class="row"><div class="col-md-6"><ol class="sections"></ol></div><div class="col-md-6"><ol class="section-videos"></ol></div></div></div>')
+      $(".sections").append(`<h2>Sections</h2>`)
+      //part of the sections.js sectionsIndex()
+      data.forEach(function(section) {
+          var newSection = new Section(section.id, section.name, section.videos)
+          var formattedSection = newSection.formatSection()
+          $('.sections').append(formattedSection)
+        })
+      //at this point flow joins previous js code in sections.js 
+      //for when a section is clicked to display the videos
+    })
+  })
+}
 
 
-//from youtube embed page
-//<iframe width="560" height="315" src="https://www.youtube.com/embed/Cbtm3aRiGxU" frameborder="0" allowfullscreen></iframe>
 
 
 

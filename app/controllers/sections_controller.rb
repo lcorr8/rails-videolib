@@ -1,6 +1,6 @@
 class SectionsController < ApplicationController
-  #before_action :authenticate_user! #devise helper, enures users are signed in before actions can be accessed
-  #before_action :set_user, only: [:show] 
+  before_action :authenticate_user!, only: [:index, :show, :new, :create, :edit, :update, :destroy]#devise helper, enures users are signed in before actions can be accessed
+  before_action :set_user, only: [:show] 
   before_action :set_section, only: [:edit, :update, :destroy, :show, :api_show] 
 
   def index
