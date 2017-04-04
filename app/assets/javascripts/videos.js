@@ -1,6 +1,7 @@
 $( function(){
   videoShow();
   backToSections();
+
 })
 
 // bind cicks for sections, and section videos
@@ -18,6 +19,7 @@ function videoShow(){
         var newVideo = new Video(video.id, video.name, video.link, video.flatiron, video.section.id, video.section.name, video.users)
         var formattedVideo = newVideo.formatVideo()
         $("#template-container").append(formattedVideo)
+        youtubeScript()
       })
     history.pushState(null,null, `/videos/${videoId}`)
   })
@@ -70,7 +72,7 @@ Video.prototype.formatVideo = function() {
 
   videoHtml += `<div class="video-container">`
     videoHtml += `<div class=${klass}>`
-      videoHtml += `<iframe src=${url}></iframe>`
+      videoHtml += `<iframe id="player" src=${url}></iframe>`
     videoHtml += `</div>`
   videoHtml += `</div>`
   videoHtml += `<br>`
@@ -84,8 +86,55 @@ Video.prototype.formatVideo = function() {
     videoHtml += `<ul class="video-notes"></ul>`
   videoHtml += `</div>`
 
+  videoHtml += `<script></script>`
+
+
   return videoHtml
 }
+
+function youtubeScript(){
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  var player;
+  function onYouTubeIframeAPIReady() {
+    console.log("youtube api is ready")
+                          //id of the iframe, in this case "player"
+    player = new YT.Player('player', { 
+      height: '390',
+      width: '640',
+      videoId: 'M7lc1UVf-VE', //youtube id
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange
+      }
+    });
+  }
+
+  // 4. The API will call this function when the video player is ready.
+  function onPlayerReady(event) {
+    event.target.playVideo();
+  }
+
+  // 5. The API calls this function when the player's state changes.
+  //    The function indicates that when playing a video (state=1),
+  //    the player should play for six seconds and then stop.
+  var done = false;
+  function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.PLAYING && !done) {
+      setTimeout(stopVideo, 6000);
+      done = true;
+    }
+  }
+
+  function stopVideo() {
+    player.stopVideo();
+  }
+
+}
+
 
 function currentUser(){
   var id = $('.current-user').data("id")
@@ -93,7 +142,6 @@ function currentUser(){
 }
 
 // bind clicks for buttons: back to sections,
-
 function backToSections() {
   $(document).on("click", "#back-to-sections", function(e){
     //no need to prevent event on jquery button
@@ -112,6 +160,7 @@ function backToSections() {
           var formattedSection = newSection.formatSection()
           $('.sections').append(formattedSection)
         })
+      $(window).scrollTop(0);
       //at this point flow joins previous js code in sections.js 
       //for when a section is clicked to display the videos
     })
