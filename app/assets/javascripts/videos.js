@@ -79,7 +79,7 @@ Video.prototype.formatVideo = function() {
 
   videoHtml += `<div class="buttons-container">`
     videoHtml += `<button id="back-to-sections" data-section-id=${this.sectionId} class="btn rounded-outline-btn">Back to Sections</button>`
-    videoHtml += `<button id="view-notes" data-video-id=${this.id} class="btn rounded-outline-btn">View Notes</button>`
+    videoHtml += `<button id="view-notes" class="btn rounded-outline-btn">View Notes</button>`
   videoHtml += `</div>`
 
   videoHtml += `<br>`
