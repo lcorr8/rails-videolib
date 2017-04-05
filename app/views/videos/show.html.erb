@@ -41,7 +41,7 @@
   <% end %>  
 
   <% if !@video.video_watched?(@user, @video) %>
-    <%= button_to "Mark video watched", watched_path(@video), method: :get, :class => "btn rounded-outline-btn", params: {'video[watched]' => true} %>
+    <%= button_to "Mark video watched", watched_path(@video), method: :post, :class => "btn rounded-outline-btn", params: {'video[watched]' => true} %>
   <% end %> 
 
   <% if @video.video_watched?(@user, @video) %>
