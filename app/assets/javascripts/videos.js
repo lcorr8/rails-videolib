@@ -70,7 +70,7 @@ Video.prototype.formatVideo = function() {
     videoHtml += `</span>`  
   videoHtml += `</div>`
 
-  videoHtml += `<div class="video-container">`
+  videoHtml += `<div class="video-container" data-video-id=${this.id}>`
     videoHtml += `<div class=${klass}>`
       videoHtml += `<iframe id="player" src=${url}></iframe>`
     videoHtml += `</div>`
@@ -82,9 +82,17 @@ Video.prototype.formatVideo = function() {
     videoHtml += `<button id="view-notes" data-video-id=${this.id} class="btn rounded-outline-btn">View Notes</button>`
   videoHtml += `</div>`
 
-  videoHtml += `<div class="notes-container">`
-    videoHtml += `<ul class="video-notes"></ul>`
+  videoHtml += `<br>`
+  
+  videoHtml += `<div class="input-group" id="new-note-container">`
+    videoHtml += `<textarea id="note-textarea" class="form-control custom-control" rows="2" style="resize:none"></textarea>`
+    videoHtml += `<span class="input-group-addon btn rounded-outline-btn" id="add-new-note">Send</span>`
   videoHtml += `</div>`
+ 
+
+  videoHtml += `<br>`
+
+  videoHtml += `<div class="notes-container"></div>`
 
   videoHtml += `<script></script>`
 

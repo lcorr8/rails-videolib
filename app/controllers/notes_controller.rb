@@ -15,7 +15,6 @@ class NotesController < ApplicationController
   def index
     #scope index by video and user
     @notes = @video.notes.where(user_id: @user.id)
-
   end
 
   def api_index
@@ -31,7 +30,7 @@ class NotesController < ApplicationController
     @note = @video.notes.build(note_params)
     @note.user = @user
     if @note.save
-      redirect_to video_note_path(@video, @note)
+      render :show 
     else
       render :new
     end

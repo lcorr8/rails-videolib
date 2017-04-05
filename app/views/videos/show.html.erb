@@ -18,7 +18,7 @@
    </span>      
 </div>
 
-<div class="video-container">
+<div class="video-container" data-video-id=<%= @video.id %>>
   <% if @video.video_watched?(@user, @video) %>
     <div class="video-watched ">
   <% else %>
@@ -55,6 +55,11 @@
   <button id="view-notes" data-video-id="<%=@video.id%>" class="btn rounded-outline-btn">View Notes</button> 
 
 </div>  
+
+<div class="input-group" id="new-note-container">
+  <textarea id="note-textarea" class="form-control custom-control" rows="2" style="resize:none"></textarea>
+  <span class="input-group-addon btn rounded-outline-btn" id="add-new-note">Send</span>
+</div>
 
 <div class="notes-container">
   <ul class="video-notes"></ul>
