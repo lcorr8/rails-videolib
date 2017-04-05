@@ -1,16 +1,23 @@
 $( function(){
-  videoShow();
+  bindVideoShow();
   backToSections();
+  removeView();
 
 })
 
-// bind cicks for sections, and section videos
-function videoShow(){
+// bind clicks for sections, and section videos
+function bindVideoShow(){
   $(document).on("click", ".video-index", function(event){
     event.preventDefault()
     var videoId = $(this).data("id")
-    //
-    $.ajax({
+    videoShow(videoId)
+  })
+}
+
+function videoShow(id){
+  var videoId = id
+  
+  $.ajax({
       method: "GET",
       url: `/api/videos/${videoId}`
     }).success(function(data){
@@ -22,7 +29,6 @@ function videoShow(){
         youtubeScript()
       })
     history.pushState(null,null, `/videos/${videoId}`)
-  })
 }
 
 function Video(id, name, link, flatiron, sectionId, sectionName, users){
@@ -80,6 +86,12 @@ Video.prototype.formatVideo = function() {
   videoHtml += `<div class="buttons-container">`
     videoHtml += `<button id="back-to-sections" data-section-id=${this.sectionId} class="btn rounded-outline-btn">Back to Sections</button>`
     videoHtml += `<button id="view-notes" class="btn rounded-outline-btn">View Notes</button>`
+    if (this.watchedByCurrentUser()){
+      videoHtml += `<button id="remove-view" class="btn rounded-outline-btn">Delete View Status</button>`
+    } else {
+      //mark video watched button
+      //<%= button_to "Mark video watched", watched_path(@video), method: :get, :class => "btn rounded-outline-btn", params: {'video[watched]' => true} %>
+      }
   videoHtml += `</div>`
 
   videoHtml += `<br>`
@@ -175,6 +187,21 @@ function backToSections() {
   })
 }
 
+//binds click to remove view jquery button
+function removeView() {
+  $(document).on("click", "#remove-view", function(e){
+    //e.preventDefault()
+    var videoId = $(".video-container").data("video-id")
+    $.ajax({
+      method: "POST",
+      url: `/videos/${videoId}/watched/delete`,
+      data: JSON.stringify({video: { watched: false } }),
+      headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')}
+    }).success(function(data){
+      videoShow(videoId)
+    })
+  })
+}
 
 
 
