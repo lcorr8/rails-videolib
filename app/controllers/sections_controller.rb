@@ -7,8 +7,9 @@ class SectionsController < ApplicationController
     @sections = Section.all
     authorize @sections
   end
-
+  #refactor into one index action that responds to html or json
   def api_index
+
     @sections = Section.all
     authorize @sections
     render json: @sections

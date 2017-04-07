@@ -2,6 +2,7 @@ $( function(){
   bindVideoShow();
   backToSections();
   removeView();
+  addViewStatus();
 
 })
 
@@ -26,11 +27,11 @@ function videoShow(id){
         var newVideo = new Video(video.id, video.name, video.link, video.flatiron, video.section.id, video.section.name, video.users)
         var formattedVideo = newVideo.formatVideo()
         $("#template-container").append(formattedVideo)
-        youtubeScript()
       })
     history.pushState(null,null, `/videos/${videoId}`)
 }
 
+//refactor into passing attributes, and iterating over attributes[key]= value to assign them
 function Video(id, name, link, flatiron, sectionId, sectionName, users){
   this.id = id,
   this.name = name,
@@ -67,6 +68,7 @@ Video.prototype.formatVideo = function() {
     var klass = "video-not-watched"
   }
 
+  //refactor into one string, template literal style
   var videoHtml = ""
 
   videoHtml += `<div class="container center video-info-container">`
@@ -90,7 +92,7 @@ Video.prototype.formatVideo = function() {
       videoHtml += `<button id="remove-view" class="btn rounded-outline-btn">Delete View Status</button>`
     } else {
       //mark video watched button
-      //<%= button_to "Mark video watched", watched_path(@video), method: :get, :class => "btn rounded-outline-btn", params: {'video[watched]' => true} %>
+      videoHtml += `<button id="add-view-status" class="btn rounded-outline-btn">Mark Video Watched</button>`
       }
   videoHtml += `</div>`
 
@@ -112,48 +114,50 @@ Video.prototype.formatVideo = function() {
   return videoHtml
 }
 
-function youtubeScript(){
-  var tag = document.createElement('script');
-  tag.src = "https://www.youtube.com/iframe_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+// //load html with loading video div, then replace with youtube api video
+// function youtubeScript(){
+//   var tag = document.createElement('script');
+//   tag.src = "https://www.youtube.com/iframe_api";
+//   var firstScriptTag = document.getElementsByTagName('script')[0];
+//   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-  var player;
-  function onYouTubeIframeAPIReady() {
-    console.log("youtube api is ready")
-                          //id of the iframe, in this case "player"
-    player = new YT.Player('player', { 
-      height: '390',
-      width: '640',
-      videoId: 'M7lc1UVf-VE', //youtube id
-      events: {
-        'onReady': onPlayerReady,
-        'onStateChange': onPlayerStateChange
-      }
-    });
-  }
+//   var player;
+//   console.log('hello from youtube script')
+//   function onYouTubeIframeAPIReady() {
+//     console.log("youtube api is ready")
+//                           //id of the iframe, in this case "player"
+//     player = new YT.Player('player', { 
+//       height: '390',
+//       width: '640',
+//       videoId: 'M7lc1UVf-VE', //youtube id
+//       events: {
+//         'onReady': onPlayerReady,
+//         'onStateChange': onPlayerStateChange
+//       }
+//     });
+//   }
 
-  // 4. The API will call this function when the video player is ready.
-  function onPlayerReady(event) {
-    event.target.playVideo();
-  }
+//   // 4. The API will call this function when the video player is ready.
+//   function onPlayerReady(event) {
+//     event.target.playVideo();
+//   }
 
-  // 5. The API calls this function when the player's state changes.
-  //    The function indicates that when playing a video (state=1),
-  //    the player should play for six seconds and then stop.
-  var done = false;
-  function onPlayerStateChange(event) {
-    if (event.data == YT.PlayerState.PLAYING && !done) {
-      setTimeout(stopVideo, 6000);
-      done = true;
-    }
-  }
+//   // 5. The API calls this function when the player's state changes.
+//   //    The function indicates that when playing a video (state=1),
+//   //    the player should play for six seconds and then stop.
+//   var done = false;
+//   function onPlayerStateChange(event) {
+//     if (event.data == YT.PlayerState.PLAYING && !done) {
+//       setTimeout(stopVideo, 6000);
+//       done = true;
+//     }
+//   }
 
-  function stopVideo() {
-    player.stopVideo();
-  }
+//   function stopVideo() {
+//     player.stopVideo();
+//   }
 
-}
+// }
 
 
 function currentUser(){
@@ -198,11 +202,28 @@ function removeView() {
       data: JSON.stringify({video: { watched: false } }),
       headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')}
     }).success(function(data){
-      videoShow(videoId)
+      //videoShow(videoId)
+      //render video instead of redirecting
     })
   })
 }
 
+//bind mark video watched jquery button (by adding a view status true to the join table)
+function addViewStatus(){
+  $(document).on("click", "#add-view-status", function(e){
+    //e.preventDefault()
+    var videoId = $(".video-container").data("video-id")
+    $.ajax({
+      method: "POST",
+      url: `/videos/${videoId}/watched`,
+      data: {video: { watched: true }},
+      headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')}
+    }).success(function(data){
+      //videoShow(videoId)
+      //render video instead of redirecting
+    })
+  })
+}
 
 
 

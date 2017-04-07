@@ -9,7 +9,7 @@ class WatchedController < ApplicationController
       @watched_video = @video.watched_videos.build(watched_params)
       @watched_video.user = @user
       @watched_video.save 
-      redirect_to new_video_rating_path(@video)
+      redirect_to video_path(@video)
     else
       redirect_to video_path(@video)
       flash[:error] = "You have already marked this video watched, are you trying to delete the view status?"
