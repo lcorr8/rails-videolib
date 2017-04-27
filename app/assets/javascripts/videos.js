@@ -27,6 +27,7 @@ function videoShow(id){
         var newVideo = new Video(video.id, video.name, video.link, video.flatiron, video.section.id, video.section.name, video.users)
         var formattedVideo = newVideo.formatVideo()
         $("#template-container").append(formattedVideo)
+        // youtubeScript()
       })
     history.pushState(null,null, `/videos/${videoId}`)
 }
@@ -81,6 +82,7 @@ Video.prototype.formatVideo = function() {
   videoHtml += `<div class="video-container" data-video-id=${this.id}>`
     videoHtml += `<div class=${klass}>`
       videoHtml += `<iframe id="player" src=${url}></iframe>`
+      //videoHtml += `<div id="player"></div>`
     videoHtml += `</div>`
   videoHtml += `</div>`
   videoHtml += `<br>`
@@ -114,7 +116,7 @@ Video.prototype.formatVideo = function() {
   return videoHtml
 }
 
-// //load html with loading video div, then replace with youtube api video
+//load html with loading video div, then replace with youtube api video
 // function youtubeScript(){
 //   var tag = document.createElement('script');
 //   tag.src = "https://www.youtube.com/iframe_api";
@@ -123,6 +125,7 @@ Video.prototype.formatVideo = function() {
 
 //   var player;
 //   console.log('hello from youtube script')
+  
 //   function onYouTubeIframeAPIReady() {
 //     console.log("youtube api is ready")
 //                           //id of the iframe, in this case "player"
