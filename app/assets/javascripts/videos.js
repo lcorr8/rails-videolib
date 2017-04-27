@@ -70,98 +70,41 @@ Video.prototype.formatVideo = function() {
   }
 
   //refactor into one string, template literal style
-  var videoHtml = ""
-
-  videoHtml += `<div class="container center video-info-container">`
-    videoHtml += `<span class="pull-left">`
-      videoHtml += `<h1>Section: <a href="">${this.sectionName}</a></h1>`
-      videoHtml += `<h2>Video: <a href="">${this.name}</a></h2>`
-    videoHtml += `</span>`  
-  videoHtml += `</div>`
-
-  videoHtml += `<div class="video-container" data-video-id=${this.id}>`
-    videoHtml += `<div class=${klass}>`
-      videoHtml += `<iframe id="player" src=${url}></iframe>`
-      //videoHtml += `<div id="player"></div>`
-    videoHtml += `</div>`
-  videoHtml += `</div>`
-  videoHtml += `<br>`
-
-  videoHtml += `<div class="buttons-container">`
-    videoHtml += `<button id="back-to-sections" data-section-id=${this.sectionId} class="btn rounded-outline-btn">Back to Sections</button>`
-    videoHtml += `<button id="view-notes" class="btn rounded-outline-btn">View Notes</button>`
-    if (this.watchedByCurrentUser()){
+  var videoHtml = `
+  <div class="container center video-info-container">
+     <span class="pull-left">
+     <h1>Section: <a href="">${this.sectionName}</a></h1>
+      <h2>Video: <a href="">${this.name}</a></h2>
+    </span> 
+  </div>
+  <div class="video-container" data-video-id=${this.id}>
+    <div class=${klass}>
+      <iframe id="player" src=${url}></iframe>
+      //<div id="player"></div>
+    </div>
+  </div>
+  <br>
+  <div class="buttons-container">
+    <button id="back-to-sections" data-section-id=${this.sectionId} class="btn rounded-outline-btn">Back to Sections</button>
+    <button id="view-notes" class="btn rounded-outline-btn">View Notes</button>`
+      if (this.watchedByCurrentUser()){
       videoHtml += `<button id="remove-view" class="btn rounded-outline-btn">Delete View Status</button>`
     } else {
       //mark video watched button
       videoHtml += `<button id="add-view-status" class="btn rounded-outline-btn">Mark Video Watched</button>`
-      }
-  videoHtml += `</div>`
-
-  videoHtml += `<br>`
-  
-  videoHtml += `<div class="input-group" id="new-note-container">`
-    videoHtml += `<textarea id="note-textarea" class="form-control custom-control" rows="2" style="resize:none"></textarea>`
-    videoHtml += `<span class="input-group-addon btn rounded-outline-btn" id="add-new-note">Send</span>`
-  videoHtml += `</div>`
- 
-
-  videoHtml += `<br>`
-
-  videoHtml += `<div class="notes-container"></div>`
-
-  videoHtml += `<script></script>`
-
+      } 
+  videoHtml += `
+  </div>
+  <br>
+  <div class="input-group" id="new-note-container">
+    <textarea id="note-textarea" class="form-control custom-control" rows="2" style="resize:none" placeholder="Add a video note here..."></textarea>
+    <span class="input-group-addon btn rounded-outline-btn" id="add-new-note">Send</span>
+  </div>
+  <br>
+  <div class="notes-container"></div>`
 
   return videoHtml
 }
-
-//load html with loading video div, then replace with youtube api video
-// function youtubeScript(){
-//   var tag = document.createElement('script');
-//   tag.src = "https://www.youtube.com/iframe_api";
-//   var firstScriptTag = document.getElementsByTagName('script')[0];
-//   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-//   var player;
-//   console.log('hello from youtube script')
-  
-//   function onYouTubeIframeAPIReady() {
-//     console.log("youtube api is ready")
-//                           //id of the iframe, in this case "player"
-//     player = new YT.Player('player', { 
-//       height: '390',
-//       width: '640',
-//       videoId: 'M7lc1UVf-VE', //youtube id
-//       events: {
-//         'onReady': onPlayerReady,
-//         'onStateChange': onPlayerStateChange
-//       }
-//     });
-//   }
-
-//   // 4. The API will call this function when the video player is ready.
-//   function onPlayerReady(event) {
-//     event.target.playVideo();
-//   }
-
-//   // 5. The API calls this function when the player's state changes.
-//   //    The function indicates that when playing a video (state=1),
-//   //    the player should play for six seconds and then stop.
-//   var done = false;
-//   function onPlayerStateChange(event) {
-//     if (event.data == YT.PlayerState.PLAYING && !done) {
-//       setTimeout(stopVideo, 6000);
-//       done = true;
-//     }
-//   }
-
-//   function stopVideo() {
-//     player.stopVideo();
-//   }
-
-// }
-
 
 function currentUser(){
   var id = $('.current-user').data("id")
@@ -227,6 +170,3 @@ function addViewStatus(){
     })
   })
 }
-
-
-
