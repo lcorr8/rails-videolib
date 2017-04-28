@@ -17,7 +17,6 @@ function bindVideoShow(){
 
 function videoShow(id){
   var videoId = id
-  
   $.ajax({
       method: "GET",
       url: `/videos/${videoId}.json`
@@ -27,7 +26,6 @@ function videoShow(id){
         var newVideo = new Video(video.id, video.name, video.link, video.flatiron, video.section.id, video.section.name, video.users)
         var formattedVideo = newVideo.formatVideo()
         $("#template-container").append(formattedVideo)
-        // youtubeScript()
       })
     history.pushState(null,null, `/videos/${videoId}`)
 }
@@ -117,7 +115,7 @@ function backToSections() {
     //no need to prevent event on jquery button
     $.ajax({
       method: "GET",
-      url: `/api/sections`
+      url: `/sections.json`,
     }).success(function(data){
       var sections = data
       $("#template-container").html('')

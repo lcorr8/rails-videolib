@@ -1,18 +1,15 @@
 class SectionsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :new, :create, :edit, :update, :destroy]#devise helper, enures users are signed in before actions can be accessed
   before_action :set_user, only: [:show] 
-  before_action :set_section, only: [:edit, :update, :destroy, :show, :api_show] 
+  before_action :set_section, only: [:edit, :update, :destroy, :show]
 
   def index
     @sections = Section.all
     authorize @sections
-  end
-  #refactor into one index action that responds to html or json
-  def api_index
-
-    @sections = Section.all
-    authorize @sections
-    render json: @sections
+    respond_to do |format|
+      format.html {}
+      format.json { render json: @sections}
+    end
   end
 
   def show
@@ -21,12 +18,10 @@ class SectionsController < ApplicationController
     #need to set user to determine the checkmarks for videos_watched?(user, video) method
     @videos = policy_scope(Video).where(section_id: @section.id)
     authorize @section
-  end  
-
-  def api_show
-    @videos = policy_scope(Video).where(section_id: @section.id)
-    #authorize @section
-    render json: @videos
+    respond_to do |format|
+      format.html {}
+      format.json { render json: @videos}
+    end
   end
 
   def new

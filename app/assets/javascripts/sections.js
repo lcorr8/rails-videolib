@@ -8,17 +8,16 @@ function sectionsIndex(){
   $(".sections button").on("click", function(){
     $('.sections').html('')
     $(".sections").append(`<h2>Sections</h2>`)
-    fetch(`/api/sections`)
-      .then(function(response) {
-        return response.json()
+    $.ajax({
+      method: "GET",
+      url: `/sections.json`
+    }).success(function(data){
+      data.forEach(function(section) {
+        var newSection = new Section(section.id, section.name, section.videos)
+        var formattedSection = newSection.formatSection()
+        $('.sections').append(formattedSection)
       })
-      .then(function(data) {
-        data.forEach(function(section) {
-          var newSection = new Section(section.id, section.name, section.videos)
-          var formattedSection = newSection.formatSection()
-          $('.sections').append(formattedSection)
-        })
-      })
+    })
   })
 }
 
@@ -30,7 +29,7 @@ function sectionVideosIndex() {
     var sectionName = $(this).text()
     $.ajax({
       method: "GET",
-      url: `/api/sections/${sectionId}/videos`
+      url: `/sections/${sectionId}.json`
     }).success(function(data){
         var videos = data
         $('.section-videos').html('')
@@ -40,15 +39,7 @@ function sectionVideosIndex() {
           var formattedVideo = newVideo.formatSectionVideo()
           $(".section-videos").append(formattedVideo)
         })
-        //$("#games").html("")
       })
-    // fetch('/api/sections/' + sectionId + '/videos')
-    // .then(function(response){
-    //   console.log(response)
-    //   return response.json()
-    // }).then(function(data){
-    //   console.log(data)
-    // })
   })
 }
 
