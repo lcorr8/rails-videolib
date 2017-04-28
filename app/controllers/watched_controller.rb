@@ -9,10 +9,16 @@ class WatchedController < ApplicationController
       @watched_video = @video.watched_videos.build(watched_params)
       @watched_video.user = @user
       @watched_video.save 
-      redirect_to video_path(@video)
+      respond_to do |format|
+        format.html { redirect_to video_path(@video) }
+        format.json { render json: @video }
+      end
     else
-      redirect_to video_path(@video)
       flash[:error] = "You have already marked this video watched, are you trying to delete the view status?"
+      respond_to do |format|
+        format.html { redirect_to video_path(@video) }
+        format.json { render json: @video }
+      end
     end
     #only positive views, if you havent seen a video then you dont have an entry in the join table,
     # if you want to delete a view, then you just delete the entry from the table
@@ -20,11 +26,20 @@ class WatchedController < ApplicationController
 
   def destroy
     if @video.video_watched?(@user, @video)
+      #watched_params error "watched cant be blank", 
+      #currently passing data: {video: { watched: false }}, to ajax post, not used
+      #watchedByCurrentUser prototype method uses a video's users(watchedvideo entries)
       @watched_video.destroy
-      redirect_to video_path(@video)
+      respond_to do |format|
+        format.html { redirect_to video_path(@video) }
+        format.json { render json: @video }
+      end
     else
-      redirect_to video_path(@video)
       flash[:error] = "There is no view status to delete, try marking the video watched first"
+      respond_to do |format|
+        format.html { redirect_to video_path(@video) }
+        format.json { render json: @video }
+      end
     end
   end
 

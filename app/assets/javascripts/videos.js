@@ -137,19 +137,18 @@ function backToSections() {
   })
 }
 
-//binds click to remove view jquery button
+//binds click to remove view, jquery button
 function removeView() {
   $(document).on("click", "#remove-view", function(e){
     //e.preventDefault()
     var videoId = $(".video-container").data("video-id")
     $.ajax({
       method: "POST",
-      url: `/videos/${videoId}/watched/delete`,
-      data: JSON.stringify({video: { watched: false } }),
+      url: `/videos/${videoId}/watched/delete.json`,
+      data: {video: { watched: false }},
       headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')}
     }).success(function(data){
-      //videoShow(videoId)
-      //render video instead of redirecting
+      videoShow(videoId)
     })
   })
 }
@@ -161,12 +160,11 @@ function addViewStatus(){
     var videoId = $(".video-container").data("video-id")
     $.ajax({
       method: "POST",
-      url: `/videos/${videoId}/watched`,
+      url: `/videos/${videoId}/watched.json`,
       data: {video: { watched: true }},
       headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')}
     }).success(function(data){
-      //videoShow(videoId)
-      //render video instead of redirecting
+      videoShow(videoId)
     })
   })
 }
