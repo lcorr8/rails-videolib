@@ -20,7 +20,7 @@ function videoShow(id){
   
   $.ajax({
       method: "GET",
-      url: `/api/videos/${videoId}`
+      url: `/videos/${videoId}.json`
     }).success(function(data){
         var video = data
         $('#template-container').empty()

@@ -1,14 +1,13 @@
 class VideosController < ApplicationController
   before_action :authenticate_user! #devise helper, enures users are signed in before actions can be accessed
-  before_action :set_user, only: [:index, :create, :edit, :update, :destroy, :watched, :study_suggestions, :show, :api_show] 
-
+  before_action :set_user, only: [:index, :create, :edit, :update, :destroy, :watched, :study_suggestions, :show]
+  before_action :set_video, only: [:show, :edit, :update, :destroy]
+  
   def all_hardest_videos
    # @hardest_videos = Video.hardest_videos
   end
 
-
   def show
-    @video = Video.find(params[:id])
     authorize @video
     #personal ratings of the video
     @user_ratings = @video.user_ratings(@user)
@@ -18,11 +17,10 @@ class VideosController < ApplicationController
       @average_rating = @video.video_ratings.average(:rating_id).to_i.to_s
       @total_video_rating = Rating.find_by(stars: @average_rating)
     end
-  end
-
-  def api_show
-    @video = Video.find(params[:id])
-    render json: @video
+    respond_to do |format|
+      format.html {}
+      format.json { render json: @video }
+    end
   end
 
   def new
@@ -55,7 +53,6 @@ class VideosController < ApplicationController
   end
 
   def edit
-    @video = Video.find(params[:id])
     authorize @video
   end
 
@@ -71,7 +68,6 @@ class VideosController < ApplicationController
         @section.save
       end
 
-    @video = Video.find(params[:id])
     authorize @video 
       if @video.update(video_params)
         redirect_to video_path(@video)
@@ -81,7 +77,6 @@ class VideosController < ApplicationController
   end
 
   def destroy 
-    @video = Video.find(params[:id])
     @section = @video.section
     authorize @video 
     @video.destroy
@@ -96,6 +91,10 @@ class VideosController < ApplicationController
 
   def set_user
     @user = current_user
+  end
+
+  def set_video
+    @video = Video.find(params[:id])
   end
 
 end
