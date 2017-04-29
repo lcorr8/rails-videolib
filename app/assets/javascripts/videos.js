@@ -91,14 +91,11 @@ Video.prototype.formatVideo = function() {
       //mark video watched button
       videoHtml += `<button id="add-view-status" class="btn rounded-outline-btn">Mark Video Watched</button>`
       } 
-  videoHtml += `
-  </div>
-  <br>
-  <div class="input-group" id="new-note-container">
-    <textarea id="note-textarea" class="form-control custom-control" rows="2" style="resize:none" placeholder="Add a video note here..."></textarea>
-    <span class="input-group-addon btn rounded-outline-btn" id="add-new-note">Send</span>
-  </div>
-  <br>
+  videoHtml += `</div><br>
+    <div class="input-group" id="new-note-container">
+      <textarea id="note-textarea" class="form-control custom-control" rows="2" style="resize:none" placeholder="Add a video note here..."></textarea>
+      <span class="input-group-addon btn rounded-outline-btn" id="add-new-note">Send</span>
+    </div><br>
   <div class="notes-container"></div>`
 
   return videoHtml
