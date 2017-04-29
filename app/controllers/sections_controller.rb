@@ -15,7 +15,6 @@ class SectionsController < ApplicationController
   def show
     #all sections show for all users, by section policy
     #videos are scoped by user role, by video policy
-    #need to set user to determine the checkmarks for videos_watched?(user, video) method
     @videos = policy_scope(Video).where(section_id: @section.id)
     authorize @section
     respond_to do |format|

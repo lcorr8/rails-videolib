@@ -1,11 +1,9 @@
 # Specifications for extra functionality to add
 
 --jquery
-[] watched checkmark videos, index
-[] button: mark video watched
-[] button: delete view status 
-
-
+[x] watched checkmark videos, index
+[x] button: mark video watched
+[x] button: delete view status 
 
 
 previous rating system:
@@ -22,7 +20,7 @@ Future:
 - jquery add a video
 
 FINAL REFACTOR:
-[] refactor controllers to use respond to and json
+[x] refactor controllers to use respond to and json
 -- rating system 
 [] remove notes
 [] keep or replace for a rating gem?
