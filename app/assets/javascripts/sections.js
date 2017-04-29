@@ -24,6 +24,7 @@ function sectionsIndex(){
 function sectionVideosIndex() {
   // make the json response into a js model object, with a prototype method that formats them
   $(document).on("click", "li.section-index", function(event){
+    event.preventDefault()
     var sectionId = $(this).data("id")
     var sectionName = $(this).text()
     $.ajax({
@@ -52,6 +53,6 @@ function Section(id, name, videos){
 // section prototype to format js model object
 Section.prototype.formatSection = function(){
   var sectionHtml = ""
-  sectionHtml += `<h3><li data-id=${this.id} class="section-index"><span>${this.name}</span></li></h3>`
+  sectionHtml += `<a href="#"><h3><li data-id=${this.id} class="section-index"><span>${this.name}</span></li></h3></a>`
   return sectionHtml
 }
