@@ -104,6 +104,17 @@ Video.prototype.formatVideo = function() {
   return videoHtml
 }
 
+Video.prototype.formatSectionVideo = function(){
+  var sectionVideoHtml = ``
+  sectionVideoHtml += `<a href="#"><h3><li class="video-index" data-id=${this.id}><span>${this.name}</span>`
+  if (this.watchedByCurrentUser()) {
+    sectionVideoHtml += `  <i class="fa fa-check-square-o"></i>`
+  }
+  sectionVideoHtml += `</li></h3></a>`
+  
+  return sectionVideoHtml
+}
+
 function currentUser(){
   var id = $('.current-user').data("id")
   return id

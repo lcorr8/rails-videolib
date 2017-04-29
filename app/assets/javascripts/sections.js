@@ -23,7 +23,6 @@ function sectionsIndex(){
 
 function sectionVideosIndex() {
   // make the json response into a js model object, with a prototype method that formats them
-  //format shouldd include checkmark for vatched videos
   $(document).on("click", "li.section-index", function(event){
     var sectionId = $(this).data("id")
     var sectionName = $(this).text()
@@ -35,7 +34,7 @@ function sectionVideosIndex() {
         $('.section-videos').html('')
         $(".section-videos").append(`<h2>${sectionName} Videos</h2>`)
         videos.forEach(function(video){
-          var newVideo = new SectionVideo(video.id, video.name, video.users)
+          var newVideo = new Video(video.id, video.name, video.link, video.flatiron, video.section.id, video.section.name, video.users)
           var formattedVideo = newVideo.formatSectionVideo()
           $(".section-videos").append(formattedVideo)
         })
@@ -43,45 +42,16 @@ function sectionVideosIndex() {
   })
 }
 
-// section, video model object using constructor function
+// section model object using constructor function
 function Section(id, name, videos){
   this.id = id,
   this.name = name
   this.videos = videos
 }
-//should this be a sectionvideo so that i can create video objects with more attributes for the show page?
-// function Video(id, name){
-//   this.id = id,
-//   this.name = name
-// }
-function SectionVideo(id, name, users){
-  this.id = id,
-  this.name = name,
-  this.users = users
-}
 
-SectionVideo.prototype.watchedByCurrentUser = function() {
-  for (i=0; i< this.users.length; i++) {
-    if (this.users[i].id === currentUser()){
-      return true
-    }
-  } 
-}
-
-// section, video prototype to format js model object
+// section prototype to format js model object
 Section.prototype.formatSection = function(){
   var sectionHtml = ""
   sectionHtml += `<h3><li data-id=${this.id} class="section-index"><span>${this.name}</span></li></h3>`
   return sectionHtml
 }
-SectionVideo.prototype.formatSectionVideo = function(){
-  var sectionVideoHtml = ``
-  sectionVideoHtml += `<a href="#"><h3><li class="video-index" data-id=${this.id}><span>${this.name}</span>`
-  if (this.watchedByCurrentUser()) {
-    sectionVideoHtml += `  <i class="fa fa-check-square-o"></i>`
-  }
-  sectionVideoHtml += `</li></h3></a>`
-  
-  return sectionVideoHtml
-}
-
