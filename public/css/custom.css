@@ -51,6 +51,10 @@ ol li {
   color: #00802b;
 }
 
+ol li span {
+  color: black;
+}
+
 /* navbar css */
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #00802b;

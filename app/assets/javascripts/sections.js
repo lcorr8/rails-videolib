@@ -35,7 +35,7 @@ function sectionVideosIndex() {
         $('.section-videos').html('')
         $(".section-videos").append(`<h2>${sectionName} Videos</h2>`)
         videos.forEach(function(video){
-          var newVideo = new SectionVideo(video.id, video.name)
+          var newVideo = new SectionVideo(video.id, video.name, video.users)
           var formattedVideo = newVideo.formatSectionVideo()
           $(".section-videos").append(formattedVideo)
         })
@@ -54,20 +54,34 @@ function Section(id, name, videos){
 //   this.id = id,
 //   this.name = name
 // }
-function SectionVideo(id, name){
+function SectionVideo(id, name, users){
   this.id = id,
-  this.name = name
+  this.name = name,
+  this.users = users
+}
+
+SectionVideo.prototype.watchedByCurrentUser = function() {
+  for (i=0; i< this.users.length; i++) {
+    if (this.users[i].id === currentUser()){
+      return true
+    }
+  } 
 }
 
 // section, video prototype to format js model object
 Section.prototype.formatSection = function(){
   var sectionHtml = ""
-  sectionHtml += `<h3><li data-id=${this.id} class="section-index">` + this.name + "</li></h3>"
+  sectionHtml += `<h3><li data-id=${this.id} class="section-index"><span>${this.name}</span></li></h3>`
   return sectionHtml
 }
 SectionVideo.prototype.formatSectionVideo = function(){
-  var sectionVideoHtml = ""
-  sectionVideoHtml += `<a href="#"><h3><li class="video-index" data-id=${this.id}>${this.name}</li></h3></a>`
+  var sectionVideoHtml = ``
+  sectionVideoHtml += `<a href="#"><h3><li class="video-index" data-id=${this.id}><span>${this.name}</span>`
+  if (this.watchedByCurrentUser()) {
+    sectionVideoHtml += `  <i class="fa fa-check-square-o"></i>`
+  }
+  sectionVideoHtml += `</li></h3></a>`
+  
   return sectionVideoHtml
 }
 
