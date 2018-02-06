@@ -29,7 +29,6 @@ gem 'pundit'
 
 gem 'figaro'
 gem 'omniauth-github', '~> 1.1', '>= 1.1.2'
-
 gem 'font-awesome-rails'
 
 gem 'active_model_serializers'
